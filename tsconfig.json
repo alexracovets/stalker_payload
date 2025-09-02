@@ -21,8 +21,8 @@
     "paths": {
       "@/*": ["./src/*"],
       "@atoms": ["./src/ui/components/atoms"],
-      "@molecules/*": ["./src/ui/components/molecules/*"],
-      "@organisms/*": ["./src/ui/components/organisms/*"],
+      "@molecules": ["./src/ui/components/molecules"],
+      "@organisms": ["./src/ui/components/organisms"],
       "@templates": ["./src/ui/components/templates"],
       "@utils": ["./src/utils"],
       "@fonts": ["./src/ui/fonts"],

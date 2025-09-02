@@ -5,11 +5,11 @@ import { cn } from "@utils";
 
 import '@styles/globals.scss';
 
-interface DefaultLayoutProps {
+interface LayoutDefaultProps {
     children: React.ReactNode;
 }
 
-export const DefaultLayout = ({ children }: DefaultLayoutProps) => {
+export const LayoutDefault = ({ children }: LayoutDefaultProps) => {
     return (
         <html lang="en">
             <body
@@ -19,8 +19,7 @@ export const DefaultLayout = ({ children }: DefaultLayoutProps) => {
                     roboto_condensed.variable,
                     roboto.variable,
                     rethink.variable,
-                    "antialiased bg-main-black text-primary-main",
-                    "flex flex-col w-full"
+                    "antialiased bg-main-black text-main-white relative"
                 )}
             >
                 {children}

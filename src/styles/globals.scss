@@ -5,4 +5,12 @@
   --breakpoint-xls: 1701px;
   --breakpoint-md: 1025px;
   --breakpoint-sm: 431px;
+
+  --color-main-black: #0A0A09;
+  --color-main-white: #EBEAE8;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: calc(100vw / 1920 * 10);
 }

@@ -1,1 +1,2 @@
-export { DefaultLayout } from "./DefaultLayout";
+export { LayoutDefault } from "./LayoutDefault";
+export { TemplateHome } from "./TemplateHome";
