@@ -1,5 +1,3 @@
-"use client";
-
 import { calibri, stalker, roboto, roboto_condensed, rethink } from '@fonts';
 import { cn } from "@utils";
 
