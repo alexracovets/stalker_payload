@@ -30,6 +30,15 @@ export const MainPages: CollectionConfig = {
       name: "title",
       required: true,
     },
+    {
+      label: "Додаткова інформація",
+      name: "description",
+      type: "text",
+      required: true,
+      admin: {
+        condition: (data) => data.slug !== "/",
+      },
+    },
     HomeVideo(),
   ],
 };

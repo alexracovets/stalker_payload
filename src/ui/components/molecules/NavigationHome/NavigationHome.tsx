@@ -1,7 +1,7 @@
 "use client";
 
 import { MainPage } from "@payload-types";
-import { AtomLink } from "@atoms";
+import { AtomLink, AtomWrapper } from "@atoms";
 
 interface NavigationHomeProps {
   navigation: MainPage[];
@@ -9,14 +9,22 @@ interface NavigationHomeProps {
 
 export const NavigationHome = ({ navigation }: NavigationHomeProps) => {
   return (
-    <ul>
-      {navigation.map((item) => (
-        <li key={item.id}>
-          <AtomLink href={item.slug} variant="default">
-            {item.title}
-          </AtomLink>
-        </li>
-      ))}
-    </ul>
+    <AtomWrapper variant="home_navigation" asChild>
+      <ul>
+        {navigation.map((item, idx) => (
+          <AtomWrapper
+            variant="home_navigationElement"
+            asChild
+            key={`${item.id}-${idx}`}
+          >
+            <li>
+              <AtomLink href={item.slug} variant="home_link">
+                {item.title}
+              </AtomLink>
+            </li>
+          </AtomWrapper>
+        ))}
+      </ul>
+    </AtomWrapper>
   );
 };

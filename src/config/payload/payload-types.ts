@@ -132,6 +132,7 @@ export interface MainPage {
   slug: string;
   logo?: (number | null) | Media;
   title: string;
+  description?: string | null;
   video?: (number | null) | Video;
   meta?: {
     title?: string | null;
@@ -300,6 +301,7 @@ export interface MainPagesSelect<T extends boolean = true> {
   slug?: T;
   logo?: T;
   title?: T;
+  description?: T;
   video?: T;
   meta?:
     | T

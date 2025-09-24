@@ -19,3 +19,7 @@ html {
 * {
   box-sizing: border-box;
 }
+
+.clip_startBtn {
+  clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
+}
