@@ -6,11 +6,16 @@
   --breakpoint-md: 1025px;
   --breakpoint-sm: 431px;
 
-  --color-main-black: #0A0A09;
-  --color-main-white: #EBEAE8;
+  --color-main-black: #0a0a09;
+  --color-main-white: #ebeae8;
+  --color-main-gray-light: #9e9d98;
 }
 
 html {
   scroll-behavior: smooth;
   font-size: calc(100vw / 1920 * 10);
+}
+
+* {
+  box-sizing: border-box;
 }

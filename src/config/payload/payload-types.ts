@@ -89,10 +89,10 @@ export interface Config {
     defaultIDType: number;
   };
   globals: {
-    navigations: Navigation;
+    nav_home: NavHome;
   };
   globalsSelect: {
-    navigations: NavigationsSelect<false> | NavigationsSelect<true>;
+    nav_home: NavHomeSelect<false> | NavHomeSelect<true>;
   };
   locale: null;
   user: User & {
@@ -422,20 +422,28 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "navigations".
+ * via the `definition` "nav_home".
  */
-export interface Navigation {
+export interface NavHome {
   id: number;
-  homeNavigation?: (number | MainPage)[] | null;
+  items: {
+    page: number | MainPage;
+    id?: string | null;
+  }[];
   updatedAt?: string | null;
   createdAt?: string | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "navigations_select".
+ * via the `definition` "nav_home_select".
  */
-export interface NavigationsSelect<T extends boolean = true> {
-  homeNavigation?: T;
+export interface NavHomeSelect<T extends boolean = true> {
+  items?:
+    | T
+    | {
+        page?: T;
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

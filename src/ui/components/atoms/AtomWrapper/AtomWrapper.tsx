@@ -8,10 +8,12 @@ const variants = cva("", {
   variants: {
     variant: {
       default: "w-full",
-      headerHome: cn(
-        "absolute top-0 left-0",
-        "flex flex-col justify-center items-center w-[51.9rem] min-w-[51.9rem] h-[100dvh] bg-primary-black p-[4rem] gap-y-[4.8rem] bg-white"
+      home_page: "w-full h-full relative",
+      home_header: cn(
+        "absolute top-0 left-0 z-[1]",
+        "flex flex-col justify-center items-center w-[520px] h-full bg-main-black p-[32px] gap-y-[48px]"
       ),
+      home_logo_wrapper: cn("flex flex-col justify-center items-center gap-y-[2px]"),
       home_video: cn("w-full h-full object-cover relative"),
     },
   },

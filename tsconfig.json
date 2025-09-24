@@ -28,11 +28,13 @@
       "@fonts": ["./src/ui/fonts"],
       "@styles/*": ["./src/styles/*"],
       "@types": ["./src/types"],
+      "@hooks": ["./src/ui/hooks"],
       "@collections": ["./src/collections"],
       "@fields": ["./src/fields"],
       "@payload-config": ["./src/config/payload/payload.config"],
       "@payload-types": ["./src/config/payload/payload-types"],
-      "@api": ["./src/api"]
+      "@api": ["./src/api"],
+      "@config": ["./src/config"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
