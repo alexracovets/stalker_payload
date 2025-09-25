@@ -39,6 +39,7 @@ const variants = cva("", {
       ),
       pda_navigation_link_wrapper: cn("h-full relative"),
       pda_navigation: cn("flex justify-center items-center gap-x-[8rem]"),
+      navigation_selection_wrapper: cn("absolute top-0 z-[-1]"),
     },
   },
   defaultVariants: {
@@ -63,7 +64,11 @@ export const AtomWrapper = ({
   const Component = asChild ? Slot : "div";
 
   return (
-    <Component className={cn(variants({ variant, className }))} {...props} style={style}>
+    <Component
+      className={cn(variants({ variant, className }))}
+      {...props}
+      style={style}
+    >
       {children}
     </Component>
   );

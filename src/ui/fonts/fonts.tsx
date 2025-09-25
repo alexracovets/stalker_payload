@@ -19,9 +19,9 @@ export const roboto = Roboto({
   display: "swap",
 });
 
-export const rethink = Rethink_Sans({
+export const rethink_sans = Rethink_Sans({
   weight: ["800"],
-  variable: "--font-rethink",
+  variable: "--font-rethink_sans",
   style: ["normal"],
   subsets: ["latin"],
   display: "swap",

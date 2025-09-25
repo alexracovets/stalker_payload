@@ -3,9 +3,12 @@
 import { useState, RefObject, useRef, useCallback, useEffect } from "react";
 
 import { useNavigation, useCurrentMainPage, useNavigationDash } from "@hooks";
-import { NavigationPDALink } from "./NavigationPDALink";
-import { NavigationPDADash } from "@molecules";
-import { AtomWrapper } from "@atoms";
+import {
+  NavigationPDADash,
+  NavigationPDALink,
+  NavigationPDA_BG,
+} from "@molecules";
+import { AtomWrapper, AtomButton } from "@atoms";
 
 export const NavigationPDA = () => {
   const navigation = useNavigation();
@@ -45,6 +48,7 @@ export const NavigationPDA = () => {
 
   return (
     <AtomWrapper variant="pda_navigation_wrapper">
+      <AtomButton variant="destructive">Q</AtomButton>
       <AtomWrapper variant="pda_navigation_link_wrapper" asChild>
         <nav>
           <AtomWrapper variant="pda_navigation" asChild>
@@ -65,6 +69,8 @@ export const NavigationPDA = () => {
           <NavigationPDADash />
         </nav>
       </AtomWrapper>
+      <AtomButton variant="destructive">E</AtomButton>
+      <NavigationPDA_BG />
     </AtomWrapper>
   );
 };

@@ -23,6 +23,7 @@ const variants = cva("", {
       battery: cn("w-[1.6rem] h-[.8rem]"),
       line_dot: cn("w-[8.5rem] h-[2.5rem]"),
       line_dot_small: cn("w-[4.4rem] h-[1.7rem]"),
+      navigation_selection: cn("w-[41rem] h-[8.8rem]"),
     },
   },
   defaultVariants: {
