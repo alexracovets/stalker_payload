@@ -47,15 +47,19 @@ export const AtomImage = ({
   priority = false,
   className,
 }: AtomImageProps) => {
+  const resolvedSrc = image?.url || src || "";
+  const isPng = resolvedSrc.toLowerCase().endsWith('.png');
+  
   return (
     <div className={cn("relative", variants({ variant }), className)}>
       <Image
-        src={image?.url || src || ""}
+        src={resolvedSrc}
         alt={image?.alt || alt || "image"}
         priority={priority}
         sizes="100%"
         fill
         className={"object-cover"}
+        unoptimized={isPng}
       />
     </div>
   );
