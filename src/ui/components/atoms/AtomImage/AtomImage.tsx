@@ -28,6 +28,10 @@ const variants = cva("", {
       footer_bottom: cn("w-full h-[.7rem]"),
       footer_left: cn("w-[.9rem] h-full"),
       footer_right: cn("w-[.9rem] h-full"),
+      aside_right: cn("w-[.8rem] h-full"),
+      main_left: cn("w-[.9rem] h-full"),
+      main_right: cn("w-[.9rem] h-full"),
+      main_top: cn("w-full h-[1rem]"),
     },
   },
   defaultVariants: {

@@ -1,13 +1,18 @@
 "use client";
 
-import { HeaderPDA, FooterPDA } from "@organisms";
+import { HeaderPDA, FooterPDA, AsidePDA, MainPDA } from "@organisms";
+import { MainPDABorder } from "./MainPDABorder";
 import { AtomWrapper } from "@atoms";
 
 export const LayoutPDA = ({ children }: React.PropsWithChildren) => {
   return (
     <AtomWrapper variant="pda_layout">
       <HeaderPDA />
-      <main className="w-full">{children}</main>
+      <AtomWrapper variant="content_wrapper">
+        <MainPDABorder />
+        <AsidePDA />
+        <MainPDA>{children}</MainPDA>
+      </AtomWrapper>
       <FooterPDA />
     </AtomWrapper>
   );

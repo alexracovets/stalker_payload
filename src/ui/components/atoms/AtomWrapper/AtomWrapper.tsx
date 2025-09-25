@@ -47,6 +47,11 @@ const variants = cva("", {
       footer_destructive_arrows: cn(
         "flex justify-center items-center gap-x-[12rem]"
       ),
+      content_wrapper: cn("grid grid-cols-[auto_1fr] h-full w-full relative"),
+      aside_wrapper: cn(
+        "w-[522px] h-full relative z-[-1] py-[1rem] pl-[.9rem] pr-[.8rem]"
+      ),
+      main_wrapper: cn("w-full h-full py-[1rem]"),
     },
   },
   defaultVariants: {
