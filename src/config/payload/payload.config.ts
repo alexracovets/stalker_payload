@@ -20,7 +20,7 @@ import { fileURLToPath } from "url";
 import sharp from "sharp";
 import path from "path";
 
-import { Users, Media, MainPages, Video, Navigations } from "@collections";
+import { Users, Media, MainPages, Video, Navigations, Sections, SectionsIcons } from "@collections";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -41,7 +41,7 @@ export default buildConfig({
       views: {},
     },
   },
-  collections: [MainPages, Media, Video, Users],
+  collections: [MainPages, Sections, Media, Video, Users, SectionsIcons],
   globals: [Navigations],
   editor: lexicalEditor({
     features: [

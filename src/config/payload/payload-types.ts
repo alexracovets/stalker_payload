@@ -68,9 +68,11 @@ export interface Config {
   blocks: {};
   collections: {
     mainPages: MainPage;
+    sections: Section;
     media: Media;
     video: Video;
     users: User;
+    sections_icons: SectionsIcon;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -78,9 +80,11 @@ export interface Config {
   collectionsJoins: {};
   collectionsSelect: {
     mainPages: MainPagesSelect<false> | MainPagesSelect<true>;
+    sections: SectionsSelect<false> | SectionsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     video: VideoSelect<false> | VideoSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
+    sections_icons: SectionsIconsSelect<false> | SectionsIconsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -122,7 +126,7 @@ export interface UserAuthOperations {
   };
 }
 /**
- * Тут створюються сторінки такі як Головна, Захист, Зброя, і тд. Для головної slug має бути '/'
+ * Тут створюються сторінки такі як Головна, Захист, Зброя, і тд. Для головної slug має бути '/'.
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "mainPages".
@@ -134,6 +138,7 @@ export interface MainPage {
   title: string;
   description?: string | null;
   video?: (number | null) | Video;
+  sections?: (number | Section)[] | null;
   meta?: {
     title?: string | null;
     description?: string | null;
@@ -204,6 +209,33 @@ export interface Video {
   };
 }
 /**
+ * Тут створюються сторінки такі як Костюми, Маски, Пістолети, і тд. Які будуть відображатися в головних сторінках.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "sections".
+ */
+export interface Section {
+  id: number;
+  title: string;
+  description: string;
+  icons: number | SectionsIcon;
+  slug: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "sections_icons".
+ */
+export interface SectionsIcon {
+  id: number;
+  name: string;
+  icon: number | Media;
+  icon_active: number | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users".
  */
@@ -240,6 +272,10 @@ export interface PayloadLockedDocument {
         value: number | MainPage;
       } | null)
     | ({
+        relationTo: 'sections';
+        value: number | Section;
+      } | null)
+    | ({
         relationTo: 'media';
         value: number | Media;
       } | null)
@@ -250,6 +286,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'users';
         value: number | User;
+      } | null)
+    | ({
+        relationTo: 'sections_icons';
+        value: number | SectionsIcon;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -303,6 +343,7 @@ export interface MainPagesSelect<T extends boolean = true> {
   title?: T;
   description?: T;
   video?: T;
+  sections?: T;
   meta?:
     | T
     | {
@@ -310,6 +351,18 @@ export interface MainPagesSelect<T extends boolean = true> {
         description?: T;
         image?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "sections_select".
+ */
+export interface SectionsSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  icons?: T;
+  slug?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -389,6 +442,17 @@ export interface UsersSelect<T extends boolean = true> {
         createdAt?: T;
         expiresAt?: T;
       };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "sections_icons_select".
+ */
+export interface SectionsIconsSelect<T extends boolean = true> {
+  name?: T;
+  icon?: T;
+  icon_active?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

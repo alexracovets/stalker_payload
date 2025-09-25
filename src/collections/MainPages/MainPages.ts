@@ -10,7 +10,7 @@ export const MainPages: CollectionConfig = {
   admin: {
     useAsTitle: "title",
     description:
-      "Тут створюються сторінки такі як Головна, Захист, Зброя, і тд. Для головної slug має бути '/' ",
+      "Тут створюються сторінки такі як Головна, Захист, Зброя, і тд. Для головної slug має бути '/'.",
     group: "Контент",
   },
   fields: [
@@ -40,5 +40,16 @@ export const MainPages: CollectionConfig = {
       },
     },
     HomeVideo(),
+    {
+      name: "sections",
+      label: "Відображати Секції",
+      type: "relationship",
+      relationTo: "sections",
+      hasMany: true,
+      required: true,
+      admin: {
+        condition: (data) => data.slug !== "/",
+      },
+    },
   ],
 };
