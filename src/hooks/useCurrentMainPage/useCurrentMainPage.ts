@@ -1,13 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
 import { usePathname } from "next/navigation";
-import { useNavigation } from "@hooks";
-import { MainPage } from "@/config/payload/payload-types";
+
+import { MainPage } from "@payload-types";
+
+import { useNavigationStore } from "@store";
 
 export const useCurrentMainPage = () => {
-  const { navigation } = useNavigation();
+  const { navigation } = useNavigationStore();
   const pathname = usePathname();
   const [currentMainPage, setCurrentMainPage] = useState<MainPage | null>(null);
 

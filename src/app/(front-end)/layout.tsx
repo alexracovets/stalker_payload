@@ -7,5 +7,6 @@ interface RootLayoutProps {
 }
 
 export default function RootLayout({ children }: RootLayoutProps) {
+  console.log("RootLayout");
   return <LayoutDefault>{children}</LayoutDefault>;
 }

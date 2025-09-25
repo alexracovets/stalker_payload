@@ -1,10 +1,10 @@
 "use client";
 
-import { memo } from "react";
 import { Internet, Timer } from "@molecules";
 import { AtomImage } from "@atoms";
 
-const HeaderPDATopComponent = () => {
+export const HeaderPDATop = () => {
+  console.log("HeaderPDATop");
   return (
     <div className="flex justify-center items-center">
       <Internet />
@@ -18,5 +18,3 @@ const HeaderPDATopComponent = () => {
     </div>
   );
 };
-
-export const HeaderPDATop = memo(HeaderPDATopComponent);

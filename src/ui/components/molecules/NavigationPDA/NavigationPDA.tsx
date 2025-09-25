@@ -2,16 +2,18 @@
 
 import { useState, RefObject, useRef, useCallback, useEffect } from "react";
 
-import { useNavigation, useCurrentMainPage, useNavigationDash } from "@hooks";
+import { useCurrentMainPage, useNavigationDash } from "@hooks";
+
 import {
   NavigationPDADash,
   NavigationPDALink,
   NavigationPDA_BG,
 } from "@molecules";
 import { AtomWrapper, AtomButton } from "@atoms";
+import { useNavigationStore } from "@store";
 
 export const NavigationPDA = () => {
-  const navigation = useNavigation();
+  const { navigation } = useNavigationStore();
   const currentMainPage = useCurrentMainPage();
   const listRef = useRef<HTMLUListElement>(null);
   const [hoveredRef, setHoveredRef] = useState<RefObject<HTMLLIElement | null>>(
@@ -52,7 +54,7 @@ export const NavigationPDA = () => {
         <nav>
           <AtomWrapper variant="pda_navigation" asChild>
             <ul ref={listRef} onMouseLeave={handleListLeave}>
-              {navigation.navigation.map((item, idx) => (
+              {navigation.map((item, idx) => (
                 <NavigationPDALink
                   key={idx}
                   item={item}

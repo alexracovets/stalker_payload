@@ -1,19 +1,19 @@
 "use client";
 
-import { memo, useMemo } from "react";
+import { useMemo } from "react";
 
 import { AtomImage, AtomText, AtomWrapper } from "@atoms";
 import { useTimer } from "@hooks";
 import { cn } from "@utils";
 
-const TimerComponent = () => {
+export const Timer = () => {
   const { currentTime, isActive } = useTimer();
 
   const textClassName = useMemo(
     () => cn(isActive ? "opacity-100" : "opacity-0"),
     [isActive]
   );
-  
+
   return (
     <AtomWrapper variant="timer_wrapper">
       <AtomText variant="header_top" className={textClassName}>
@@ -28,5 +28,3 @@ const TimerComponent = () => {
     </AtomWrapper>
   );
 };
-
-export const Timer = memo(TimerComponent);
