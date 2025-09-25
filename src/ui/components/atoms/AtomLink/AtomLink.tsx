@@ -20,7 +20,10 @@ const variants = cva("", {
         "before:content-[var(--before-content)] before:absolute before:left-0 before:top-0 before:w-full before:h-full",
         "before:flex before:justify-center before:items-center",
         "before:transition-all before:ease-in-out before:duration-100 before:will-change-auto",
-        "hover:before:text-main-white-active hover:before:font-medium  "
+        "hover:before:text-main-white-active hover:before:font-medium"
+      ),
+      categoryList: cn(
+        "flex justify-start items-center gap-x-[16px] w-full text-[26px] text-switch-bg font-[400] font-roboto_condensed"
       ),
     },
   },

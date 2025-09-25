@@ -18,6 +18,7 @@ export async function getCollectionItem({
     const item = await payload.find({
       collection: collection,
       where: { slug: { equals: slug } },
+      depth: 4,
     });
 
     return item.docs[0];

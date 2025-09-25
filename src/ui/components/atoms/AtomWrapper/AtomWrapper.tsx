@@ -54,13 +54,16 @@ const variants = cva("", {
         "w-[522px] h-full relative z-[-1] py-[1rem] pl-[.9rem] pr-[.8rem]"
       ),
       main_wrapper: cn("w-full h-full py-[1rem]"),
-      content: cn("w-full h-full p-[32px]"),
+      content: cn("w-full h-full p-[32px] flex flex-col gap-y-[48px]"),
       content_top_switch_wrapper: cn(
         "grid grid-cols-[1fr_auto] w-full gap-x-[48px]"
       ),
       content_top_wrapper: cn("flex flex-col w-full gap-y-[12px]"),
       content_top_title: cn("flex flex-col w-full gap-y-[2px]"),
-      view_switch: cn("flex items-center justify-center rounded-[4px] overflow-hidden h-fit"),
+      view_switch: cn(
+        "flex items-center justify-center rounded-[4px] overflow-hidden h-fit"
+      ),
+      category_icon_wrapper: cn("relative w-[56px] h-[56px]"),
     },
   },
   defaultVariants: {

@@ -1,16 +1,16 @@
 "use client";
 
-import { MainPage } from "@payload-types";
+import { MainPage, Section } from "@payload-types";
 
 import { AtomHR, AtomText, AtomWrapper } from "@atoms";
 import { CategoriesViewSwitch } from "@molecules";
+import { CategoriesView } from "@organisms";
 
 interface TemplateMainPageProps {
   data: MainPage;
 }
 
 export const TemplateMainPage = ({ data }: TemplateMainPageProps) => {
-  console.log(data);
   return (
     <AtomWrapper variant="content">
       <AtomWrapper variant="content_top_switch_wrapper">
@@ -25,6 +25,7 @@ export const TemplateMainPage = ({ data }: TemplateMainPageProps) => {
         </AtomWrapper>
         <CategoriesViewSwitch />
       </AtomWrapper>
+      <CategoriesView sections={data.sections as Section[]} perentSlug={data.slug}/>
     </AtomWrapper>
   );
 };

@@ -34,6 +34,7 @@ const variants = cva("", {
       main_left: cn("w-[.9rem] h-full"),
       main_right: cn("w-[.9rem] h-full"),
       main_top: cn("w-full h-[1rem]"),
+      section_view: cn("w-[56px] h-[56px] opacity-0"),
     },
   },
   defaultVariants: {
@@ -65,3 +66,5 @@ export const AtomImage = ({
     </div>
   );
 };
+
+export type AtomImageVariant = VariantProps<typeof variants>["variant"];
