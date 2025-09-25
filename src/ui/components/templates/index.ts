@@ -1,3 +1,3 @@
-export { LayoutDefault } from "./LayoutDefault";
-export { TemplateHome } from "./TemplateHome";
+export { LayoutDefaultWrapper } from "./LayoutDefault";
 export { LayoutPDA } from "./LayoutPDA";
+export { TemplateHome } from "./TemplateHome";

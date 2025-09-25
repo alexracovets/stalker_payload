@@ -35,7 +35,8 @@
       "@payload-types": ["./src/config/payload/payload-types"],
       "@api": ["./src/api"],
       "@config": ["./src/config"],
-      "@store": ["./src/store"]
+      "@store": ["./src/store"],
+      "@providers": ["./src/providers"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

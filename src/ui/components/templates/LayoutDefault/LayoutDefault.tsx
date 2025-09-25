@@ -1,3 +1,5 @@
+"use client";
+
 import {
   calibri,
   stalker,
@@ -7,9 +9,11 @@ import {
 } from "@fonts";
 import { cn } from "@utils";
 
-import "@styles/globals.scss";
+interface LayoutDefaultProps {
+  children: React.ReactNode;
+}
 
-export const LayoutDefault = ({ children }: React.PropsWithChildren) => {
+export const LayoutDefault = ({ children }: LayoutDefaultProps) => {
   return (
     <html lang="en" data-scroll-behavior={"smooth"}>
       <body

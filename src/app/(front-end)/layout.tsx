@@ -1,6 +1,4 @@
-"use client";
-
-import { LayoutDefault } from "@templates";
+import { LayoutDefaultWrapper } from "@templates";
 
 interface RootLayoutProps {
   children: React.ReactNode;
@@ -8,5 +6,5 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   console.log("RootLayout");
-  return <LayoutDefault>{children}</LayoutDefault>;
+  return <LayoutDefaultWrapper>{children}</LayoutDefaultWrapper>;
 }

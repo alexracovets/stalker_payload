@@ -1,15 +1,14 @@
 "use client";
 
 import { HeaderPDA, FooterPDA } from "@organisms";
-import { useNavigation } from "@hooks";
+import { AtomWrapper } from "@atoms";
 
 export const LayoutPDA = ({ children }: React.PropsWithChildren) => {
-  useNavigation();
   return (
-    <div className="grid grid-rows-[auto_1fr_auto] h-full">
+    <AtomWrapper variant="pda_layout">
       <HeaderPDA />
       <main className="w-full">{children}</main>
       <FooterPDA />
-    </div>
+    </AtomWrapper>
   );
 };

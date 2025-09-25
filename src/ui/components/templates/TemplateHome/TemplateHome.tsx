@@ -2,7 +2,6 @@
 
 import { AtomVideo, AtomWrapper } from "@atoms";
 import { HeaderHome } from "@organisms";
-import { useNavigation } from "@hooks";
 
 import { MainPage, Media } from "@payload-types";
 
@@ -11,7 +10,6 @@ interface TemplateHomeProps {
 }
 
 export const TemplateHome = ({ data }: TemplateHomeProps) => {
-  useNavigation();
   return (
     <AtomWrapper variant="home_page">
       <HeaderHome logo={data.logo as Media} />

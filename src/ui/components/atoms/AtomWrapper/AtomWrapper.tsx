@@ -21,6 +21,7 @@ const variants = cva("", {
         "flex flex-col justify-center items-center w-full gap-y-[24px]"
       ),
       home_navigationElement: cn("flex justify-center items-center w-full"),
+      pda_layout: cn("grid grid-rows-[auto_1fr_auto] h-full"),
       pda_header: cn("relative border-main-border border-y-[.1rem]"),
       internet_wrapper: cn(
         "w-[17.4rem] flex justify-center items-center gap-x-[.8rem]"
