@@ -1,62 +1,49 @@
 "use client";
 
-import { useRef, useState, RefObject, useEffect, useCallback } from "react";
+import { useRef, RefObject, useCallback, useEffect } from "react";
 
 import { MainPage } from "@payload-types";
 import { AtomLink } from "@atoms";
 import { cn } from "@utils";
-import { useNavigationDash } from "@hooks";
 
 interface NavigationPDALinkProps {
   item: MainPage;
   currentMainPage: MainPage | null;
-  listRef: React.RefObject<HTMLUListElement | null>;
-  triggerLeave: boolean;
+  setHoveredRef: (ref: RefObject<HTMLLIElement | null>) => void;
+  setHoveredSpanRef: (ref: RefObject<HTMLSpanElement | null>) => void;
+  setCurrentPageRef: (ref: RefObject<HTMLLIElement | null>) => void;
+  setCurrentPageSpanRef: (ref: RefObject<HTMLSpanElement | null>) => void;
 }
 
 export const NavigationPDALink = ({
   item,
   currentMainPage,
-  listRef,
-  triggerLeave,
+  setHoveredRef,
+  setHoveredSpanRef,
+  setCurrentPageRef,
+  setCurrentPageSpanRef,
 }: NavigationPDALinkProps) => {
   const elementRef = useRef<HTMLLIElement>(null);
   const spanRef = useRef<HTMLSpanElement>(null);
-  const [linkRef, setLinkRef] = useState<RefObject<HTMLLIElement | null>>({
-    current: null,
-  });
-  useNavigationDash({ listRef, linkRef, spanRef });
 
   const handleMouseEnter = useCallback(() => {
-    setLinkRef({ current: null });
-    setTimeout(() => {
-      setLinkRef(elementRef);
-    }, 0);
-  }, [elementRef, setLinkRef]);
+    setHoveredRef({ current: elementRef.current });
+    setHoveredSpanRef({ current: spanRef.current });
+  }, [setHoveredRef, setHoveredSpanRef]);
 
-  const handleMouseLeave = useCallback(() => {
-    setLinkRef({ current: null });
-  }, [setLinkRef]);
-
-  useEffect(() => {
-    if (triggerLeave && currentMainPage?.slug === item.slug) {
-      handleMouseEnter();
-    }
-  }, [triggerLeave, handleMouseEnter, currentMainPage?.slug, item.slug]);
-
-  useEffect(() => {
+  const handleClick = useCallback(() => {
     if (currentMainPage?.slug === item.slug) {
-      handleMouseEnter();
+      setCurrentPageRef({ current: elementRef.current });
+      setCurrentPageSpanRef({ current: spanRef.current });
     }
-  }, [currentMainPage?.slug, item.slug, handleMouseEnter]);
+  }, [setCurrentPageRef, setCurrentPageSpanRef, currentMainPage, item.slug]);
+
+  useEffect(() => {
+    handleClick();
+  }, [handleClick]);
 
   return (
-    <li
-      ref={elementRef}
-      onClick={handleMouseEnter}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
+    <li ref={elementRef} onMouseEnter={handleMouseEnter} onClick={handleClick}>
       <AtomLink
         href={item.slug}
         variant="pda_link"
