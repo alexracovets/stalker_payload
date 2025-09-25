@@ -1,0 +1,1 @@
+export { useCurrentMainPage } from "./useCurrentMainPage";

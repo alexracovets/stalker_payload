@@ -18,12 +18,7 @@ export async function getCollection({
       collection: collection,
       limit: -1,
     });
-    
-    console.log(`Отримано колекцію "${collection}":`, {
-      кількість: collectionData.docs.length,
-      totalDocs: collectionData.totalDocs,
-    });
-    
+
     return collectionData.docs;
   } catch (error) {
     console.error(`Помилка при отриманні колекції "${collection}":`, error);

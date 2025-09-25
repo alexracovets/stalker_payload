@@ -22,6 +22,23 @@ const variants = cva("", {
       ),
       home_navigationElement: cn("flex justify-center items-center w-full"),
       pda_header: cn("relative"),
+      internet_wrapper: cn(
+        "w-[17.4rem] flex justify-center items-center gap-x-[.8rem]"
+      ),
+      internet_signal_wrapper: cn(
+        "relative w-[1.4rem] h-[1.4rem] flex justify-center items-end gap-x-[.1rem]"
+      ),
+      internet_signal: cn(
+        "w-[0.25rem] bg-[#A8A3A0] transition-all ease-in-out duration-500 delay-0"
+      ),
+      timer_wrapper: cn(
+        "w-[9.9rem] flex justify-center items-center gap-x-[.8rem]"
+      ),
+      pda_navigation_wrapper: cn(
+        "relative flex justify-center items-center bg-hood-black border-main-border border-y-[.1rem] gap-x-[2.8rem] z-[1]"
+      ),
+      pda_navigation_link_wrapper: cn("h-full relative"),
+      pda_navigation: cn("flex justify-center items-center gap-x-[8rem]"),
     },
   },
   defaultVariants: {
@@ -32,6 +49,7 @@ const variants = cva("", {
 interface AtomWrapperProps extends React.ComponentProps<"div"> {
   variant?: VariantProps<typeof variants>["variant"];
   asChild?: boolean;
+  style?: React.CSSProperties;
 }
 
 export const AtomWrapper = ({
@@ -39,12 +57,13 @@ export const AtomWrapper = ({
   variant = "default",
   className,
   asChild = false,
+  style,
   ...props
 }: AtomWrapperProps) => {
   const Component = asChild ? Slot : "div";
 
   return (
-    <Component className={cn(variants({ variant, className }))} {...props}>
+    <Component className={cn(variants({ variant, className }))} {...props} style={style}>
       {children}
     </Component>
   );

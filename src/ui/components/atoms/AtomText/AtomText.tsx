@@ -12,6 +12,10 @@ const variants = cva("", {
       logo_title: cn(
         "text-[22px] font-regular font-calibri text-main-gray-light uppercase flex justify-between items-center w-full"
       ),
+      header_top: cn(
+        "text-[1.6rem] text-main-white-light font-roboto",
+        "transition-opacity ease-in-out duration-300"
+      ),
     },
   },
   defaultVariants: {

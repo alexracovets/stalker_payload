@@ -15,6 +15,13 @@ const variants = cva("", {
         "hover:after:opacity-[1]",
         "active:after:opacity-[1] active:bg-main-white active:text-main-black"
       ),
+      pda_link: cn(
+        "block text-[2.5rem] font-normal font-roboto_condensed py-[2.5rem] px-[3rem] cursor-pointer text-main-gray relative",
+        "before:content-[var(--before-content)] before:absolute before:left-0 before:top-0 before:w-full before:h-full",
+        "before:flex before:justify-center before:items-center",
+        "before:transition-all before:ease-in-out before:duration-100 before:will-change-auto",
+        "hover:before:text-main-white-active hover:before:font-medium  "
+      ),
     },
   },
   defaultVariants: {
@@ -27,6 +34,7 @@ interface AtomLinkProps {
   className?: string;
   children?: React.ReactNode;
   href: string;
+  style?: React.CSSProperties;
 }
 
 export const AtomLink = ({
@@ -34,12 +42,14 @@ export const AtomLink = ({
   className,
   children,
   href,
+  style,
   ...props
 }: AtomLinkProps) => {
   return (
     <Link
       href={href}
       className={cn(variants({ variant, className }))}
+      style={style}
       {...props}
     >
       {children}

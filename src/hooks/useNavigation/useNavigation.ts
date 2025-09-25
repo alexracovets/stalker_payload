@@ -1,13 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect } from "react";
 import { MainPage } from "@payload-types";
 import { getGlobal } from "@/api";
+import { useNavigationStore } from "@store";
 
-export const useNavigationHome = () => {
-  const [navigation, setNavigation] = useState<MainPage[]>([]);
+export const useNavigation = () => {
+  const { navigation, setNavigation } = useNavigationStore();
 
-  const getNavigation = async () => {
+  const getNavigation = useCallback(async () => {
     try {
       const navigationData = await getGlobal({
         slug: "nav_home",
@@ -19,11 +20,13 @@ export const useNavigationHome = () => {
       console.error("Error fetching navigation data:", error);
       return [];
     }
-  };
+  }, [setNavigation]);
 
   useEffect(() => {
-    getNavigation();
-  }, []);
+    if (navigation.length === 0) {
+      getNavigation();
+    }
+  }, [getNavigation, navigation]);
 
   return { navigation };
 };

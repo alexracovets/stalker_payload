@@ -5,7 +5,7 @@ import { motion } from "motion/react";
 
 import { AtomWrapper, AtomImage, AtomText } from "@atoms";
 import { NavigationHome } from "@molecules";
-import { useNavigationHome } from "@hooks";
+import { useNavigation } from "@hooks";
 import { Media } from "@payload-types";
 
 interface HeaderHomeProps {
@@ -13,7 +13,7 @@ interface HeaderHomeProps {
 }
 
 export const HeaderHome = ({ logo }: HeaderHomeProps) => {
-  const { navigation } = useNavigationHome();
+  const { navigation } = useNavigation();
   const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
