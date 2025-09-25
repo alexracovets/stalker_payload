@@ -21,7 +21,7 @@ const variants = cva("", {
         "flex flex-col justify-center items-center w-full gap-y-[24px]"
       ),
       home_navigationElement: cn("flex justify-center items-center w-full"),
-      pda_header: cn("relative"),
+      pda_header: cn("relative border-main-border border-y-[.1rem]"),
       internet_wrapper: cn(
         "w-[17.4rem] flex justify-center items-center gap-x-[.8rem]"
       ),
@@ -35,7 +35,7 @@ const variants = cva("", {
         "w-[9.9rem] flex justify-center items-center gap-x-[.8rem]"
       ),
       pda_navigation_wrapper: cn(
-        "relative flex justify-center items-center bg-hood-black border-main-border border-y-[.1rem] gap-x-[2.8rem] z-[1]"
+        "relative flex justify-center items-center bg-hood-black gap-x-[2.8rem] z-[1]"
       ),
       pda_navigation_link_wrapper: cn("h-full relative"),
       pda_navigation: cn("flex justify-center items-center gap-x-[8rem]"),
