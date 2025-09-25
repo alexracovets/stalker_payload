@@ -59,5 +59,10 @@ export default async function ResultPage({ params }: PageProps) {
     slug: main_pages,
     config: resolvedConfig,
   })) as MainPage;
+
+  if (!pageData) {
+    return <div>Page not found</div>;
+  }
+
   return <div>{pageData.title}</div>;
 }

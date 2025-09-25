@@ -34,5 +34,9 @@ export default async function Home() {
     config: resolvedConfig,
   })) as MainPage;
 
+  if (!page) {
+    return <div>Page not found</div>;
+  }
+
   return <TemplateHome data={page} />;
 }
