@@ -41,6 +41,12 @@ const variants = cva("", {
       pda_navigation_link_wrapper: cn("h-full relative"),
       pda_navigation: cn("flex justify-center items-center gap-x-[8rem]"),
       navigation_selection_wrapper: cn("absolute top-0 z-[-1]"),
+      pda_footer: cn(
+        "w-full flex justify-start items-center gap-x-[27.8rem] p-[2rem] bg-hood-footer relative"
+      ),
+      footer_destructive_arrows: cn(
+        "flex justify-center items-center gap-x-[12rem]"
+      ),
     },
   },
   defaultVariants: {

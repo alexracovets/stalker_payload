@@ -24,6 +24,10 @@ const variants = cva("", {
       line_dot: cn("w-[8.5rem] h-[2.5rem]"),
       line_dot_small: cn("w-[4.4rem] h-[1.7rem]"),
       navigation_selection: cn("w-[41rem] h-[8.7rem]"),
+      footer_horizontal: cn("w-full h-[.8rem]"),
+      footer_bottom: cn("w-full h-[.7rem]"),
+      footer_left: cn("w-[.9rem] h-full"),
+      footer_right: cn("w-[.9rem] h-full"),
     },
   },
   defaultVariants: {

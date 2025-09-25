@@ -16,6 +16,9 @@ const variants = cva("", {
         "text-[1.6rem] text-main-white-light font-roboto",
         "transition-opacity ease-in-out duration-300"
       ),
+      destructive_label: cn(
+        "text-[1.8rem] font-roboto text-main-destructive-label"
+      ),
     },
   },
   defaultVariants: {
