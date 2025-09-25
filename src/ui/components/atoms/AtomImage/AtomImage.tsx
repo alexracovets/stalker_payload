@@ -19,7 +19,9 @@ const variants = cva("", {
     variant: {
       default: "w-full",
       home_logo: "w-[391px] h-[110px]",
-      header_layout: cn("w-[164.7rem] h-[4.1rem] select-none pointer-events-none"),
+      header_layout: cn(
+        "w-[164.7rem] h-[4.1rem] select-none pointer-events-none"
+      ),
       battery: cn("w-[1.6rem] h-[.8rem]"),
       line_dot: cn("w-[8.5rem] h-[2.5rem]"),
       line_dot_small: cn("w-[4.4rem] h-[1.7rem]"),
@@ -48,8 +50,7 @@ export const AtomImage = ({
   className,
 }: AtomImageProps) => {
   const resolvedSrc = image?.url || src || "";
-  const isPng = resolvedSrc.toLowerCase().endsWith('.png');
-  
+
   return (
     <div className={cn("relative", variants({ variant }), className)}>
       <Image
@@ -59,7 +60,7 @@ export const AtomImage = ({
         sizes="100%"
         fill
         className={"object-cover"}
-        unoptimized={isPng}
+        unoptimized={true}
       />
     </div>
   );
