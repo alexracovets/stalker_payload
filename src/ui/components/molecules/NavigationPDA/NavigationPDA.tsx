@@ -28,7 +28,6 @@ export const NavigationPDA = () => {
   >({ current: null });
 
   const handleListLeave = useCallback(() => {
-    console.log("listLeave");
     setHoveredRef({ current: null });
     setHoveredSpanRef({ current: null });
   }, [setHoveredRef, setHoveredSpanRef]);

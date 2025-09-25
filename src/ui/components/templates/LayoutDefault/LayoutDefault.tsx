@@ -11,7 +11,7 @@ import "@styles/globals.scss";
 
 export const LayoutDefault = ({ children }: React.PropsWithChildren) => {
   return (
-    <html lang="en">
+    <html lang="en" data-scroll-behavior={"smooth"}>
       <body
         className={cn(
           calibri.variable,

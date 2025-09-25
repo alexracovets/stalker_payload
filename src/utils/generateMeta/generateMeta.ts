@@ -27,6 +27,7 @@ export const generateMeta = async ({
   const titleMeta = title || "S.T.A.L.K.E.R. 2 | Heart of Chornobyl";
 
   return {
+    metadataBase: new URL(process.env.NEXT_PUBLIC_SERVER_URL || "http://localhost:3000"),
     description: description,
     icons: {
       icon: "/favicon.ico",
