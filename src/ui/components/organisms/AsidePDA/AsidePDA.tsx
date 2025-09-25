@@ -9,7 +9,7 @@ export const AsidePDA = () => {
     <AtomWrapper variant="aside_wrapper" asChild>
       <aside>
         <AsidePDABorder />
-        asdsadas AsidePDA
+        AsidePDA
       </aside>
     </AtomWrapper>
   );

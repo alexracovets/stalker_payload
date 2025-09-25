@@ -4,7 +4,7 @@ import { AtomImage } from "@atoms";
 
 export const AsidePDABorder = () => {
   return (
-    <div className="absolute right-0 top-0 h-full w-[.8rem] z-[1]">
+    <div className="absolute right-0 top-0 h-full w-[.8rem] z-[1] select-none pointer-events-none">
       <AtomImage
         src="/layoutPDA/vertical_center.png"
         variant="aside_right"

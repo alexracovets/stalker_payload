@@ -4,7 +4,6 @@ import { Internet, Timer } from "@molecules";
 import { AtomImage } from "@atoms";
 
 export const HeaderPDATop = () => {
-  console.log("HeaderPDATop");
   return (
     <div className="flex justify-center items-center">
       <Internet />

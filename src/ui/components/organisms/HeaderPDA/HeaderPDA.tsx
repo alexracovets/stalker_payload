@@ -5,7 +5,6 @@ import { NavigationPDA } from "@molecules";
 import { AtomWrapper } from "@atoms";
 
 export const HeaderPDA = () => {
-  console.log("HeaderPDA");
   return (
     <AtomWrapper variant="pda_header" asChild>
       <header>

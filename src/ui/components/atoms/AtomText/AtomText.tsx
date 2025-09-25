@@ -19,6 +19,10 @@ const variants = cva("", {
       destructive_label: cn(
         "text-[1.8rem] font-roboto text-main-destructive-label"
       ),
+      h1: cn(
+        "text-[32px] font-roboto_condensed font-medium text-main-destructive-bg"
+      ),
+      description: cn("text-[18px] font-roboto text-main-yellow"),
     },
   },
   defaultVariants: {

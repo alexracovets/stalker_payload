@@ -40,7 +40,9 @@ const variants = cva("", {
       ),
       pda_navigation_link_wrapper: cn("h-full relative"),
       pda_navigation: cn("flex justify-center items-center gap-x-[8rem]"),
-      navigation_selection_wrapper: cn("absolute top-0 z-[-1]"),
+      navigation_selection_wrapper: cn(
+        "absolute top-0 z-[-1] select-none pointer-events-none"
+      ),
       pda_footer: cn(
         "w-full flex justify-start items-center gap-x-[27.8rem] p-[2rem] bg-hood-footer relative"
       ),
@@ -52,6 +54,13 @@ const variants = cva("", {
         "w-[522px] h-full relative z-[-1] py-[1rem] pl-[.9rem] pr-[.8rem]"
       ),
       main_wrapper: cn("w-full h-full py-[1rem]"),
+      content: cn("w-full h-full p-[32px]"),
+      content_top_switch_wrapper: cn(
+        "grid grid-cols-[1fr_auto] w-full gap-x-[48px]"
+      ),
+      content_top_wrapper: cn("flex flex-col w-full gap-y-[12px]"),
+      content_top_title: cn("flex flex-col w-full gap-y-[2px]"),
+      view_switch: cn("flex items-center justify-center rounded-[4px] overflow-hidden h-fit"),
     },
   },
   defaultVariants: {

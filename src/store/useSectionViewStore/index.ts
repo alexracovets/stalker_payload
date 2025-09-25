@@ -1,2 +1,1 @@
-export { useNavigationStore } from "./useNavigationStore";
 export { useSectionViewStore } from "./useSectionViewStore";

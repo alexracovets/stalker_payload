@@ -14,6 +14,7 @@ const buttonVariants = cva("cursor-pointer", {
       destructive_with_label: cn(
         "flex justify-center items-center gap-x-[1.6rem]"
       ),
+      view_switch: cn("px-[12px] py-[8px]"),
     },
   },
   defaultVariants: {

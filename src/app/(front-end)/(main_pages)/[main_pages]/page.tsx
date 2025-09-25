@@ -1,9 +1,11 @@
 import { Metadata } from "next";
 import { Config } from "payload";
 
-import { getCollection, getCollectionItem } from "@api";
 import { MainPage } from "@payload-types";
 import config from "@payload-config";
+
+import { getCollection, getCollectionItem } from "@api";
+import { TemplateMainPage } from "@templates";
 import { generateMeta } from "@utils";
 
 type PageProps = {
@@ -64,5 +66,5 @@ export default async function ResultPage({ params }: PageProps) {
     return <div>Page not found</div>;
   }
 
-  return <div>{pageData.title}</div>;
+  return <TemplateMainPage data={pageData} />;
 }
