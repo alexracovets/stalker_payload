@@ -1,4 +1,4 @@
-import type { CollectionConfig, CollectionSlug } from "payload";
+import type { CollectionConfig } from "payload";
 
 export const Sections: CollectionConfig = {
   slug: "sections",
@@ -11,6 +11,23 @@ export const Sections: CollectionConfig = {
     description:
       "Тут створюються сторінки такі як Костюми, Маски, Пістолети, і тд. Які будуть відображатися в головних сторінках.",
     group: "Контент",
+  },
+  hooks: {
+    beforeChange: [
+      async ({ data, req }) => {
+        if (data.slug_name && data.perent) {
+          // Отримуємо дані батьківської сторінки
+          const parentPage = await req.payload.findByID({
+            collection: "mainPages",
+            id: data.perent,
+          });
+          
+          // Формуємо slug як ${parent.slug}/${slug_name}
+          data.slug = `/${parentPage.slug}/${data.slug_name}`;
+        }
+        return data;
+      },
+    ],
   },
   fields: [
     {
@@ -34,12 +51,33 @@ export const Sections: CollectionConfig = {
       required: true,
     },
     {
+      name: "slug_name",
+      label: "Назва сторінки",
+      type: "text",
+      required: true,
+      admin: {
+        position: "sidebar",
+      },
+    },
+    {
+      name: "perent",
+      label: "Батьківська сторінка",
+      type: "relationship",
+      relationTo: "mainPages",
+      hasMany: false,
+      required: true,
+      admin: {
+        position: "sidebar",
+      },
+    },
+    {
       name: "slug",
       label: "Slug",
       type: "text",
       required: true,
       admin: {
         position: "sidebar",
+        hidden: true,
       },
     },
   ],

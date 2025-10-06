@@ -133,11 +133,11 @@ export interface UserAuthOperations {
  */
 export interface MainPage {
   id: number;
-  slug: string;
-  logo?: (number | null) | Media;
   title: string;
+  logo?: (number | null) | Media;
   description?: string | null;
   video?: (number | null) | Video;
+  slug: string;
   sections?: (number | Section)[] | null;
   meta?: {
     title?: string | null;
@@ -219,7 +219,20 @@ export interface Section {
   title: string;
   description: string;
   icons: number | SectionsIcon;
+  slug_name: string;
+  perent: number | MainPage;
   slug: string;
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: {
+      relationTo: 'media';
+      value: number | Media;
+    } | null;
+  };
   updatedAt: string;
   createdAt: string;
 }
@@ -338,11 +351,11 @@ export interface PayloadMigration {
  * via the `definition` "mainPages_select".
  */
 export interface MainPagesSelect<T extends boolean = true> {
-  slug?: T;
-  logo?: T;
   title?: T;
+  logo?: T;
   description?: T;
   video?: T;
+  slug?: T;
   sections?: T;
   meta?:
     | T
@@ -362,7 +375,16 @@ export interface SectionsSelect<T extends boolean = true> {
   title?: T;
   description?: T;
   icons?: T;
+  slug_name?: T;
+  perent?: T;
   slug?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        image?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
 }

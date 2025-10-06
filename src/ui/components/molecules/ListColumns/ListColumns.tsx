@@ -11,20 +11,16 @@ import {
 
 interface ListColumnsProps {
   sections: Section[];
-  perentSlug: string;
 }
 
-export const ListColumns = ({ sections, perentSlug }: ListColumnsProps) => {
+export const ListColumns = ({ sections }: ListColumnsProps) => {
   return (
     <div className="w-full max-w-[50%]">
       <Accordion type="multiple">
         {sections.map((section, idx) => (
           <AccordionItem key={idx} value={`item-${idx}`}>
             <AccordionTrigger variant="section_view">
-              <AtomLink
-                href={`/${perentSlug}/${section.slug}`}
-                variant="categoryList"
-              >
+              <AtomLink href={section.slug} variant="categoryList">
                 <CategoryIcon
                   icons={section.icons as SectionsIcon}
                   variant="section_view"

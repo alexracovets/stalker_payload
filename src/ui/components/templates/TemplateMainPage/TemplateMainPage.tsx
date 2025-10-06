@@ -25,7 +25,7 @@ export const TemplateMainPage = ({ data }: TemplateMainPageProps) => {
         </AtomWrapper>
         <CategoriesViewSwitch />
       </AtomWrapper>
-      <CategoriesView sections={data.sections as Section[]} perentSlug={data.slug}/>
+      <CategoriesView sections={data.sections as Section[]} />
     </AtomWrapper>
   );
 };

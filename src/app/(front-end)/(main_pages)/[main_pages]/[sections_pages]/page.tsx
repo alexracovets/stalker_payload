@@ -1,16 +1,15 @@
 import { Metadata } from "next";
 import { Config } from "payload";
 
-import { MainPage } from "@payload-types";
+import { Section } from "@payload-types";
 import config from "@payload-config";
 
 import { getCollection, getCollectionItem } from "@api";
-import { TemplateMainPage } from "@templates";
 import { generateMeta } from "@utils";
 
 type PageProps = {
   params: Promise<{
-    main_pages: string;
+    sections_pages: string;
   }>;
 };
 
@@ -19,14 +18,15 @@ export const revalidate = 60;
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  const { main_pages } = await params;
+  const { sections_pages } = await params;
   const resolvedConfig = (await config) as Config;
   const page = (await getCollectionItem({
-    collection: "mainPages",
-    slug: main_pages,
+    collection: "sections",
+    slug: sections_pages,
     config: resolvedConfig,
     depth: 4,
-  })) as MainPage;
+    slug_name: true,
+  })) as Section;
 
   const meta = {
     title: page?.meta?.title || "",
@@ -41,12 +41,12 @@ export async function generateStaticParams() {
   try {
     const resolvedConfig = (await config) as Config;
     const results = (await getCollection({
-      collection: "mainPages",
+      collection: "sections",
       config: resolvedConfig,
-    })) as MainPage[];
+    })) as Section[];
 
     return results.map((result) => ({
-      main_pages: result.slug,
+      sections_pages: result.slug_name,
     }));
   } catch (error) {
     console.error("Помилка при генерації статичних параметрів:", error);
@@ -55,18 +55,19 @@ export async function generateStaticParams() {
 }
 
 export default async function ResultPage({ params }: PageProps) {
-  const { main_pages } = await params;
+  const { sections_pages } = await params;
   const resolvedConfig = (await config) as Config;
   const pageData = (await getCollectionItem({
-    collection: "mainPages",
-    slug: main_pages,
+    collection: "sections",
+    slug: sections_pages,
     config: resolvedConfig,
     depth: 4,
-  })) as MainPage;
+    slug_name: true,
+  })) as Section;
 
   if (!pageData) {
     return <div>Page not found</div>;
   }
 
-  return <TemplateMainPage data={pageData} />;
+  return <>{pageData.title}</>;
 }

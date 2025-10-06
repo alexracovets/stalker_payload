@@ -45,7 +45,7 @@ export const NavigationPDALink = ({
   return (
     <li ref={elementRef} onMouseEnter={handleMouseEnter} onClick={handleClick}>
       <AtomLink
-        href={item.slug}
+        href={`/${item.slug}`}
         variant="pda_link"
         style={
           {

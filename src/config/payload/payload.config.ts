@@ -20,7 +20,15 @@ import { fileURLToPath } from "url";
 import sharp from "sharp";
 import path from "path";
 
-import { Users, Media, MainPages, Video, Navigations, Sections, SectionsIcons } from "@collections";
+import {
+  Users,
+  Media,
+  MainPages,
+  Video,
+  Navigations,
+  Sections,
+  SectionsIcons,
+} from "@collections";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -67,7 +75,7 @@ export default buildConfig({
   sharp,
   plugins: [
     seoPlugin({
-      collections: [MainPages.slug],
+      collections: [MainPages.slug, Sections.slug],
       tabbedUI: true,
       uploadsCollection: ["media"],
     }),

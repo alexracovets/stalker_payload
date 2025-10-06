@@ -7,20 +7,16 @@ import { useSectionViewStore } from "@store";
 
 interface CategoriesViewProps {
   sections: Section[] | null | undefined;
-  perentSlug: string;
 }
 
-export const CategoriesView = ({
-  sections,
-  perentSlug,
-}: CategoriesViewProps) => {
+export const CategoriesView = ({ sections }: CategoriesViewProps) => {
   const { isList } = useSectionViewStore();
   return (
     <>
       {isList ? (
-        <ListColumns sections={sections as Section[]} perentSlug={perentSlug} />
+        <ListColumns sections={sections as Section[]} />
       ) : (
-        <ListGrid sections={sections as Section[]} perentSlug={perentSlug} />
+        <ListGrid sections={sections as Section[]} />
       )}
     </>
   );

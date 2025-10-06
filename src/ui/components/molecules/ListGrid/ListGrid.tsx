@@ -4,9 +4,8 @@ import { Section } from "@payload-types";
 
 interface ListGridProps {
   sections: Section[];
-  perentSlug: string;
 }
 
-export const ListGrid = ({ sections, perentSlug }: ListGridProps) => {
+export const ListGrid = ({ sections }: ListGridProps) => {
   return <div>ListGrid</div>;
 };

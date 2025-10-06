@@ -15,41 +15,57 @@ export const MainPages: CollectionConfig = {
   },
   fields: [
     {
-      label: "Slug",
-      name: "slug",
-      type: "text",
-      required: true,
-      admin: {
-        position: "sidebar",
-      },
-    },
-    HomeLogo(),
-    {
-      label: "Заголовок",
-      type: "text",
-      name: "title",
-      required: true,
-    },
-    {
-      label: "Додаткова інформація",
-      name: "description",
-      type: "text",
-      required: true,
-      admin: {
-        condition: (data) => data.slug !== "/",
-      },
-    },
-    HomeVideo(),
-    {
-      name: "sections",
-      label: "Відображати Секції",
-      type: "relationship",
-      relationTo: "sections",
-      hasMany: true,
-      required: true,
-      admin: {
-        condition: (data) => data.slug !== "/",
-      },
+      type: "tabs",
+      tabs: [
+        {
+          label: "Контент",
+          fields: [
+            {
+              label: "Заголовок",
+              type: "text",
+              name: "title",
+              required: true,
+            },
+            HomeLogo(),
+            {
+              label: "Додаткова інформація",
+              name: "description",
+              type: "text",
+              required: true,
+              admin: {
+                condition: (data) => data.slug !== "/",
+              },
+            },
+            HomeVideo(),
+          ],
+        },
+        {
+          label: "Конфігурація",
+          fields: [
+            {
+              label: "Slug",
+              name: "slug",
+              type: "text",
+              required: true,
+              admin: {
+                position: "sidebar",
+              },
+            },
+            {
+              name: "sections",
+              label: "Відображати Секції",
+              type: "relationship",
+              relationTo: "sections",
+              hasMany: true,
+              required: false,
+              admin: {
+                condition: (data) => data.slug !== "/",
+                position: "sidebar",
+              },
+            },
+          ],
+        },
+      ],
     },
   ],
 };

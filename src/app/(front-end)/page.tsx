@@ -15,6 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
     collection: "mainPages",
     slug: "/",
     config: resolvedConfig,
+    depth: 4,
   })) as MainPage;
 
   const meta = {
@@ -32,6 +33,7 @@ export default async function Home() {
     collection: "mainPages",
     slug: "/",
     config: resolvedConfig,
+    depth: 4,
   })) as MainPage;
 
   if (!page) {
