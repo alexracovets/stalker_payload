@@ -40,7 +40,8 @@ const triggerVariants = cva(
       variant: {
         default: "flex justify-between items-center w-full h-full",
         section_view: cn(
-          "flex justify-between items-center gap-x-[16px] w-full h-full cursor-pointer border border-main-border rounded-[4px] bg-main-border pr-[16px]"
+          "flex justify-between items-center gap-x-[16px] w-full h-full cursor-pointer border border-main-border rounded-[4px] bg-main-border pr-[16px]",
+          "transition-all ease-in-out duration-300"
         ),
       },
     },

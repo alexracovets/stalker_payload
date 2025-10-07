@@ -52,8 +52,8 @@ interface AtomLinkProps {
   children?: React.ReactNode;
   href: string;
   style?: React.CSSProperties;
-  onMouseEnter?: () => void;
-  onMouseLeave?: () => void;
+  onMouseEnter?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
+  onMouseLeave?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
 }
 
 export const AtomLink = ({

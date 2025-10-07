@@ -21,21 +21,35 @@ interface ListColumnsItemProps {
 
 export const ListColumnsItem = ({ section, idx }: ListColumnsItemProps) => {
   const [hovered, setHovered] = useState(false);
+  const [hoveredTrigger, setHoveredTrigger] = useState(false);
 
   return (
     <AccordionItem value={`item-${idx}`}>
       <AccordionTrigger
         variant="section_view"
         className={cn(
-          hovered && "bg-main-yellow-border border-main-yellow-border transition-all ease-in-out duration-300"
+          hovered &&
+            "bg-main-yellow-border border-main-yellow-border",
+          hoveredTrigger && !hovered && "text-main-yellow border-main-yellow-border"
         )}
+        onMouseEnter={() => setHoveredTrigger(true)}
+        onMouseLeave={() => setHoveredTrigger(false)}
       >
         <AtomLink
           href={section.slug}
           variant="categoryListTrigger"
-          onMouseEnter={() => setHovered(true)}
-          onMouseLeave={() => setHovered(false)}
-          className={cn(hovered && "text-main-yellow transition-text ease-in-out duration-300")}
+          onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => {
+            e.stopPropagation();
+            setHovered(true);
+          }}
+          onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => {
+            e.stopPropagation();
+            setHovered(false);
+          }}
+          className={cn(
+            hovered &&
+              "text-main-yellow transition-text ease-in-out duration-300"
+          )}
         >
           <CategoryIcon
             active={hovered}
