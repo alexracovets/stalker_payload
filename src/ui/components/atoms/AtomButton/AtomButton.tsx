@@ -9,7 +9,8 @@ const buttonVariants = cva("cursor-pointer", {
     variant: {
       default: "",
       destructive: cn(
-        "text-[2.5rem] text-main-destructive font-rethink_sans font-extrabold flex justify-center items-center w-[3.6rem] h-[3.6rem] border-[.1rem] border-main-black rounded-[.4rem] bg-main-destructive-bg bg-[url('/png/btn_destructive.png')] bg-contain sepia leading-[1]"
+        "flex justify-center items-center w-[3.6rem] h-[3.6rem] text-[2.5rem] text-main-destructive font-rethink_sans font-extrabold",
+        "border-[.1rem] border-main-black rounded-[.4rem] bg-main-destructive-bg bg-[url('/png/btn_destructive.png')] bg-contain sepia leading-[1]"
       ),
       destructive_with_label: cn(
         "flex justify-center items-center gap-x-[1.6rem]"

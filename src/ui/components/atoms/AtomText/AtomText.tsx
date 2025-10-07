@@ -23,6 +23,9 @@ const variants = cva("", {
         "text-[32px] font-roboto_condensed font-medium text-main-destructive-bg"
       ),
       description: cn("text-[18px] font-roboto text-main-yellow"),
+      showcase_title: cn(
+        "text-[20px] font-roboto font-medium text-main-white-light leading-[1.45] underline"
+      ),
     },
   },
   defaultVariants: {

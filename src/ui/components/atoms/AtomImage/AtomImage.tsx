@@ -34,7 +34,10 @@ const variants = cva("", {
       main_left: cn("w-[.9rem] h-full"),
       main_right: cn("w-[.9rem] h-full"),
       main_top: cn("w-full h-[1rem]"),
-      section_view: cn("w-[56px] h-[56px] opacity-0"),
+      section_view: cn(
+        "w-[56px] h-[56px] opacity-0 transition-opacity ease-in-out duration-300"
+      ),
+      grid_showcase: cn("w-[19.2rem] h-[19.2rem]"),
     },
   },
   defaultVariants: {

@@ -9,7 +9,7 @@ import {
   NavigationPDALink,
   NavigationPDA_BG,
 } from "@molecules";
-import { AtomWrapper, AtomButton } from "@atoms";
+import { AtomWrapper, AtomButton, AtomLink } from "@atoms";
 import { useNavigationStore } from "@store";
 
 export const NavigationPDA = () => {
@@ -54,17 +54,25 @@ export const NavigationPDA = () => {
         <nav>
           <AtomWrapper variant="pda_navigation" asChild>
             <ul ref={listRef} onMouseLeave={handleListLeave}>
-              {navigation.map((item, idx) => (
-                <NavigationPDALink
-                  key={idx}
-                  item={item}
-                  currentMainPage={currentMainPage}
-                  setHoveredRef={setHoveredRef}
-                  setHoveredSpanRef={setHoveredSpanRef}
-                  setCurrentPageRef={setCurrentPageRef}
-                  setCurrentPageSpanRef={setCurrentPageSpanRef}
-                />
-              ))}
+              {navigation.length > 0 ? (
+                navigation.map((item, idx) => (
+                  <NavigationPDALink
+                    key={idx}
+                    item={item}
+                    currentMainPage={currentMainPage}
+                    setHoveredRef={setHoveredRef}
+                    setHoveredSpanRef={setHoveredSpanRef}
+                    setCurrentPageRef={setCurrentPageRef}
+                    setCurrentPageSpanRef={setCurrentPageSpanRef}
+                  />
+                ))
+              ) : (
+                <li>
+                  <AtomLink href="/" variant="pda_link" className="opacity-0">
+                    blank
+                  </AtomLink>
+                </li>
+              )}
             </ul>
           </AtomWrapper>
           <NavigationPDADash />

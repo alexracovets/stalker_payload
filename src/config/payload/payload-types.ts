@@ -224,7 +224,7 @@ export interface Section {
   slug_name: string;
   slug: string;
   parent?: (number | null) | MainPage;
-  sections?: (number | ElementsPage)[] | null;
+  elements?: (number | ElementsPage)[] | null;
   meta?: {
     title?: string | null;
     description?: string | null;
@@ -266,7 +266,7 @@ export interface ElementsPage {
     root: {
       type: string;
       children: {
-        type: any;
+        type: string;
         version: number;
         [k: string]: unknown;
       }[];
@@ -429,7 +429,7 @@ export interface SectionsSelect<T extends boolean = true> {
   slug_name?: T;
   slug?: T;
   parent?: T;
-  sections?: T;
+  elements?: T;
   meta?:
     | T
     | {

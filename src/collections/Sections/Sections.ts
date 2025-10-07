@@ -128,7 +128,7 @@ export const Sections: CollectionConfig = {
               },
             },
             {
-              name: "sections",
+              name: "elements",
               label: "Відображати Елементи",
               type: "relationship",
               relationTo: "elements_pages",

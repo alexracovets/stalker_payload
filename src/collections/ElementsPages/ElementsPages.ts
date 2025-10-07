@@ -41,7 +41,7 @@ export const ElementsPages: CollectionConfig = {
           const sections = await req.payload.find({
             collection: "sections",
             where: {
-              sections: {
+              elements: {
                 contains: doc.id,
               },
             },
@@ -49,7 +49,7 @@ export const ElementsPages: CollectionConfig = {
 
           for (const section of sections.docs) {
             const currentElementIds =
-              section.sections?.map((element: number | ElementsPage) =>
+              section.elements?.map((element: number | ElementsPage) =>
                 typeof element === "object" ? element.id : element
               ) || [];
 
@@ -68,7 +68,7 @@ export const ElementsPages: CollectionConfig = {
               collection: "sections",
               id: section.id,
               data: {
-                sections: updatedSections,
+                elements: updatedSections,
               },
             });
           }

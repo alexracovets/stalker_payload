@@ -1,13 +1,9 @@
 "use client";
 
-import { Section, SectionsIcon } from "@payload-types";
-import { AtomLink, CategoryIcon } from "@atoms";
-import {
-  Accordion,
-  AccordionItem,
-  AccordionTrigger,
-  AccordionContent,
-} from "@atoms";
+import { Section } from "@payload-types";
+
+import { ListColumnsItem } from "./ListColumnsItem";
+import { Accordion } from "@atoms";
 
 interface ListColumnsProps {
   sections: Section[];
@@ -15,22 +11,24 @@ interface ListColumnsProps {
 
 export const ListColumns = ({ sections }: ListColumnsProps) => {
   return (
-    <div className="w-full max-w-[50%]">
+    <div className="w-full max-w-[100%]">
       <Accordion type="multiple">
-        {sections.map((section, idx) => (
-          <AccordionItem key={idx} value={`item-${idx}`}>
-            <AccordionTrigger variant="section_view">
-              <AtomLink href={section.slug} variant="categoryList">
-                <CategoryIcon
-                  icons={section.icons as SectionsIcon}
-                  variant="section_view"
-                />
-                {section.title}
-              </AtomLink>
-            </AccordionTrigger>
-            <AccordionContent className="flex w-full flex-col"></AccordionContent>
-          </AccordionItem>
-        ))}
+        <div className="grid grid-cols-[1fr_1fr] gap-[48px]">
+          <div className="flex flex-col gap-y-[48px] h-fit">
+            {sections.map((section, idx) =>
+              idx % 2 === 0 ? (
+                <ListColumnsItem section={section} idx={idx} key={idx} />
+              ) : null
+            )}
+          </div>
+          <div className="flex flex-col gap-y-[48px] h-fit">
+            {sections.map((section, idx) =>
+              idx % 2 !== 0 ? (
+                <ListColumnsItem section={section} idx={idx} key={idx} />
+              ) : null
+            )}
+          </div>
+        </div>
       </Accordion>
     </div>
   );

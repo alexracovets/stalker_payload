@@ -11,7 +11,6 @@ interface TemplateMainPageProps {
 }
 
 export const TemplateMainPage = ({ data }: TemplateMainPageProps) => {
-  console.log(data);
   return (
     <AtomWrapper variant="content">
       <AtomWrapper variant="content_top_switch_wrapper">

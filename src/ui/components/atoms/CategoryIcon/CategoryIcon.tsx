@@ -1,32 +1,28 @@
 "use client";
 
 import { Media, SectionsIcon } from "@payload-types";
+
 import { AtomImage, AtomImageVariant, AtomWrapper } from "@atoms";
-import { useState } from "react";
-import { cn } from "@/utils/cn";
+import { cn } from "@utils";
 
 interface CategoryIconProps {
   icons: SectionsIcon;
   variant: AtomImageVariant;
+  active: boolean;
 }
 
-export const CategoryIcon = ({ icons, variant }: CategoryIconProps) => {
-  const [isActive, setIsActive] = useState(false);
+export const CategoryIcon = ({ icons, variant, active }: CategoryIconProps) => {
   return (
-    <AtomWrapper
-      variant="category_icon_wrapper"
-      onMouseEnter={() => setIsActive(true)}
-      onMouseLeave={() => setIsActive(false)}
-    >
+    <AtomWrapper variant="category_icon_wrapper">
       <AtomImage
         image={icons.icon as Media}
         variant={variant}
-        className={cn("absolute top-0 left-0", !isActive && "opacity-100")}
+        className={cn("absolute top-0 left-0", !active && "opacity-100")}
       />
       <AtomImage
         image={icons.icon_active as Media}
         variant={variant}
-        className={cn("absolute top-0 left-0", isActive && "opacity-100")}
+        className={cn("absolute top-0 left-0", active && "opacity-100")}
       />
     </AtomWrapper>
   );

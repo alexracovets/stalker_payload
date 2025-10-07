@@ -1,9 +1,9 @@
 "use client";
 
-import { Section } from "@payload-types";
+import { ElementsPage, Section } from "@payload-types";
 
 import { AtomText, AtomHR, AtomWrapper } from "@atoms";
-import { ListGrid } from "@molecules";
+import { ListGridItemShowCase } from "@molecules";
 
 interface TemplateSectionPageProps {
   data: Section;
@@ -23,7 +23,7 @@ export const TemplateSectionPage = ({ data }: TemplateSectionPageProps) => {
           <AtomHR variant="default" className="max-w-[679px]" />
         </AtomWrapper>
       </AtomWrapper>
-      <ListGrid sections={[data] as Section[]} />
+      <ListGridItemShowCase elements={data.elements as ElementsPage[]} />
     </AtomWrapper>
   );
 };
