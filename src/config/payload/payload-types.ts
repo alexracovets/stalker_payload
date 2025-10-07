@@ -73,6 +73,7 @@ export interface Config {
     video: Video;
     users: User;
     sections_icons: SectionsIcon;
+    elements_pages: ElementsPage;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -85,6 +86,7 @@ export interface Config {
     video: VideoSelect<false> | VideoSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     sections_icons: SectionsIconsSelect<false> | SectionsIconsSelect<true>;
+    elements_pages: ElementsPagesSelect<false> | ElementsPagesSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -135,7 +137,7 @@ export interface MainPage {
   id: number;
   title: string;
   logo?: (number | null) | Media;
-  description?: string | null;
+  sub_title?: string | null;
   video?: (number | null) | Video;
   slug: string;
   sections?: (number | Section)[] | null;
@@ -217,11 +219,12 @@ export interface Video {
 export interface Section {
   id: number;
   title: string;
-  description: string;
+  sub_title: string;
   icons: number | SectionsIcon;
   slug_name: string;
-  perent: number | MainPage;
   slug: string;
+  parent?: (number | null) | MainPage;
+  sections?: (number | ElementsPage)[] | null;
   meta?: {
     title?: string | null;
     description?: string | null;
@@ -245,6 +248,50 @@ export interface SectionsIcon {
   name: string;
   icon: number | Media;
   icon_active: number | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * Тут створюються сторінки такі як Костюми, Маски, Пістолети, і тд. Які будуть відображатися в секціях.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "elements_pages".
+ */
+export interface ElementsPage {
+  id: number;
+  image: number | Media;
+  title: string;
+  sub_title: string;
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  icons: number | SectionsIcon;
+  slug_name: string;
+  slug: string;
+  parent?: (number | null) | Section;
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: {
+      relationTo: 'media';
+      value: number | Media;
+    } | null;
+  };
   updatedAt: string;
   createdAt: string;
 }
@@ -303,6 +350,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'sections_icons';
         value: number | SectionsIcon;
+      } | null)
+    | ({
+        relationTo: 'elements_pages';
+        value: number | ElementsPage;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -353,7 +404,7 @@ export interface PayloadMigration {
 export interface MainPagesSelect<T extends boolean = true> {
   title?: T;
   logo?: T;
-  description?: T;
+  sub_title?: T;
   video?: T;
   slug?: T;
   sections?: T;
@@ -373,11 +424,12 @@ export interface MainPagesSelect<T extends boolean = true> {
  */
 export interface SectionsSelect<T extends boolean = true> {
   title?: T;
-  description?: T;
+  sub_title?: T;
   icons?: T;
   slug_name?: T;
-  perent?: T;
   slug?: T;
+  parent?: T;
+  sections?: T;
   meta?:
     | T
     | {
@@ -473,6 +525,29 @@ export interface SectionsIconsSelect<T extends boolean = true> {
   name?: T;
   icon?: T;
   icon_active?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "elements_pages_select".
+ */
+export interface ElementsPagesSelect<T extends boolean = true> {
+  image?: T;
+  title?: T;
+  sub_title?: T;
+  description?: T;
+  icons?: T;
+  slug_name?: T;
+  slug?: T;
+  parent?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        image?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
 }

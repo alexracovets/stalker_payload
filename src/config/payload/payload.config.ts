@@ -28,6 +28,7 @@ import {
   Navigations,
   Sections,
   SectionsIcons,
+  ElementsPages,
 } from "@collections";
 
 const filename = fileURLToPath(import.meta.url);
@@ -49,7 +50,15 @@ export default buildConfig({
       views: {},
     },
   },
-  collections: [MainPages, Sections, Media, Video, Users, SectionsIcons],
+  collections: [
+    MainPages,
+    Sections,
+    Media,
+    Video,
+    Users,
+    SectionsIcons,
+    ElementsPages,
+  ],
   globals: [Navigations],
   editor: lexicalEditor({
     features: [
@@ -75,7 +84,7 @@ export default buildConfig({
   sharp,
   plugins: [
     seoPlugin({
-      collections: [MainPages.slug, Sections.slug],
+      collections: [MainPages.slug, Sections.slug, ElementsPages.slug],
       tabbedUI: true,
       uploadsCollection: ["media"],
     }),

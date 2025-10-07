@@ -1,5 +1,6 @@
 import type { CollectionConfig } from "payload";
 import { HomeLogo, HomeVideo } from "@fields";
+import { MainPage } from "@/config/payload/payload-types";
 
 export const MainPages: CollectionConfig = {
   slug: "mainPages",
@@ -28,8 +29,8 @@ export const MainPages: CollectionConfig = {
             },
             HomeLogo(),
             {
-              label: "Додаткова інформація",
-              name: "description",
+              label: "Підзаголовок",
+              name: "sub_title",
               type: "text",
               required: true,
               admin: {
@@ -43,13 +44,10 @@ export const MainPages: CollectionConfig = {
           label: "Конфігурація",
           fields: [
             {
-              label: "Slug",
+              label: "Назва сторінки",
               name: "slug",
               type: "text",
               required: true,
-              admin: {
-                position: "sidebar",
-              },
             },
             {
               name: "sections",
@@ -60,7 +58,18 @@ export const MainPages: CollectionConfig = {
               required: false,
               admin: {
                 condition: (data) => data.slug !== "/",
-                position: "sidebar",
+              },
+              filterOptions: ({ siblingData }) => {
+                if (!siblingData || !(siblingData as MainPage).id) {
+                  return false;
+                }
+                const currentMainPageId = (siblingData as MainPage).id;
+                // Фільтруємо секції, які мають поточну mainPage як parent
+                return {
+                  parent: {
+                    equals: currentMainPageId,
+                  },
+                };
               },
             },
           ],

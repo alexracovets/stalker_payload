@@ -1,16 +1,15 @@
 import { Metadata } from "next";
 import { Config } from "payload";
 
-import { Section } from "@payload-types";
+import { ElementsPage } from "@payload-types";
 import config from "@payload-config";
 
 import { getCollection, getCollectionItem } from "@api";
-import { TemplateSectionPage } from "@templates";
 import { generateMeta } from "@utils";
 
 type PageProps = {
   params: Promise<{
-    sections_pages: string;
+    element_pages: string;
   }>;
 };
 
@@ -19,15 +18,15 @@ export const revalidate = 60;
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  const { sections_pages } = await params;
+  const { element_pages } = await params;
   const resolvedConfig = (await config) as Config;
   const page = (await getCollectionItem({
-    collection: "sections",
-    slug: sections_pages,
+    collection: "elements_pages",
+    slug: element_pages,
     config: resolvedConfig,
     depth: 4,
     slug_name: true,
-  })) as Section;
+  })) as ElementsPage;
 
   const meta = {
     title: page?.meta?.title || "",
@@ -42,9 +41,9 @@ export async function generateStaticParams() {
   try {
     const resolvedConfig = (await config) as Config;
     const results = (await getCollection({
-      collection: "sections",
+      collection: "elements_pages",
       config: resolvedConfig,
-    })) as Section[];
+    })) as ElementsPage[];
 
     return results.map((result) => ({
       sections_pages: result.slug_name,
@@ -56,19 +55,19 @@ export async function generateStaticParams() {
 }
 
 export default async function ResultPage({ params }: PageProps) {
-  const { sections_pages } = await params;
+  const { element_pages } = await params;
   const resolvedConfig = (await config) as Config;
   const pageData = (await getCollectionItem({
-    collection: "sections",
-    slug: sections_pages,
+    collection: "elements_pages",
+    slug: element_pages,
     config: resolvedConfig,
     depth: 4,
     slug_name: true,
-  })) as Section;
+  })) as ElementsPage;
 
   if (!pageData) {
     return <div>Page not found</div>;
   }
 
-  return <TemplateSectionPage data={pageData} />;
+  return <>{pageData.title}</>;
 }

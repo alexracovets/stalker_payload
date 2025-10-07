@@ -1,28 +1,35 @@
-import { Section } from "@/config/payload/payload-types";
+import { ElementsPage } from "@/config/payload/payload-types";
+import {
+  BoldFeature,
+  ItalicFeature,
+  ParagraphFeature,
+  lexicalEditor,
+} from "@payloadcms/richtext-lexical";
 import type { CollectionConfig } from "payload";
 
-export const Sections: CollectionConfig = {
-  slug: "sections",
+export const ElementsPages: CollectionConfig = {
+  slug: "elements_pages",
   labels: {
-    singular: "Секція",
-    plural: "Секції",
+    singular: "Елемент",
+    plural: "Елементи",
   },
   admin: {
     useAsTitle: "title",
     description:
-      "Тут створюються сторінки такі як Костюми, Маски, Пістолети, і тд. Які будуть відображатися в головних сторінках.",
+      "Тут створюються сторінки такі як Костюми, Маски, Пістолети, і тд. Які будуть відображатися в секціях.",
     group: "Контент",
   },
   hooks: {
     beforeChange: [
       async ({ data, req }) => {
-        if (data.slug_name && data.parent) {
+        if (data.parent) {
           const parentPage = await req.payload.findByID({
-            collection: "mainPages",
+            collection: "sections",
             id: data.parent,
           });
-
-          data.slug = `/${parentPage.slug}/${data.slug_name}`;
+          data.slug = `${parentPage.slug}/${data.slug_name}`;
+        } else {
+          data.slug = `${data.slug_name}`;
         }
         return data;
       },
@@ -32,7 +39,7 @@ export const Sections: CollectionConfig = {
         if (doc.parent !== previousDoc?.parent) {
           const newSlug = doc.slug;
           const sections = await req.payload.find({
-            collection: "mainPages",
+            collection: "sections",
             where: {
               sections: {
                 contains: doc.id,
@@ -42,7 +49,7 @@ export const Sections: CollectionConfig = {
 
           for (const section of sections.docs) {
             const currentElementIds =
-              section.sections?.map((element: number | Section) =>
+              section.sections?.map((element: number | ElementsPage) =>
                 typeof element === "object" ? element.id : element
               ) || [];
 
@@ -58,7 +65,7 @@ export const Sections: CollectionConfig = {
             }
 
             await req.payload.update({
-              collection: "mainPages",
+              collection: "sections",
               id: section.id,
               data: {
                 sections: updatedSections,
@@ -77,6 +84,14 @@ export const Sections: CollectionConfig = {
           label: "Контент",
           fields: [
             {
+              label: "Зображення",
+              name: "image",
+              type: "relationship",
+              relationTo: "media",
+              hasMany: false,
+              required: true,
+            },
+            {
               label: "Заголовок",
               name: "title",
               type: "text",
@@ -87,6 +102,14 @@ export const Sections: CollectionConfig = {
               name: "sub_title",
               type: "text",
               required: true,
+            },
+            {
+              label: "Опис",
+              name: "description",
+              type: "richText",
+              editor: lexicalEditor({
+                features: [ParagraphFeature(), BoldFeature(), ItalicFeature()],
+              }),
             },
             {
               name: "icons",
@@ -119,31 +142,8 @@ export const Sections: CollectionConfig = {
               name: "parent",
               label: "Батьківська сторінка",
               type: "relationship",
-              relationTo: "mainPages",
+              relationTo: "sections",
               hasMany: false,
-              filterOptions: {
-                slug: {
-                  not_equals: "/",
-                },
-              },
-            },
-            {
-              name: "sections",
-              label: "Відображати Елементи",
-              type: "relationship",
-              relationTo: "elements_pages",
-              hasMany: true,
-              required: false,
-              filterOptions: ({ siblingData }) => {
-                if (!siblingData || !(siblingData as Section).slug) {
-                  return false;
-                }
-                return {
-                  slug: {
-                    like: `${(siblingData as Section).slug}/%`,
-                  },
-                };
-              },
             },
           ],
         },

@@ -42,6 +42,10 @@ export const NavigationPDALink = ({
     handleClick();
   }, [handleClick]);
 
+  useEffect(() => {
+    handleMouseEnter();
+  }, [handleMouseEnter]);
+
   return (
     <li ref={elementRef} onMouseEnter={handleMouseEnter} onClick={handleClick}>
       <AtomLink
