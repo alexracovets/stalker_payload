@@ -74,6 +74,7 @@ export interface Config {
     users: User;
     sections_icons: SectionsIcon;
     elements_pages: ElementsPage;
+    armor_table: ArmorTable;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -87,6 +88,7 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     sections_icons: SectionsIconsSelect<false> | SectionsIconsSelect<true>;
     elements_pages: ElementsPagesSelect<false> | ElementsPagesSelect<true>;
+    armor_table: ArmorTableSelect<false> | ArmorTableSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -259,9 +261,10 @@ export interface SectionsIcon {
  */
 export interface ElementsPage {
   id: number;
-  image: number | Media;
-  title: string;
-  sub_title: string;
+  type?: ('suits' | 'masks' | 'combined_armor' | 'objects') | null;
+  image?: (number | null) | Media;
+  title?: string | null;
+  sub_title?: string | null;
   description?: {
     root: {
       type: string;
@@ -277,7 +280,13 @@ export interface ElementsPage {
     };
     [k: string]: unknown;
   } | null;
-  icons: number | SectionsIcon;
+  armor_table?:
+    | {
+        indicator: number | ArmorTable;
+        value: number;
+        id?: string | null;
+      }[]
+    | null;
   slug_name: string;
   slug: string;
   parent?: (number | null) | Section;
@@ -292,6 +301,17 @@ export interface ElementsPage {
       value: number | Media;
     } | null;
   };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "armor_table".
+ */
+export interface ArmorTable {
+  id: number;
+  image: number | Media;
+  title: string;
   updatedAt: string;
   createdAt: string;
 }
@@ -354,6 +374,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'elements_pages';
         value: number | ElementsPage;
+      } | null)
+    | ({
+        relationTo: 'armor_table';
+        value: number | ArmorTable;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -533,11 +557,18 @@ export interface SectionsIconsSelect<T extends boolean = true> {
  * via the `definition` "elements_pages_select".
  */
 export interface ElementsPagesSelect<T extends boolean = true> {
+  type?: T;
   image?: T;
   title?: T;
   sub_title?: T;
   description?: T;
-  icons?: T;
+  armor_table?:
+    | T
+    | {
+        indicator?: T;
+        value?: T;
+        id?: T;
+      };
   slug_name?: T;
   slug?: T;
   parent?: T;
@@ -548,6 +579,16 @@ export interface ElementsPagesSelect<T extends boolean = true> {
         description?: T;
         image?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "armor_table_select".
+ */
+export interface ArmorTableSelect<T extends boolean = true> {
+  image?: T;
+  title?: T;
   updatedAt?: T;
   createdAt?: T;
 }

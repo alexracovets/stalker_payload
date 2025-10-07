@@ -2,7 +2,7 @@
 
 import { MainPage, Section } from "@payload-types";
 
-import { AtomHR, AtomText, AtomWrapper } from "@atoms";
+import { AtomHR, AtomText, AtomWrapper, CustomScroll } from "@atoms";
 import { CategoriesViewSwitch } from "@molecules";
 import { CategoriesView } from "@organisms";
 
@@ -12,20 +12,22 @@ interface TemplateMainPageProps {
 
 export const TemplateMainPage = ({ data }: TemplateMainPageProps) => {
   return (
-    <AtomWrapper variant="content">
-      <AtomWrapper variant="content_top_switch_wrapper">
-        <AtomWrapper variant="content_top_wrapper">
-          <AtomWrapper variant="content_top_title">
-            <AtomText variant="h1" asChild>
-              <h1>{data.title}</h1>
-            </AtomText>
-            <AtomText variant="description">{data.sub_title}</AtomText>
+    <CustomScroll>
+      <AtomWrapper variant="content">
+        <AtomWrapper variant="content_top_switch_wrapper">
+          <AtomWrapper variant="content_top_wrapper">
+            <AtomWrapper variant="content_top_title">
+              <AtomText variant="h1" asChild>
+                <h1>{data.title}</h1>
+              </AtomText>
+              <AtomText variant="description">{data.sub_title}</AtomText>
+            </AtomWrapper>
+            <AtomHR variant="default" className="max-w-[679px]" />
           </AtomWrapper>
-          <AtomHR variant="default" className="max-w-[679px]" />
+          <CategoriesViewSwitch />
         </AtomWrapper>
-        <CategoriesViewSwitch />
+        <CategoriesView sections={data.sections as Section[]} />
       </AtomWrapper>
-      <CategoriesView sections={data.sections as Section[]} />
-    </AtomWrapper>
+    </CustomScroll>
   );
 };

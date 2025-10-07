@@ -1,10 +1,5 @@
 import { ElementsPage } from "@/config/payload/payload-types";
-import {
-  BoldFeature,
-  ItalicFeature,
-  ParagraphFeature,
-  lexicalEditor,
-} from "@payloadcms/richtext-lexical";
+import { ArmorFields } from "@/fields";
 import type { CollectionConfig } from "payload";
 
 export const ElementsPages: CollectionConfig = {
@@ -84,41 +79,26 @@ export const ElementsPages: CollectionConfig = {
           label: "Контент",
           fields: [
             {
-              label: "Зображення",
-              name: "image",
-              type: "relationship",
-              relationTo: "media",
-              hasMany: false,
-              required: true,
+              type: "row",
+              fields: [
+                {
+                  name: "type",
+                  type: "select",
+                  label: "Тип Сторінки",
+                  options: [
+                    { label: "Костюми", value: "suits" },
+                    { label: "Маски", value: "masks" },
+                    { label: "Комбінована броня", value: "combined_armor" },
+                    { label: "Предмети", value: "objects" },
+                  ],
+                  defaultValue: "suits",
+                  admin: {
+                    width: "30%",
+                  },
+                },
+              ],
             },
-            {
-              label: "Заголовок",
-              name: "title",
-              type: "text",
-              required: true,
-            },
-            {
-              label: "Підзаголовок",
-              name: "sub_title",
-              type: "text",
-              required: true,
-            },
-            {
-              label: "Опис",
-              name: "description",
-              type: "richText",
-              editor: lexicalEditor({
-                features: [ParagraphFeature(), BoldFeature(), ItalicFeature()],
-              }),
-            },
-            {
-              name: "icons",
-              label: "Іконки",
-              type: "relationship",
-              relationTo: "sections_icons",
-              hasMany: false,
-              required: true,
-            },
+            ...ArmorFields(),
           ],
         },
         {
@@ -126,7 +106,7 @@ export const ElementsPages: CollectionConfig = {
           fields: [
             {
               name: "slug_name",
-              label: "Назва сторінки",
+              label: "Назва сторінки(slug)",
               type: "text",
               required: true,
             },
