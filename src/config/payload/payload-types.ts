@@ -75,6 +75,7 @@ export interface Config {
     sections_icons: SectionsIcon;
     elements_pages: ElementsPage;
     armor_table: ArmorTable;
+    detaile_table: DetaileTable;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -89,6 +90,7 @@ export interface Config {
     sections_icons: SectionsIconsSelect<false> | SectionsIconsSelect<true>;
     elements_pages: ElementsPagesSelect<false> | ElementsPagesSelect<true>;
     armor_table: ArmorTableSelect<false> | ArmorTableSelect<true>;
+    detaile_table: DetaileTableSelect<false> | DetaileTableSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -280,9 +282,16 @@ export interface ElementsPage {
     };
     [k: string]: unknown;
   } | null;
-  armor_table?:
+  armor_table_wrapper?:
     | {
         indicator: number | ArmorTable;
+        value: number;
+        id?: string | null;
+      }[]
+    | null;
+  detaile_table_wrapper?:
+    | {
+        indicator: number | DetaileTable;
         value: number;
         id?: string | null;
       }[]
@@ -309,6 +318,17 @@ export interface ElementsPage {
  * via the `definition` "armor_table".
  */
 export interface ArmorTable {
+  id: number;
+  image: number | Media;
+  title: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "detaile_table".
+ */
+export interface DetaileTable {
   id: number;
   image: number | Media;
   title: string;
@@ -378,6 +398,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'armor_table';
         value: number | ArmorTable;
+      } | null)
+    | ({
+        relationTo: 'detaile_table';
+        value: number | DetaileTable;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -562,7 +586,14 @@ export interface ElementsPagesSelect<T extends boolean = true> {
   title?: T;
   sub_title?: T;
   description?: T;
-  armor_table?:
+  armor_table_wrapper?:
+    | T
+    | {
+        indicator?: T;
+        value?: T;
+        id?: T;
+      };
+  detaile_table_wrapper?:
     | T
     | {
         indicator?: T;
@@ -587,6 +618,16 @@ export interface ElementsPagesSelect<T extends boolean = true> {
  * via the `definition` "armor_table_select".
  */
 export interface ArmorTableSelect<T extends boolean = true> {
+  image?: T;
+  title?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "detaile_table_select".
+ */
+export interface DetaileTableSelect<T extends boolean = true> {
   image?: T;
   title?: T;
   updatedAt?: T;

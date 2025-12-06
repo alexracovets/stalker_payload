@@ -30,6 +30,7 @@ import {
   SectionsIcons,
   ElementsPages,
   ArmorTable,
+  DetaileTable,
 } from "@collections";
 
 const filename = fileURLToPath(import.meta.url);
@@ -59,7 +60,8 @@ export default buildConfig({
     Users,
     SectionsIcons,
     ElementsPages,
-    ArmorTable,
+    ArmorTable, 
+    DetaileTable,
   ],
   globals: [Navigations],
   editor: lexicalEditor({

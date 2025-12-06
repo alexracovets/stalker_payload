@@ -67,8 +67,11 @@ export const ArmorFields = (): Field[] => {
     },
     {
       label: "Показники",
-      name: "armor_table",
+      name: "armor_table_wrapper",
       type: "array",
+      admin: {
+        condition: (data) => data.type === "suits",
+      },
       fields: [
         {
           type: "row",
@@ -80,6 +83,9 @@ export const ArmorFields = (): Field[] => {
               relationTo: "armor_table",
               required: true,
               hasMany: false,
+              admin: {
+                width: "50%",
+              },
             },
             {
               name: "value",
@@ -88,13 +94,50 @@ export const ArmorFields = (): Field[] => {
               min: 0,
               max: 5,
               required: true,
+              admin: {
+                width: "50%",
+              },
             },
           ],
         },
       ],
+    },
+    {
+      label: "Деталі Елемента",
+      name: "detaile_table_wrapper",
+      type: "array",
       admin: {
         condition: (data) => data.type === "suits",
       },
+      fields: [
+        {
+          type: "row",
+          fields: [
+            {
+              name: "indicator",
+              label: "Показник",
+              type: "relationship",
+              relationTo: "detaile_table",
+              required: true,
+              hasMany: false,
+              admin: {
+                width: "50%",
+              },
+            },
+            {
+              name: "value",
+              label: "Значення",
+              type: "number",
+              min: 0,
+              max: 5,
+              required: true,
+              admin: {
+                width: "50%",
+              },
+            },
+          ],
+        },
+      ],
     },
   ];
 };
