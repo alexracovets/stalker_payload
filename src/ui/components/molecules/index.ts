@@ -15,3 +15,4 @@ export {
   ListGridItemShowCaseLink,
 } from "./ListGrid";
 export { ListColumns } from "./ListColumns";
+export { ElementTableResistance } from "./ElementTableResistance";

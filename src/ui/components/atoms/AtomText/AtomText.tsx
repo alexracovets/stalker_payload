@@ -8,7 +8,7 @@ import { cn } from "@utils";
 const variants = cva("", {
   variants: {
     variant: {
-      default: "text-sm",
+      default: "text-[20px] font-roboto font-regular text-main-white-light leading-[1.45]",
       logo_title: cn(
         "text-[22px] font-regular font-calibri text-main-gray-light uppercase flex justify-between items-center w-full"
       ),
@@ -26,6 +26,7 @@ const variants = cva("", {
       showcase_title: cn(
         "text-[20px] font-roboto font-medium text-main-white-light leading-[1.45] underline"
       ),
+      resistance_table_title: cn("text-[16px] font-roboto leading-[1.5]")
     },
   },
   defaultVariants: {

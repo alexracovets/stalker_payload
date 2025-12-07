@@ -51,13 +51,15 @@ const variants = cva("", {
       ),
       content_wrapper: cn("grid grid-cols-[auto_1fr] h-full w-full relative"),
       aside_wrapper: cn(
-        "w-[522px] h-full relative z-[-1] py-[1rem] pl-[.9rem] pr-[.8rem]"
+        "w-[52.2rem] max-w-[522px] h-full relative z-[-1] py-[1rem] pl-[.9rem] pr-[.8rem]"
       ),
       main_wrapper: cn("w-full h-full py-[1rem]"),
       content: cn("w-full h-full p-[32px] flex flex-col gap-y-[48px]"),
-      content_top_switch_wrapper: cn(
+      content_element: cn("w-full h-full p-[32px] flex flex-col gap-y-[12px]"),
+      content_header: cn(
         "grid grid-cols-[1fr_auto] w-full gap-x-[48px]"
       ),
+      content_suits_wrapper: cn("grid grid-cols-[auto_1fr] w-full gap-x-[10rem]"),
       content_top_wrapper: cn("flex flex-col w-full gap-y-[12px]"),
       content_top_title: cn("flex flex-col w-full gap-y-[2px]"),
       view_switch: cn(
@@ -67,6 +69,8 @@ const variants = cva("", {
       list_grid_wrapper: cn("flex flex-col gap-x-[80px] gap-y-[48px]"),
       list_grid_item: cn("flex flex-col gap-y-[32px] w-full"),
       list_grid_item_showcase: cn("flex flex-wrap gap-x-[80px] gap-y-[32px]"),
+      rich_text_wrapper: cn("flex flex-col gap-y-[16px] w-full"),
+      resistance_table_wrapper: cn("flex flex-col w-full")
     },
   },
   defaultVariants: {

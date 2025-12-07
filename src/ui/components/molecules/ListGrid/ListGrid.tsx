@@ -10,7 +10,6 @@ interface ListGridProps {
 }
 
 export const ListGrid = ({ sections }: ListGridProps) => {
-  console.log(sections);
   return (
     <AtomWrapper variant="list_grid_wrapper">
       {sections.map((section, idx) => (

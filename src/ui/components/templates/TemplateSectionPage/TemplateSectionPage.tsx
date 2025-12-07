@@ -13,7 +13,7 @@ export const TemplateSectionPage = ({ data }: TemplateSectionPageProps) => {
   return (
     <CustomScroll>
       <AtomWrapper variant="content">
-        <AtomWrapper variant="content_top_switch_wrapper">
+        <AtomWrapper variant="content_header">
           <AtomWrapper variant="content_top_wrapper">
             <AtomWrapper variant="content_top_title">
               <AtomText variant="h1" asChild>

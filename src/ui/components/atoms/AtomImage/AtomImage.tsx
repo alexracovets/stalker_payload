@@ -38,6 +38,8 @@ const variants = cva("", {
         "w-[56px] h-[56px] opacity-0 transition-opacity ease-in-out duration-300"
       ),
       grid_showcase: cn("w-[19.2rem] h-[19.2rem]"),
+      element_suit: cn("w-[388px] h-[388px]"),
+      table_icon: cn("w-[32px] h-[32px]")
     },
   },
   defaultVariants: {

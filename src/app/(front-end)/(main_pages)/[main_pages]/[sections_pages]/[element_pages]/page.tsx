@@ -1,8 +1,10 @@
-import { Metadata } from "next";
-import { Config } from "payload";
 
 import { ElementsPage } from "@payload-types";
 import config from "@payload-config";
+import { Config } from "payload";
+import { Metadata } from "next";
+
+import { TemplateSuit } from "@templates";
 
 import { getCollection, getCollectionItem } from "@api";
 import { generateMeta } from "@utils";
@@ -68,6 +70,8 @@ export default async function ResultPage({ params }: PageProps) {
   if (!pageData) {
     return <div>Page not found</div>;
   }
-
-  return <>{pageData.title}</>;
+  
+  return <>
+    {pageData.type === "suits" && <TemplateSuit data={pageData as ElementsPage} />}
+  </>;
 }
