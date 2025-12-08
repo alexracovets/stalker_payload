@@ -49,19 +49,23 @@ const variants = cva("", {
       footer_destructive_arrows: cn(
         "flex justify-center items-center gap-x-[12rem]"
       ),
-      content_wrapper: cn("grid grid-cols-[auto_1fr] h-full w-full relative"),
+      content_wrapper: cn(
+        "grid grid-cols-[auto_1fr] h-full w-full relative overflow-hidden"
+      ),
       aside_wrapper: cn(
         "w-[52.2rem] max-w-[522px] h-full relative py-[1rem] pl-[.9rem] pr-[.8rem]"
       ),
       main_wrapper: cn("w-full h-full pt-[1rem]"),
       content: cn("w-full h-full p-[32px] flex flex-col gap-y-[48px]"),
       content_element: cn("w-full h-auto p-[32px] flex flex-col gap-y-[12px]"),
-      content_header: cn(
-        "grid grid-cols-[1fr_auto] w-full gap-x-[48px]"
+      content_header: cn("grid grid-cols-[1fr_auto] w-full gap-x-[48px]"),
+      content_suits_wrapper: cn(
+        "grid grid-cols-[auto_388px] items-start w-full gap-x-[10rem]"
       ),
-      content_suits_wrapper: cn("grid grid-cols-[auto_388px] items-start w-full gap-x-[10rem]"),
       content_suits_wrapper_left: cn("w-full flex flex-col gap-y-[48px]"),
-      content_suits_wrapper_right: cn("w-full flex flex-col justify-center items-center gap-y-[56px]"),
+      content_suits_wrapper_right: cn(
+        "w-full flex flex-col justify-center items-center gap-y-[56px]"
+      ),
       content_top_wrapper: cn("flex flex-col w-full gap-y-[12px]"),
       content_top_title: cn("flex flex-col w-full gap-y-[2px]"),
       view_switch: cn(
@@ -74,16 +78,32 @@ const variants = cva("", {
       rich_text_wrapper: cn("flex flex-col gap-y-[16px] w-full"),
       resistance_list: cn("flex flex-col w-full"),
       resistance_item: cn("w-full flex flex-start border-collapse"),
-      resistance_item_indicator: cn("flex justify-start items-center gap-x-[8px] px-[12px] py-[8px] bg-accordion-bg min-w-[166px] border-[1px] border-main-border"),
-      resistance_item_value: cn("px-[22px] py-[12px] flex justify-center items-center min-w-[66px] border-[1px] border-main-border"),
-      resistance_item_dashfields: cn("w-full h-full flex justify-center items-center px-[12px] py-[19px] border-[1px] border-main-border"),
-      resistance_item_dashfields_inner: cn("w-full h-[10px] bg-list-bg outline outline-black-border outline-1 relative"),
-      resistance_item_dashfields_dash: cn("absolute top-0 left-0 h-full bg-main-yellow-dash"),
-      resistance_item_dashfields_dash_separator: cn("absolute top-0 w-[1px] h-full bg-[#100F0E]"),
+      resistance_item_indicator: cn(
+        "flex justify-start items-center gap-x-[8px] px-[12px] py-[8px] bg-accordion-bg min-w-[166px] border-[1px] border-main-border"
+      ),
+      resistance_item_value: cn(
+        "px-[22px] py-[12px] flex justify-center items-center min-w-[66px] border-[1px] border-main-border"
+      ),
+      resistance_item_dashfields: cn(
+        "w-full h-full flex justify-center items-center px-[12px] py-[19px] border-[1px] border-main-border"
+      ),
+      resistance_item_dashfields_inner: cn(
+        "w-full h-[10px] bg-list-bg outline outline-black-border outline-1 relative"
+      ),
+      resistance_item_dashfields_dash: cn(
+        "absolute top-0 left-0 h-full bg-main-yellow-dash"
+      ),
+      resistance_item_dashfields_dash_separator: cn(
+        "absolute top-0 w-[1px] h-full bg-[#100F0E]"
+      ),
       details_list: cn("flex flex-col w-full"),
       details_item: cn("w-full grid grid-cols-[240px_1fr] border-collapse"),
-      details_item_indicator: cn("flex justify-start items-center gap-x-[8px] px-[12px] py-[6px] bg-accordion-bg border-[1px] border-main-border"),
-      details_item_value: cn("px-[12px] py-[10px] flex justify-center items-center border-[1px] border-main-border"),
+      details_item_indicator: cn(
+        "flex justify-start items-center gap-x-[8px] px-[12px] py-[6px] bg-accordion-bg border-[1px] border-main-border"
+      ),
+      details_item_value: cn(
+        "px-[12px] py-[10px] flex justify-center items-center border-[1px] border-main-border"
+      ),
     },
   },
   defaultVariants: {

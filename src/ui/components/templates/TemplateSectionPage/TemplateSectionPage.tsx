@@ -2,7 +2,7 @@
 
 import { ElementsPage, Section } from "@payload-types";
 
-import { AtomText, AtomHR, AtomWrapper, CustomScroll } from "@atoms";
+import { AtomText, AtomHR, AtomWrapper } from "@atoms";
 import { ListGridItemShowCase } from "@molecules";
 
 interface TemplateSectionPageProps {
@@ -12,21 +12,19 @@ interface TemplateSectionPageProps {
 export const TemplateSectionPage = ({ data }: TemplateSectionPageProps) => {
   console.log(data);
   return (
-    <CustomScroll>
-      <AtomWrapper variant="content">
-        <AtomWrapper variant="content_header">
-          <AtomWrapper variant="content_top_wrapper">
-            <AtomWrapper variant="content_top_title">
-              <AtomText variant="h1" asChild>
-                <h1>{data.title}</h1>
-              </AtomText>
-              <AtomText variant="description">{data.sub_title}</AtomText>
-            </AtomWrapper>
-            <AtomHR variant="default" className="max-w-[679px]" />
+    <AtomWrapper variant="content">
+      <AtomWrapper variant="content_header">
+        <AtomWrapper variant="content_top_wrapper">
+          <AtomWrapper variant="content_top_title">
+            <AtomText variant="h1" asChild>
+              <h1>{data.title}</h1>
+            </AtomText>
+            <AtomText variant="description">{data.sub_title}</AtomText>
           </AtomWrapper>
+          <AtomHR variant="default" className="max-w-[679px]" />
         </AtomWrapper>
-        <ListGridItemShowCase elements={data.elements as ElementsPage[]} />
       </AtomWrapper>
-    </CustomScroll>
+      <ListGridItemShowCase elements={data.elements as ElementsPage[]} />
+    </AtomWrapper>
   );
 };

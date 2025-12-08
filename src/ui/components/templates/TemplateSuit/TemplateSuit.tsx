@@ -8,7 +8,6 @@ import {
   AtomWrapper,
   RichText,
   AtomImage,
-  CustomScroll,
 } from "@atoms";
 import { ElementTableResistance, ElementTableDetails } from "@molecules";
 
@@ -20,7 +19,6 @@ export const TemplateSuit = ({ data }: TemplateSuitProps) => {
   const suitData = data.armor_group;
 
   return (
-    <CustomScroll>
       <AtomWrapper variant="content_element">
         <AtomWrapper variant="content_header">
           <AtomWrapper variant="content_top_wrapper">
@@ -48,6 +46,5 @@ export const TemplateSuit = ({ data }: TemplateSuitProps) => {
           </AtomWrapper>
         </AtomWrapper>
       </AtomWrapper>
-    </CustomScroll>
   );
 };
