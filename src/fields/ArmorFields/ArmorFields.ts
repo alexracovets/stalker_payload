@@ -236,7 +236,7 @@ export const ArmorFields = (): Field[] => {
                     {
                       label: "Середня",
                       value: "medium",
-                    },
+                    }, 
                     {
                       label: "Висока",
                       value: "high",
