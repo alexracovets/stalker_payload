@@ -1,9 +1,3 @@
-import {
-  BoldFeature,
-  ItalicFeature,
-  ParagraphFeature,
-  lexicalEditor,
-} from "@payloadcms/richtext-lexical";
 import type { Field } from "payload";
 import { getPayload } from "payload";
 import { config } from "node:process";
@@ -26,34 +20,17 @@ export const ArmorFields = (): Field[] => {
             });
             const armorTableData = await armorTable.find({
               collection: "armor_table",
+              where: {
+                id: {
+                  in: [1, 2, 3, 4, 5, 6],
+                },
+              },
               depth: 0,
             });
-            return [
-              {
-                indicator: armorTableData.docs.find((item) => item.id === 1),
-                value: "0",
-              },
-              {
-                indicator: armorTableData.docs.find((item) => item.id === 2),
-                value: "0",
-              },
-              {
-                indicator: armorTableData.docs.find((item) => item.id === 3),
-                value: "0",
-              },
-              {
-                indicator: armorTableData.docs.find((item) => item.id === 4),
-                value: "0",
-              },
-              {
-                indicator: armorTableData.docs.find((item) => item.id === 5),
-                value: "0",
-              },
-              {
-                indicator: armorTableData.docs.find((item) => item.id === 6),
-                value: "0",
-              },
-            ];
+            return armorTableData.docs.map((item) => ({
+              indicator: item,
+              value: "0",
+            }));
           },
           admin: {
             condition: (data) => data.type === "suits",
@@ -125,6 +102,11 @@ export const ArmorFields = (): Field[] => {
             });
             const detaileTableData = await detaileTable.find({
               collection: "detaile_table",
+              where: {
+                id: {
+                  in: [1, 2, 3],
+                },
+              },
               depth: 0,
             });
             return [
@@ -236,7 +218,7 @@ export const ArmorFields = (): Field[] => {
                     {
                       label: "Середня",
                       value: "medium",
-                    }, 
+                    },
                     {
                       label: "Висока",
                       value: "high",
