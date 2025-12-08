@@ -154,7 +154,6 @@ export const ArmorFields = (): Field[] => {
                   label: "Показник",
                   type: "relationship",
                   relationTo: "detaile_table",
-                  unique: true,
                   required: true,
                   hasMany: false,
                   filterOptions: ({ data, siblingData }) => {
