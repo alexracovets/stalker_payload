@@ -4,7 +4,7 @@ import { AtomImage, AtomText, AtomWrapper } from "@atoms";
 import { ElementsPage, Media } from "@payload-types";
 
 interface ElementTableResistanceProps {
-    items: NonNullable<ElementsPage["armor_group"]>["armor_table_wrapper"];
+    items: NonNullable<ElementsPage["armor_group"]>["resistance"];
 }
 
 export const ElementTableResistance = ({ items }: ElementTableResistanceProps) => {

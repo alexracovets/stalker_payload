@@ -4,7 +4,7 @@ import config from "@payload-config";
 import { Config } from "payload";
 import { Metadata } from "next";
 
-import { TemplateSuit } from "@templates";
+import { TemplateSuit, TemplateMask } from "@templates";
 
 import { getCollection, getCollectionItem } from "@api";
 import { generateMeta } from "@utils";
@@ -70,8 +70,9 @@ export default async function ResultPage({ params }: PageProps) {
   if (!pageData) {
     return <div>Page not found</div>;
   }
-  
+
   return <>
     {pageData.type === "suits" && <TemplateSuit data={pageData as ElementsPage} />}
+    {pageData.type === "masks" && <TemplateMask data={pageData as ElementsPage} />}
   </>;
 }

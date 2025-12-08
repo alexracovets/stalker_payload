@@ -15,7 +15,10 @@ export const ArmorFields = (): Field[] => {
       fields: [
         {
           label: "Показники",
-          name: "armor_table_wrapper",
+          name: "resistance",
+          admin: {
+            condition: (data) => data.type === "suits",
+          },
           type: "array",
           defaultValue: async () => {
             const resistanceTable = await getPayload({
@@ -25,18 +28,15 @@ export const ArmorFields = (): Field[] => {
               collection: "resistance_table",
               where: {
                 id: {
-                  in: [1, 2, 3, 4, 5, 6],
+                  in: [6, 5, 4, 3, 2, 1],
                 },
               },
               depth: 0,
             });
-            return resistanceTableData.docs.map((item) => ({
+            return resistanceTableData.docs.reverse().map((item) => ({
               indicator: item,
               value: "0",
             }));
-          },
-          admin: {
-            condition: (data) => data.type === "suits",
           },
           fields: [
             {
@@ -97,7 +97,7 @@ export const ArmorFields = (): Field[] => {
         },
         {
           label: "Деталі Елемента",
-          name: "detaile_table_wrapper",
+          name: "details",
           type: "array",
           defaultValue: async () => {
             const detaileTable = await getPayload({
@@ -112,20 +112,10 @@ export const ArmorFields = (): Field[] => {
               },
               depth: 0,
             });
-            return [
-              {
-                indicator: detaileTableData.docs.find((item) => item.id === 1),
-                value: "0",
-              },
-              {
-                indicator: detaileTableData.docs.find((item) => item.id === 2),
-                value: "0",
-              },
-              {
-                indicator: detaileTableData.docs.find((item) => item.id === 3),
-                value: "0",
-              },
-            ];
+            return detaileTableData.docs.reverse().map((item) => ({
+              indicator: item,
+              value: "0",
+            }));
           },
           admin: {
             condition: (data) => data.type === "suits",

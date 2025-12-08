@@ -5,7 +5,7 @@ import { ElementsPage, Media } from "@payload-types";
 import { AtomImage, AtomWrapper, AtomText } from "@atoms";
 
 interface ElementTableDetailsProps {
-  items: NonNullable<ElementsPage["armor_group"]>["detaile_table_wrapper"];
+  items: NonNullable<ElementsPage["armor_group"]>["details"];
 }
 
 export const ElementTableDetails = ({ items }: ElementTableDetailsProps) => {

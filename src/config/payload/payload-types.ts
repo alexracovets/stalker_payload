@@ -283,14 +283,14 @@ export interface ElementsPage {
     [k: string]: unknown;
   } | null;
   armor_group?: {
-    armor_table_wrapper?:
+    resistance?:
       | {
           indicator: number | ResistanceTable;
           value: number;
           id?: string | null;
         }[]
       | null;
-    detaile_table_wrapper?:
+    details?:
       | {
           indicator: number | DetaileTable;
           value: string;
@@ -300,7 +300,24 @@ export interface ElementsPage {
         }[]
       | null;
   };
-  mask_group?: {};
+  mask_group?: {
+    resistance?:
+      | {
+          indicator: number | ResistanceTable;
+          value: number;
+          id?: string | null;
+        }[]
+      | null;
+    details?:
+      | {
+          indicator: number | DetaileTable;
+          value: string;
+          effect: 'positive' | 'negative' | 'normal';
+          efect_power: 'low' | 'medium' | 'high' | 'normal';
+          id?: string | null;
+        }[]
+      | null;
+  };
   slug_name: string;
   slug: string;
   parent?: (number | null) | Section;
@@ -594,14 +611,14 @@ export interface ElementsPagesSelect<T extends boolean = true> {
   armor_group?:
     | T
     | {
-        armor_table_wrapper?:
+        resistance?:
           | T
           | {
               indicator?: T;
               value?: T;
               id?: T;
             };
-        detaile_table_wrapper?:
+        details?:
           | T
           | {
               indicator?: T;
@@ -611,7 +628,26 @@ export interface ElementsPagesSelect<T extends boolean = true> {
               id?: T;
             };
       };
-  mask_group?: T | {};
+  mask_group?:
+    | T
+    | {
+        resistance?:
+          | T
+          | {
+              indicator?: T;
+              value?: T;
+              id?: T;
+            };
+        details?:
+          | T
+          | {
+              indicator?: T;
+              value?: T;
+              effect?: T;
+              efect_power?: T;
+              id?: T;
+            };
+      };
   slug_name?: T;
   slug?: T;
   parent?: T;
