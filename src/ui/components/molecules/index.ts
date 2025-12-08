@@ -16,3 +16,4 @@ export {
 } from "./ListGrid";
 export { ListColumns } from "./ListColumns";
 export { ElementTableResistance } from "./ElementTableResistance";
+export { ElementTableDetails } from "./ElementTableDetails";

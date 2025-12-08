@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
   --breakpoint-xl: 1921px;
@@ -13,6 +13,7 @@
   --color-main-gray: #7b7a78;
   --color-main-gray-light: #9e9d98;
   --color-main-border: #403e3c;
+  --color-black-border: #100f0e;
   --color-hood-black: #1d1c1a;
   --color-hood-footer: #1e1c1a;
   --color-main-destructive: #1e1a17;
@@ -20,6 +21,7 @@
   --color-main-destructive-bg: #cabfb0;
   --color-main-yellow: #e6981c;
   --color-main-yellow-border: #ef8e02;
+  --color-main-yellow-dash: #cf8414;
   --color-aside-bg-top: #11100e;
   --color-main-hr: #2a2a29;
   --color-switch-bg: #cabfb0;
@@ -27,12 +29,14 @@
   --color-switch-btn: #3f3830;
   --color-switch-btn-active: #afac99;
   --color-accordion-bg: #1d1d1d;
+  --color-list-bg: #282828;
+  --color-pda-bg: #15110f;
 
-  --font-stalker: "var(--font-stalker)";
-  --font-calibri: "var(--font-calibri)";
-  --font-roboto_condensed: "var(--font-roboto_condensed)";
-  --font-roboto: "var(--font-roboto)";
-  --font-rethink_sans: "var(--font-rethink_sans)";
+  --font-stalker: 'var(--font-stalker)';
+  --font-calibri: 'var(--font-calibri)';
+  --font-roboto_condensed: 'var(--font-roboto_condensed)';
+  --font-roboto: 'var(--font-roboto)';
+  --font-rethink_sans: 'var(--font-rethink_sans)';
 }
 
 html {

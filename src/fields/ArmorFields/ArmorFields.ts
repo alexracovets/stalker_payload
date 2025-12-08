@@ -127,14 +127,58 @@ export const ArmorFields = (): Field[] => {
             {
               name: "value",
               label: "Значення",
-              type: "number",
-              min: 0,
-              max: 5,
+              type: "text",
               required: true,
               admin: {
                 width: "50%",
               },
             },
+            {
+              name: "effect",
+              type: "radio",
+              label: "Ефект",
+              required: true,
+              defaultValue: "normal",
+              options: [
+                {
+                  label: "Позитивний ефект",
+                  value: "positive",
+                },
+                {
+                  label: "Негативний ефект",
+                  value: "negative",
+                },
+                {
+                  label: "Нейтрально",
+                  value: "normal",
+                }
+              ],
+            },
+            {
+              name: "efect_power",
+              type: "radio",
+              label: "Сила ефекту",
+              required: true,
+              defaultValue: "normal",
+              options: [
+                {
+                  label: "Низька",
+                  value: "low",
+                },
+                {
+                  label: "Середня",
+                  value: "medium",
+                },
+                {
+                  label: "Висока",
+                  value: "high",
+                },
+                {
+                  label: "Нейтрально",
+                  value: "normal",
+                }
+              ]
+            }
           ],
         },
       ],

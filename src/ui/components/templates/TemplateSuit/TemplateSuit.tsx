@@ -3,7 +3,7 @@
 import { ElementsPage, Media } from "@payload-types";
 
 import { AtomHR, AtomText, AtomWrapper, RichText, AtomImage, CustomScroll } from "@atoms";
-import { ElementTableResistance } from "@molecules";
+import { ElementTableResistance, ElementTableDetails } from "@molecules";
 
 interface TemplateSuitProps {
     data: ElementsPage;
@@ -24,14 +24,15 @@ export const TemplateSuit = ({ data }: TemplateSuitProps) => {
                     </AtomWrapper>
                 </AtomWrapper>
                 <AtomWrapper variant="content_suits_wrapper">
-                    <div className="w-full flex flex-col gap-y-[48px]">
+                    <AtomWrapper variant="content_suits_wrapper_left">
                         <AtomHR variant="default" />
                         <RichText text={data.description} />
                         <ElementTableResistance items={data.armor_table_wrapper} />
-                    </div>
-                    <div className="w-[388px]">
+                    </AtomWrapper>
+                    <AtomWrapper variant="content_suits_wrapper_right">
                         <AtomImage image={data.image as Media} variant="element_suit" />
-                    </div>
+                        <ElementTableDetails items={data.detaile_table_wrapper} />
+                    </AtomWrapper>
                 </AtomWrapper>
             </AtomWrapper>
         </CustomScroll>

@@ -292,7 +292,9 @@ export interface ElementsPage {
   detaile_table_wrapper?:
     | {
         indicator: number | DetaileTable;
-        value: number;
+        value: string;
+        effect: 'positive' | 'negative' | 'normal';
+        efect_power: 'low' | 'medium' | 'high' | 'normal';
         id?: string | null;
       }[]
     | null;
@@ -598,6 +600,8 @@ export interface ElementsPagesSelect<T extends boolean = true> {
     | {
         indicator?: T;
         value?: T;
+        effect?: T;
+        efect_power?: T;
         id?: T;
       };
   slug_name?: T;

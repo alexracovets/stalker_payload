@@ -8,26 +8,42 @@ interface ElementTableResistanceProps {
 }
 
 export const ElementTableResistance = ({ items }: ElementTableResistanceProps) => {
-    console.log(items)
+    const maxValue = 5;
     return (
-        <AtomWrapper variant="resistance_table_wrapper" asChild>
+        <AtomWrapper variant="resistance_list" asChild>
             <ul>
-                <li className="w-full flex flex-start">
-                    <div className="flex justify-start items-center gap-x-[8px] px-[12px] py-[8px]">
-                        <AtomImage image={items?.[0]?.indicator?.image as Media} variant="table_icon" />
-                        <AtomText variant="resistance_table_title">
-                            {items?.[0]?.indicator?.title}
-                        </AtomText>
-                    </div>
-                    <div className="px-[22px] py-[12px] flex justify-center items-center">
-                        <AtomText variant="resistance_table_title">
-                            {items?.[0].value}
-                        </AtomText>
-                    </div>
-                    <div className="px-[12px] py-[19px]">
-
-                    </div>
-                </li>
+                {
+                    items?.map((item, idx) => (
+                        <AtomWrapper variant="resistance_item" asChild key={idx}>
+                            <li>
+                                {typeof item?.indicator === 'object' && item.indicator !== null && (
+                                    <AtomWrapper variant="resistance_item_indicator">
+                                        <AtomImage image={item.indicator.image as Media} variant="table_icon" />
+                                        <AtomText variant="table_title">
+                                            {item.indicator.title}
+                                        </AtomText>
+                                    </AtomWrapper>
+                                )}
+                                <AtomWrapper variant="resistance_item_value">
+                                    <AtomText variant="table_title">
+                                        {item.value}
+                                    </AtomText>
+                                </AtomWrapper>
+                                <AtomWrapper variant="resistance_item_dashfields">
+                                    <AtomWrapper variant="resistance_item_dashfields_inner">
+                                        <AtomWrapper
+                                            variant="resistance_item_dashfields_dash"
+                                            style={{ width: `${(item?.value || 0) / maxValue * 100}%` }}
+                                        />
+                                        <AtomWrapper variant="resistance_item_dashfields_dash_separator" style={{ left: `${24}%` }} />
+                                        <AtomWrapper variant="resistance_item_dashfields_dash_separator" style={{ left: `${49}%` }} />
+                                        <AtomWrapper variant="resistance_item_dashfields_dash_separator" style={{ left: `${74}%` }} />
+                                    </AtomWrapper>
+                                </AtomWrapper>
+                            </li>
+                        </AtomWrapper>
+                    ))
+                }
             </ul>
         </AtomWrapper>
     );

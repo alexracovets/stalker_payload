@@ -26,7 +26,7 @@ const variants = cva("", {
       showcase_title: cn(
         "text-[20px] font-roboto font-medium text-main-white-light leading-[1.45] underline"
       ),
-      resistance_table_title: cn("text-[16px] font-roboto leading-[1.5]")
+      table_title: cn("text-[16px] font-roboto leading-[1.5]")
     },
   },
   defaultVariants: {
