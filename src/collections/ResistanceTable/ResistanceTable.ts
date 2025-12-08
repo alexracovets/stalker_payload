@@ -1,10 +1,10 @@
 import { CollectionConfig } from "payload";
 
-export const ArmorTable: CollectionConfig = {
-  slug: "armor_table",
+export const ResistanceTable: CollectionConfig = {
+  slug: "resistance_table",
   labels: {
-    singular: "Таблиця Броні",
-    plural: "Таблиці Броні",
+    singular: "Таблиця Опорів",
+    plural: "Таблиці Опорів",
   },
   admin: {
     useAsTitle: "title",

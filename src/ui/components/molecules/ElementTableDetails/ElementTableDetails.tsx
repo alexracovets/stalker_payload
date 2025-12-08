@@ -9,7 +9,7 @@ interface ElementTableDetailsProps {
 }
 
 export const ElementTableDetails = ({ items }: ElementTableDetailsProps) => {
-  console.log("items", items);
+
   return (
     <AtomWrapper variant="details_list" asChild>
       <ul>

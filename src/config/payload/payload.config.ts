@@ -29,7 +29,7 @@ import {
   Sections,
   SectionsIcons,
   ElementsPages,
-  ArmorTable,
+  ResistanceTable,
   DetaileTable,
 } from "@collections";
 
@@ -60,7 +60,7 @@ export default buildConfig({
     Users,
     SectionsIcons,
     ElementsPages,
-    ArmorTable, 
+    ResistanceTable, 
     DetaileTable,
   ],
   globals: [Navigations],

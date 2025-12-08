@@ -74,7 +74,7 @@ export interface Config {
     users: User;
     sections_icons: SectionsIcon;
     elements_pages: ElementsPage;
-    armor_table: ArmorTable;
+    resistance_table: ResistanceTable;
     detaile_table: DetaileTable;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -89,7 +89,7 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     sections_icons: SectionsIconsSelect<false> | SectionsIconsSelect<true>;
     elements_pages: ElementsPagesSelect<false> | ElementsPagesSelect<true>;
-    armor_table: ArmorTableSelect<false> | ArmorTableSelect<true>;
+    resistance_table: ResistanceTableSelect<false> | ResistanceTableSelect<true>;
     detaile_table: DetaileTableSelect<false> | DetaileTableSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -285,7 +285,7 @@ export interface ElementsPage {
   armor_group?: {
     armor_table_wrapper?:
       | {
-          indicator: number | ArmorTable;
+          indicator: number | ResistanceTable;
           value: number;
           id?: string | null;
         }[]
@@ -320,9 +320,9 @@ export interface ElementsPage {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "armor_table".
+ * via the `definition` "resistance_table".
  */
-export interface ArmorTable {
+export interface ResistanceTable {
   id: number;
   image: number | Media;
   title: string;
@@ -401,8 +401,8 @@ export interface PayloadLockedDocument {
         value: number | ElementsPage;
       } | null)
     | ({
-        relationTo: 'armor_table';
-        value: number | ArmorTable;
+        relationTo: 'resistance_table';
+        value: number | ResistanceTable;
       } | null)
     | ({
         relationTo: 'detaile_table';
@@ -627,9 +627,9 @@ export interface ElementsPagesSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "armor_table_select".
+ * via the `definition` "resistance_table_select".
  */
-export interface ArmorTableSelect<T extends boolean = true> {
+export interface ResistanceTableSelect<T extends boolean = true> {
   image?: T;
   title?: T;
   updatedAt?: T;

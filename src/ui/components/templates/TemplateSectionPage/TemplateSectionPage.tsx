@@ -10,7 +10,6 @@ interface TemplateSectionPageProps {
 }
 
 export const TemplateSectionPage = ({ data }: TemplateSectionPageProps) => {
-  console.log(data);
   return (
     <AtomWrapper variant="content">
       <AtomWrapper variant="content_header">

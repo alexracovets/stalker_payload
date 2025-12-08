@@ -9,17 +9,20 @@ export const ArmorFields = (): Field[] => {
       type: "group",
       name: "armor_group",
       label: "Поля для костюмів",
+      admin: {
+        condition: (data) => data.type === "suits",
+      },
       fields: [
         {
           label: "Показники",
           name: "armor_table_wrapper",
           type: "array",
           defaultValue: async () => {
-            const armorTable = await getPayload({
+            const resistanceTable = await getPayload({
               config: config as unknown as SanitizedConfig,
             });
-            const armorTableData = await armorTable.find({
-              collection: "armor_table",
+            const resistanceTableData = await resistanceTable.find({
+              collection: "resistance_table",
               where: {
                 id: {
                   in: [1, 2, 3, 4, 5, 6],
@@ -27,7 +30,7 @@ export const ArmorFields = (): Field[] => {
               },
               depth: 0,
             });
-            return armorTableData.docs.map((item) => ({
+            return resistanceTableData.docs.map((item) => ({
               indicator: item,
               value: "0",
             }));
@@ -43,7 +46,7 @@ export const ArmorFields = (): Field[] => {
                   name: "indicator",
                   label: "Показник",
                   type: "relationship",
-                  relationTo: "armor_table",
+                  relationTo: "resistance_table",
                   required: true,
                   hasMany: false,
                   filterOptions: ({ data, siblingData }) => {
@@ -54,9 +57,9 @@ export const ArmorFields = (): Field[] => {
                         if (item === siblingData) return null;
                         const typedItem = item as {
                           indicator?:
-                            | { id?: string | number }
-                            | string
-                            | number;
+                          | { id?: string | number }
+                          | string
+                          | number;
                         };
                         return typeof typedItem?.indicator === "object"
                           ? typedItem?.indicator?.id
@@ -148,9 +151,9 @@ export const ArmorFields = (): Field[] => {
                         if (item === siblingData) return null;
                         const typedItem = item as {
                           indicator?:
-                            | { id?: string | number }
-                            | string
-                            | number;
+                          | { id?: string | number }
+                          | string
+                          | number;
                         };
                         return typeof typedItem?.indicator === "object"
                           ? typedItem?.indicator?.id

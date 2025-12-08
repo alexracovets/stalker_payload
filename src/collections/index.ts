@@ -6,5 +6,5 @@ export { Media } from "./Media";
 export { Video } from "./Video";
 export { SectionsIcons } from "./SectionsIcons";
 export { ElementsPages } from "./ElementsPages";
-export { ArmorTable } from "./ArmorTable";
+export { ResistanceTable } from "./ResistanceTable";
 export { DetaileTable } from "./DetaileTable";
