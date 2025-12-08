@@ -53,9 +53,9 @@ const variants = cva("", {
       aside_wrapper: cn(
         "w-[52.2rem] max-w-[522px] h-full relative py-[1rem] pl-[.9rem] pr-[.8rem]"
       ),
-      main_wrapper: cn("w-full h-full py-[1rem]"),
+      main_wrapper: cn("w-full h-full pt-[1rem]"),
       content: cn("w-full h-full p-[32px] flex flex-col gap-y-[48px]"),
-      content_element: cn("w-full h-full p-[32px] flex flex-col gap-y-[12px]"),
+      content_element: cn("w-full h-auto p-[32px] flex flex-col gap-y-[12px]"),
       content_header: cn(
         "grid grid-cols-[1fr_auto] w-full gap-x-[48px]"
       ),

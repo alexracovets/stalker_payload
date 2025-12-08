@@ -1,6 +1,12 @@
 import { ElementsPage } from "@/config/payload/payload-types";
-import { ArmorFields } from "@/fields";
+import { ArmorFields, MaskFields } from "@/fields";
 import type { CollectionConfig } from "payload";
+import {
+  BoldFeature,
+  ItalicFeature,
+  ParagraphFeature,
+  lexicalEditor,
+} from "@payloadcms/richtext-lexical";
 
 export const ElementsPages: CollectionConfig = {
   slug: "elements_pages",
@@ -98,7 +104,63 @@ export const ElementsPages: CollectionConfig = {
                 },
               ],
             },
+            {
+              type: "row",
+              fields: [
+                {
+                  label: "Зображення",
+                  relationTo: "media",
+                  name: "image",
+                  type: "upload",
+                  required: true,
+                  admin: {
+                    width: "30%",
+                  },
+                },
+              ],
+            },
+            {
+              type: "row",
+              fields: [
+                {
+                  label: "Заголовок",
+                  name: "title",
+                  type: "text",
+                  required: true,
+                  admin: {
+                    width: "50%",
+                  },
+                },
+                {
+                  label: "Підзаголовок",
+                  name: "sub_title",
+                  type: "text",
+                  required: true,
+                  admin: {
+                    width: "50%",
+                  },
+                },
+              ],
+            },
+            {
+              type: "row",
+              fields: [
+                {
+                  label: "Опис сторінки",
+                  name: "description",
+                  type: "richText",
+                  editor: lexicalEditor({
+                    features: [
+                      ParagraphFeature(),
+                      BoldFeature(),
+                      ItalicFeature(),
+                    ],
+                  }),
+                },
+              ],
+            },
             ...ArmorFields(),
+            ...MaskFields(),
           ],
         },
         {

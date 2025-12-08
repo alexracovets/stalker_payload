@@ -264,9 +264,9 @@ export interface SectionsIcon {
 export interface ElementsPage {
   id: number;
   type?: ('suits' | 'masks' | 'combined_armor' | 'objects') | null;
-  image?: (number | null) | Media;
-  title?: string | null;
-  sub_title?: string | null;
+  image: number | Media;
+  title: string;
+  sub_title: string;
   description?: {
     root: {
       type: string;
@@ -282,22 +282,25 @@ export interface ElementsPage {
     };
     [k: string]: unknown;
   } | null;
-  armor_table_wrapper?:
-    | {
-        indicator: number | ArmorTable;
-        value: number;
-        id?: string | null;
-      }[]
-    | null;
-  detaile_table_wrapper?:
-    | {
-        indicator: number | DetaileTable;
-        value: string;
-        effect: 'positive' | 'negative' | 'normal';
-        efect_power: 'low' | 'medium' | 'high' | 'normal';
-        id?: string | null;
-      }[]
-    | null;
+  armor_group?: {
+    armor_table_wrapper?:
+      | {
+          indicator: number | ArmorTable;
+          value: number;
+          id?: string | null;
+        }[]
+      | null;
+    detaile_table_wrapper?:
+      | {
+          indicator: number | DetaileTable;
+          value: string;
+          effect: 'positive' | 'negative' | 'normal';
+          efect_power: 'low' | 'medium' | 'high' | 'normal';
+          id?: string | null;
+        }[]
+      | null;
+  };
+  mask_group?: {};
   slug_name: string;
   slug: string;
   parent?: (number | null) | Section;
@@ -588,22 +591,27 @@ export interface ElementsPagesSelect<T extends boolean = true> {
   title?: T;
   sub_title?: T;
   description?: T;
-  armor_table_wrapper?:
+  armor_group?:
     | T
     | {
-        indicator?: T;
-        value?: T;
-        id?: T;
+        armor_table_wrapper?:
+          | T
+          | {
+              indicator?: T;
+              value?: T;
+              id?: T;
+            };
+        detaile_table_wrapper?:
+          | T
+          | {
+              indicator?: T;
+              value?: T;
+              effect?: T;
+              efect_power?: T;
+              id?: T;
+            };
       };
-  detaile_table_wrapper?:
-    | T
-    | {
-        indicator?: T;
-        value?: T;
-        effect?: T;
-        efect_power?: T;
-        id?: T;
-      };
+  mask_group?: T | {};
   slug_name?: T;
   slug?: T;
   parent?: T;

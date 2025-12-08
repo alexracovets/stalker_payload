@@ -11,6 +11,7 @@ interface TemplateMainPageProps {
 }
 
 export const TemplateMainPage = ({ data }: TemplateMainPageProps) => {
+  console.log(data);
   return (
     <CustomScroll>
       <AtomWrapper variant="content">

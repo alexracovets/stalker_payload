@@ -10,6 +10,7 @@ interface TemplateSectionPageProps {
 }
 
 export const TemplateSectionPage = ({ data }: TemplateSectionPageProps) => {
+  console.log(data);
   return (
     <CustomScroll>
       <AtomWrapper variant="content">
