@@ -263,7 +263,7 @@ export interface SectionsIcon {
  */
 export interface ElementsPage {
   id: number;
-  type?: ('suits' | 'masks' | 'combined_armor' | 'objects') | null;
+  type?: ('suits' | 'masks' | 'exosuits' | 'objects') | null;
   image: number | Media;
   title: string;
   sub_title: string;
@@ -305,6 +305,42 @@ export interface ElementsPage {
       | {
           indicator: number | ResistanceTable;
           value: number;
+          id?: string | null;
+        }[]
+      | null;
+    details?:
+      | {
+          indicator: number | DetaileTable;
+          value: string;
+          effect: 'positive' | 'negative' | 'normal';
+          efect_power: 'low' | 'medium' | 'high' | 'normal';
+          id?: string | null;
+        }[]
+      | null;
+  };
+  exo_group?: {
+    resistance?:
+      | {
+          indicator: number | ResistanceTable;
+          value: number;
+          id?: string | null;
+        }[]
+      | null;
+    details?:
+      | {
+          indicator: number | DetaileTable;
+          value: string;
+          effect: 'positive' | 'negative' | 'normal';
+          efect_power: 'low' | 'medium' | 'high' | 'normal';
+          id?: string | null;
+        }[]
+      | null;
+  };
+  objects_group?: {
+    effects?:
+      | {
+          title: string;
+          description: string;
           id?: string | null;
         }[]
       | null;
@@ -636,6 +672,46 @@ export interface ElementsPagesSelect<T extends boolean = true> {
           | {
               indicator?: T;
               value?: T;
+              id?: T;
+            };
+        details?:
+          | T
+          | {
+              indicator?: T;
+              value?: T;
+              effect?: T;
+              efect_power?: T;
+              id?: T;
+            };
+      };
+  exo_group?:
+    | T
+    | {
+        resistance?:
+          | T
+          | {
+              indicator?: T;
+              value?: T;
+              id?: T;
+            };
+        details?:
+          | T
+          | {
+              indicator?: T;
+              value?: T;
+              effect?: T;
+              efect_power?: T;
+              id?: T;
+            };
+      };
+  objects_group?:
+    | T
+    | {
+        effects?:
+          | T
+          | {
+              title?: T;
+              description?: T;
               id?: T;
             };
         details?:

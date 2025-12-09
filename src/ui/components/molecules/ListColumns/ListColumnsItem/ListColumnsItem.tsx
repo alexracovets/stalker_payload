@@ -22,33 +22,34 @@ interface ListColumnsItemProps {
 export const ListColumnsItem = ({ section, idx }: ListColumnsItemProps) => {
   const [hovered, setHovered] = useState(false);
   const [hoveredTrigger, setHoveredTrigger] = useState(false);
-
+ 
+  const handleMouseEnter = () => {
+    setHoveredTrigger(true);
+  }
+  const handleMouseLeave = () => {
+    setHovered(false);
+    setHoveredTrigger(false);
+  }
   return (
     <AccordionItem value={`item-${idx}`}>
       <AccordionTrigger
         variant="section_view"
         className={cn(
-          hovered &&
-            "bg-main-yellow-border border-main-yellow-border",
-          hoveredTrigger && !hovered && "text-main-yellow border-main-yellow-border"
+          hoveredTrigger &&
+          "border-main-yellow-border",
+          hoveredTrigger && !hovered && "text-main-white bg-main-yellow-border"
         )}
-        onMouseEnter={() => setHoveredTrigger(true)}
-        onMouseLeave={() => setHoveredTrigger(false)}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
       >
         <AtomLink
           href={section.slug}
           variant="categoryListTrigger"
-          onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => {
-            e.stopPropagation();
-            setHovered(true);
-          }}
-          onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => {
-            e.stopPropagation();
-            setHovered(false);
-          }}
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
           className={cn(
             hovered &&
-              "text-main-yellow transition-text ease-in-out duration-300"
+            "text-main-yellow transition-text ease-in-out duration-300"
           )}
         >
           <CategoryIcon

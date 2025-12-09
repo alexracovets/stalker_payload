@@ -1,5 +1,5 @@
 import { ElementsPage } from "@/config/payload/payload-types";
-import { ArmorFields, MaskFields } from "@/fields";
+import { ArmorFields, ExoFields, MaskFields, ObjectsFields } from "@/fields";
 import type { CollectionConfig } from "payload";
 import {
   BoldFeature,
@@ -94,7 +94,7 @@ export const ElementsPages: CollectionConfig = {
                   options: [
                     { label: "Костюми", value: "suits" },
                     { label: "Маски", value: "masks" },
-                    { label: "Комбінована броня", value: "combined_armor" },
+                    { label: "Комбінована броня", value: "exosuits" },
                     { label: "Предмети", value: "objects" },
                   ],
                   defaultValue: "suits",
@@ -161,6 +161,8 @@ export const ElementsPages: CollectionConfig = {
             },
             ...ArmorFields(),
             ...MaskFields(),
+            ...ExoFields(),
+            ...ObjectsFields(),
           ],
         },
         {

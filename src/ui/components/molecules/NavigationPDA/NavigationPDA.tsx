@@ -37,7 +37,7 @@ export const NavigationPDA = () => {
   useEffect(() => {
     setHoveredRef({ current: null });
     setHoveredSpanRef({ current: null });
-  }, [currentMainPage]);
+  }, [currentMainPage, navigation]);
 
   useNavigationDash({
     listRef,
