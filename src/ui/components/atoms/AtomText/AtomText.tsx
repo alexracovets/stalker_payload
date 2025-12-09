@@ -26,7 +26,9 @@ const variants = cva("", {
       showcase_title: cn(
         "text-[20px] font-roboto font-medium text-main-white-light leading-[1.45] underline"
       ),
-      table_title: cn("text-[16px] font-roboto leading-[1.5]")
+      table_title: cn("text-[16px] font-roboto leading-[1.5]"),
+      object_effects_item_title: cn("text-[20px] font-roboto font-[700] leading-[1.45] text-main-white-light"),
+      object_effects_item_description: cn("text-[20px] font-roboto font-regular leading-[1.45] text-main-white-light"),
     },
   },
   defaultVariants: {

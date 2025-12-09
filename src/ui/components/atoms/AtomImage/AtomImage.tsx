@@ -39,7 +39,8 @@ const variants = cva("", {
       ),
       grid_showcase: cn("w-[19.2rem] h-[19.2rem]"),
       element_suit: cn("w-[388px] h-[388px]"),
-      table_icon: cn("w-[32px] h-[32px]")
+      element_object: cn("w-[388px] h-[256px]"),
+      table_icon: cn("w-[32px] min-w-[32px] h-[32px] min-h-[32px]")
     },
   },
   defaultVariants: {

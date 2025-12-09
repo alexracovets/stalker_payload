@@ -104,6 +104,8 @@ const variants = cva("", {
       details_item_value: cn(
         "px-[12px] py-[10px] flex justify-center items-center border-[1px] border-main-border"
       ),
+      object_effects_list: cn("flex flex-col w-full gap-y-[16px]"),
+      object_effects_item: cn("flex flex-col w-full gap-y-[8px]"),
     },
   },
   defaultVariants: {

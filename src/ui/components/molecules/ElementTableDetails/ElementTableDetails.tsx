@@ -3,37 +3,76 @@
 import { ElementsPage, Media } from "@payload-types";
 
 import { AtomImage, AtomWrapper, AtomText } from "@atoms";
+import { cn } from "@/utils/cn";
 
 interface ElementTableDetailsProps {
   items: NonNullable<ElementsPage["armor_group"]>["details"];
 }
 
+interface CheckColorProps {
+  power: string;
+  effect: string;
+}
+
 export const ElementTableDetails = ({ items }: ElementTableDetailsProps) => {
+  const checkColor = ({ power, effect }: CheckColorProps) => {
+
+    switch (effect) {
+      case "positive":
+        switch (power) {
+          case "low":
+            return "text-effect-low";
+          case "medium":
+            return "text-main-yellow";
+          case "high":
+            return "text-effect-best";
+          default:
+            break;
+        }
+      case "negative":
+        switch (power) {
+          case "low":
+            return "text-effect-low";
+          case "medium":
+            return "text-main-yellow";
+          case "high":
+            return "text-effect-worst";
+          default:
+            break;
+        }
+      default:
+        break;
+    }
+  };
 
   return (
     <AtomWrapper variant="details_list" asChild>
       <ul>
-        {items?.map((item, idx) => (
-          <AtomWrapper variant="details_item" key={idx} asChild>
-            <li>
-              {typeof item?.indicator === "object" &&
-                item.indicator !== null && (
-                  <AtomWrapper variant="details_item_indicator">
-                    <AtomImage
-                      image={item.indicator.image as Media}
-                      variant="table_icon"
-                    />
-                    <AtomText variant="table_title">
-                      {item.indicator.title}
-                    </AtomText>
-                  </AtomWrapper>
-                )}
-              <AtomWrapper variant="details_item_value">
-                <AtomText variant="table_title">{item.value}</AtomText>
-              </AtomWrapper>
-            </li>
-          </AtomWrapper>
-        ))}
+        {items?.map((item, idx) => {
+          const color = checkColor({ power: item.efect_power, effect: item.effect });
+          return (
+            <AtomWrapper variant="details_item" key={idx} asChild>
+              <li>
+                {typeof item?.indicator === "object" &&
+                  item.indicator !== null && (
+                    <AtomWrapper variant="details_item_indicator">
+                      <AtomImage
+                        image={item.indicator.image as Media}
+                        variant="table_icon"
+                      />
+                      <AtomText variant="table_title">
+                        {item.indicator.title}
+                      </AtomText>
+                    </AtomWrapper>
+                  )}
+                <AtomWrapper variant="details_item_value">
+                  <AtomText variant="table_title" className={cn(color)}>{item.value}</AtomText>
+                </AtomWrapper>
+              </li>
+            </AtomWrapper>
+          )
+        }
+        )}
       </ul>
     </AtomWrapper>
   );

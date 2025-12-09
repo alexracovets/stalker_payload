@@ -1,7 +1,4 @@
 import type { Field } from "payload";
-import { getPayload } from "payload";
-import { config } from "node:process";
-import { SanitizedConfig } from "payload";
 
 export const ObjectsFields = (): Field[] => {
     return [
@@ -52,7 +49,7 @@ export const ObjectsFields = (): Field[] => {
                                     type: "relationship",
                                     relationTo: "detaile_table",
                                     required: true,
-                                    hasMany: false, 
+                                    hasMany: false,
                                     admin: {
                                         width: "50%",
                                     },

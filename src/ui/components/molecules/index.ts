@@ -17,3 +17,4 @@ export {
 export { ListColumns } from "./ListColumns";
 export { ElementTableResistance } from "./ElementTableResistance";
 export { ElementTableDetails } from "./ElementTableDetails";
+export { ObjectEffects } from "./ObjectEffects";
