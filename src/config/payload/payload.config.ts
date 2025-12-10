@@ -43,13 +43,16 @@ export default buildConfig({
   i18n: {
     supportedLanguages: { en, uk },
   },
+  localization: {
+    locales: ["uk"],
+    defaultLocale: "uk",
+  },
   admin: {
     user: Users.slug,
+    suppressHydrationWarning: true,
+    dateFormat: "yyyy-MM-dd",
     importMap: {
       baseDir: path.resolve(dirname),
-    },
-    components: {
-      views: {},
     },
   },
   collections: [
@@ -60,7 +63,7 @@ export default buildConfig({
     Users,
     SectionsIcons,
     ElementsPages,
-    ResistanceTable, 
+    ResistanceTable,
     DetaileTable,
   ],
   globals: [Navigations],

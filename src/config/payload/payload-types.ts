@@ -104,7 +104,7 @@ export interface Config {
   globalsSelect: {
     nav_home: NavHomeSelect<false> | NavHomeSelect<true>;
   };
-  locale: null;
+  locale: 'uk';
   user: User & {
     collection: 'users';
   };
@@ -355,6 +355,7 @@ export interface ElementsPage {
       | null;
   };
   pistol_group?: {
+    author_image?: (number | null) | Media;
     designer_name?: string | null;
     designer_link?: string | null;
     resistance?:
@@ -747,6 +748,7 @@ export interface ElementsPagesSelect<T extends boolean = true> {
   pistol_group?:
     | T
     | {
+        author_image?: T;
         designer_name?: T;
         designer_link?: T;
         resistance?:

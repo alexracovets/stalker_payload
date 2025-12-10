@@ -7,6 +7,7 @@ import { cn } from "@/utils/cn";
 
 interface ElementTableDetailsProps {
   items: NonNullable<ElementsPage["armor_group"]>["details"];
+  variant?: "pistol";
 }
 
 interface CheckColorProps {
@@ -14,9 +15,11 @@ interface CheckColorProps {
   effect: string;
 }
 
-export const ElementTableDetails = ({ items }: ElementTableDetailsProps) => {
+export const ElementTableDetails = ({
+  items,
+  variant,
+}: ElementTableDetailsProps) => {
   const checkColor = ({ power, effect }: CheckColorProps) => {
-
     switch (effect) {
       case "positive":
         switch (power) {
@@ -49,9 +52,16 @@ export const ElementTableDetails = ({ items }: ElementTableDetailsProps) => {
     <AtomWrapper variant="details_list" asChild>
       <ul>
         {items?.map((item, idx) => {
-          const color = checkColor({ power: item.efect_power, effect: item.effect });
+          const color = checkColor({
+            power: item.efect_power,
+            effect: item.effect,
+          });
           return (
-            <AtomWrapper variant="details_item" key={idx} asChild>
+            <AtomWrapper
+              variant={variant ? `details_item_${variant}` : `details_item`}
+              key={idx}
+              asChild
+            >
               <li>
                 {typeof item?.indicator === "object" &&
                   item.indicator !== null && (
@@ -66,13 +76,14 @@ export const ElementTableDetails = ({ items }: ElementTableDetailsProps) => {
                     </AtomWrapper>
                   )}
                 <AtomWrapper variant="details_item_value">
-                  <AtomText variant="table_title" className={cn(color)}>{item.value}</AtomText>
+                  <AtomText variant="table_title" className={cn(color)}>
+                    {item.value}
+                  </AtomText>
                 </AtomWrapper>
               </li>
             </AtomWrapper>
-          )
-        }
-        )}
+          );
+        })}
       </ul>
     </AtomWrapper>
   );

@@ -15,11 +15,37 @@ export const PistolFields = (): Field[] => {
           type: "row",
           fields: [
             {
+              type: "relationship",
+              name: "author_image",
+              relationTo: "media",
+              label: "Зображення",
+              defaultValue: async () => {
+                const authorImage = await getPayload({
+                  config: config as unknown as SanitizedConfig,
+                });
+                const authorImageData = await authorImage.find({
+                  collection: "media",
+                  where: {
+                    alt: {
+                      equals: "brush_art",
+                    },
+                  },
+                });
+                if (authorImageData.docs.length > 0) {
+                  return authorImageData.docs[0];
+                }
+                return null;
+              },
+              admin: {
+                width: "30%",
+              },
+            },
+            {
               label: "Автор дизайну",
               name: "designer_name",
               type: "text",
               admin: {
-                width: "50%",
+                width: "35%",
               },
             },
             {
@@ -27,7 +53,7 @@ export const PistolFields = (): Field[] => {
               name: "designer_link",
               type: "text",
               admin: {
-                width: "50%",
+                width: "35%",
               },
             },
           ],
@@ -85,6 +111,7 @@ export const PistolFields = (): Field[] => {
             plural: "Покази",
           },
           defaultValue: async () => {
+            const preset = [16, 17, 18, 19, 20, 1, 3];
             const detaileTable = await getPayload({
               config: config as unknown as SanitizedConfig,
             });
@@ -92,13 +119,13 @@ export const PistolFields = (): Field[] => {
               collection: "detaile_table",
               where: {
                 id: {
-                  in: [1, 2, 3],
+                  in: preset,
                 },
               },
-              depth: 0,
             });
-            return detaileTableData.docs.reverse().map((item) => ({
-              indicator: item,
+            const detailes = detaileTableData.docs;
+            return preset.map((id) => ({
+              indicator: detailes.find((detail) => detail.id === id),
               value: "0",
             }));
           },

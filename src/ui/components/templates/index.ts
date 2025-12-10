@@ -3,6 +3,7 @@ export { TemplateSectionPage } from "./TemplateSectionPage";
 export { LayoutDefaultWrapper } from "./LayoutDefault";
 export { TemplateMainPage } from "./TemplateMainPage";
 export { TemplateObject } from "./TemplateObject";
+export { TemplatePistol } from "./TemplatePistol";
 export { TemplateSuit } from "./TemplateSuit";
 export { TemplateMask } from "./TemplateMask";
 export { TemplateHome } from "./TemplateHome";

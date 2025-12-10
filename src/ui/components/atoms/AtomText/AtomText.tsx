@@ -8,7 +8,8 @@ import { cn } from "@utils";
 const variants = cva("", {
   variants: {
     variant: {
-      default: "text-[20px] font-roboto font-regular text-main-white-light leading-[1.45]",
+      default:
+        "text-[20px] font-roboto font-regular text-main-white-light leading-[1.45]",
       logo_title: cn(
         "text-[22px] font-regular font-calibri text-main-gray-light uppercase flex justify-between items-center w-full"
       ),
@@ -27,8 +28,16 @@ const variants = cva("", {
         "text-[20px] font-roboto font-medium text-main-white-light leading-[1.45] underline"
       ),
       table_title: cn("text-[16px] font-roboto leading-[1.5]"),
-      object_effects_item_title: cn("text-[20px] font-roboto font-[700] leading-[1.45] text-main-white-light"),
-      object_effects_item_description: cn("text-[20px] font-roboto font-regular leading-[1.45] text-main-white-light"),
+      object_effects_item_title: cn(
+        "text-[20px] font-roboto font-[700] leading-[1.45] text-main-white-light"
+      ),
+      object_effects_item_description: cn(
+        "text-[20px] font-roboto font-regular leading-[1.45] text-main-white-light"
+      ),
+      author: cn(
+        "text-[20px] font-medium font-roboto text-main-white-light leading-[1.45]",
+        "border-b-[2px] border-main-white-light"
+      ),
     },
   },
   defaultVariants: {

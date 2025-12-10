@@ -18,3 +18,5 @@ export { ListColumns } from "./ListColumns";
 export { ElementTableResistance } from "./ElementTableResistance";
 export { ElementTableDetails } from "./ElementTableDetails";
 export { ObjectEffects } from "./ObjectEffects";
+export { AuthorBlock } from "./AuthorBlock";
+export { WeaponAdditionBlock } from "./WeaponAdditionBlock";

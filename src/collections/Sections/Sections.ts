@@ -135,6 +135,7 @@ export const Sections: CollectionConfig = {
               hasMany: true,
               required: false,
               filterOptions: ({ siblingData }) => {
+                console.log(siblingData);
                 if (!siblingData || !(siblingData as Section).slug) {
                   return false;
                 }

@@ -12,7 +12,7 @@ export const roboto_condensed = Roboto_Condensed({
 });
 
 export const roboto = Roboto({
-  weight: ["400"],
+  weight: ["400", "500", "700"],
   variable: "--font-roboto",
   style: ["normal"],
   subsets: ["cyrillic"],

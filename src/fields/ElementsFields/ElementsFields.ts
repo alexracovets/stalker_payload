@@ -39,7 +39,7 @@ export const ElementsFields = (): Field[] => {
           type: "upload",
           required: true,
           admin: {
-            width: "30%",
+            width: "50%",
           },
         },
       ],

@@ -39,6 +39,9 @@ const variants = cva("outline-none!", {
         "flex flex-col gap-y-[8px] justify-center items-center w-[19.2rem]",
         "transition-text ease-in-out duration-300"
       ),
+      author_link: cn(
+        "flex justify-start items-center gap-x-[8px]"
+      ),
     },
   },
   defaultVariants: {

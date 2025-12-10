@@ -77,12 +77,15 @@ const variants = cva("", {
       list_grid_item_showcase: cn("flex flex-wrap gap-x-[80px] gap-y-[32px]"),
       rich_text_wrapper: cn("flex flex-col gap-y-[16px] w-full"),
       resistance_list: cn("flex flex-col w-full"),
-      resistance_item: cn("w-full flex flex-start border-collapse"),
+      resistance_item: cn(
+        "w-full grid grid-cols-[180px_66px_1fr] flex-start border-collapse",
+        "translate-y-[-1px] first:translate-y-0"
+      ),
       resistance_item_indicator: cn(
-        "flex justify-start items-center gap-x-[8px] px-[12px] py-[8px] bg-accordion-bg min-w-[166px] border-[1px] border-main-border"
+        "flex justify-start items-center gap-x-[8px] px-[12px] py-[8px] bg-accordion-bg border-[1px] border-main-border"
       ),
       resistance_item_value: cn(
-        "px-[22px] py-[12px] flex justify-center items-center min-w-[66px] border-[1px] border-main-border"
+        "px-[22px] py-[12px] flex justify-center items-center border-[1px] border-main-border"
       ),
       resistance_item_dashfields: cn(
         "w-full h-full flex justify-center items-center px-[12px] py-[19px] border-[1px] border-main-border"
@@ -98,14 +101,20 @@ const variants = cva("", {
       ),
       details_list: cn("flex flex-col w-full"),
       details_item: cn("w-full grid grid-cols-[240px_1fr] border-collapse"),
+      details_item_pistol: cn(
+        "w-full grid grid-cols-[180px_1fr] border-collapse"
+      ),
       details_item_indicator: cn(
         "flex justify-start items-center gap-x-[8px] px-[12px] py-[6px] bg-accordion-bg border-[1px] border-main-border"
       ),
       details_item_value: cn(
-        "px-[12px] py-[10px] flex justify-center items-center border-[1px] border-main-border"
+        "px-[12px] py-[10px] text-center flex justify-center items-center border-[1px] border-main-border"
       ),
       object_effects_list: cn("flex flex-col w-full gap-y-[16px]"),
       object_effects_item: cn("flex flex-col w-full gap-y-[8px]"),
+      image_author_wrapper: cn(
+        "flex flex-col justify-start items-start w-full"
+      ),
     },
   },
   defaultVariants: {
