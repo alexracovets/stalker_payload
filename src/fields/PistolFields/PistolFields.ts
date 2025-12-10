@@ -1,40 +1,47 @@
-import { type Field, getPayload, SanitizedConfig } from "payload";
+import { type Field, SanitizedConfig, getPayload } from "payload";
 import { config } from "node:process";
 
-export const ExoFields = (): Field[] => {
+export const PistolFields = (): Field[] => {
   return [
     {
       type: "group",
-      name: "exo_group",
-      label: "Поля для комбінованої броні",
+      name: "pistol_group",
+      label: "Поля для пістолета",
       admin: {
-        condition: (data) => data.type === "exosuits",
+        condition: (data) => data.type === "pistols",
       },
       fields: [
         {
-          label: "Показники",
+          type: "row",
+          fields: [
+            {
+              label: "Автор дизайну",
+              name: "designer_name",
+              type: "text",
+              admin: {
+                width: "50%",
+              },
+            },
+            {
+              label: "Посилання",
+              name: "designer_link",
+              type: "text",
+              admin: {
+                width: "50%",
+              },
+            },
+          ],
+        },
+        {
           name: "resistance",
           admin: {
-            condition: (data) => data.type === "exosuits",
+            condition: (data) => data.type === "pistols",
           },
           type: "array",
-          defaultValue: async () => {
-            const resistanceTable = await getPayload({
-              config: config as unknown as SanitizedConfig,
-            });
-            const resistanceTableData = await resistanceTable.find({
-              collection: "resistance_table",
-              where: {
-                id: {
-                  in: [6, 5, 4, 3, 2, 1],
-                },
-              },
-              depth: 0,
-            });
-            return resistanceTableData.docs.reverse().map((item) => ({
-              indicator: item,
-              value: "0",
-            }));
+          label: "Показники зброї",
+          labels: {
+            singular: "Показник",
+            plural: "Покази",
           },
           fields: [
             {
@@ -47,33 +54,6 @@ export const ExoFields = (): Field[] => {
                   relationTo: "resistance_table",
                   required: true,
                   hasMany: false,
-                  filterOptions: ({ data, siblingData }) => {
-                    // Отримуємо всі вже вибрані indicator з масиву armor_table_wrapper
-                    const selectedIndicators = (data?.armor_table_wrapper || [])
-                      .map((item: unknown) => {
-                        // Перевіряємо, чи це не поточний елемент
-                        if (item === siblingData) return null;
-                        const typedItem = item as {
-                          indicator?:
-                            | { id?: string | number }
-                            | string
-                            | number;
-                        };
-                        return typeof typedItem?.indicator === "object"
-                          ? typedItem?.indicator?.id
-                          : typedItem?.indicator;
-                      })
-                      .filter(
-                        (
-                          id: string | number | null | undefined
-                        ): id is string | number => id != null
-                      );
-                    return {
-                      id: {
-                        not_in: selectedIndicators,
-                      },
-                    };
-                  },
                   admin: {
                     width: "50%",
                   },
@@ -94,9 +74,16 @@ export const ExoFields = (): Field[] => {
           ],
         },
         {
-          label: "Деталі Елемента",
+          label: "Додаткова інформація",
           name: "details",
           type: "array",
+          admin: {
+            condition: (data) => data.type === "pistols",
+          },
+          labels: {
+            singular: "Показник",
+            plural: "Покази",
+          },
           defaultValue: async () => {
             const detaileTable = await getPayload({
               config: config as unknown as SanitizedConfig,
@@ -115,9 +102,6 @@ export const ExoFields = (): Field[] => {
               value: "0",
             }));
           },
-          admin: {
-            condition: (data) => data.type === "exosuits",
-          },
           fields: [
             {
               type: "row",
@@ -129,37 +113,6 @@ export const ExoFields = (): Field[] => {
                   relationTo: "detaile_table",
                   required: true,
                   hasMany: false,
-                  filterOptions: ({ data, siblingData }) => {
-                    // Отримуємо всі вже вибрані indicator з масиву detaile_table_wrapper
-                    const selectedIndicators = (
-                      data?.detaile_table_wrapper || []
-                    )
-                      .map((item: unknown) => {
-                        // Перевіряємо, чи це не поточний елемент
-                        if (item === siblingData) return null;
-                        const typedItem = item as {
-                          indicator?:
-                            | { id?: string | number }
-                            | string
-                            | number;
-                        };
-                        return typeof typedItem?.indicator === "object"
-                          ? typedItem?.indicator?.id
-                          : typedItem?.indicator;
-                      })
-                      .filter(
-                        (
-                          id: string | number | null | undefined
-                        ): id is string | number => id != null
-                      );
-
-                    // Виключаємо вже вибрані indicator з опцій
-                    return {
-                      id: {
-                        not_in: selectedIndicators,
-                      },
-                    };
-                  },
                   admin: {
                     width: "50%",
                   },

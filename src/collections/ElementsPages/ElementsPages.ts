@@ -1,12 +1,15 @@
 import { ElementsPage } from "@/config/payload/payload-types";
-import { ArmorFields, ExoFields, MaskFields, ObjectsFields } from "@/fields";
 import type { CollectionConfig } from "payload";
+
 import {
-  BoldFeature,
-  ItalicFeature,
-  ParagraphFeature,
-  lexicalEditor,
-} from "@payloadcms/richtext-lexical";
+  PageConfigFields,
+  ElementsFields,
+  ObjectsFields,
+  PistolFields,
+  ArmorFields,
+  MaskFields,
+  ExoFields,
+} from "@/fields";
 
 export const ElementsPages: CollectionConfig = {
   slug: "elements_pages",
@@ -84,112 +87,17 @@ export const ElementsPages: CollectionConfig = {
         {
           label: "Контент",
           fields: [
-            {
-              type: "row",
-              fields: [
-                {
-                  name: "type",
-                  type: "select",
-                  label: "Тип Сторінки",
-                  options: [
-                    { label: "Костюми", value: "suits" },
-                    { label: "Маски", value: "masks" },
-                    { label: "Комбінована броня", value: "exosuits" },
-                    { label: "Предмети", value: "objects" },
-                  ],
-                  defaultValue: "suits",
-                  admin: {
-                    width: "30%",
-                  },
-                },
-              ],
-            },
-            {
-              type: "row",
-              fields: [
-                {
-                  label: "Зображення",
-                  relationTo: "media",
-                  name: "image",
-                  type: "upload",
-                  required: true,
-                  admin: {
-                    width: "30%",
-                  },
-                },
-              ],
-            },
-            {
-              type: "row",
-              fields: [
-                {
-                  label: "Заголовок",
-                  name: "title",
-                  type: "text",
-                  required: true,
-                  admin: {
-                    width: "50%",
-                  },
-                },
-                {
-                  label: "Підзаголовок",
-                  name: "sub_title",
-                  type: "text",
-                  required: true,
-                  admin: {
-                    width: "50%",
-                  },
-                },
-              ],
-            },
-            {
-              type: "row",
-              fields: [
-                {
-                  label: "Опис сторінки",
-                  name: "description",
-                  type: "richText",
-                  editor: lexicalEditor({
-                    features: [
-                      ParagraphFeature(),
-                      BoldFeature(),
-                      ItalicFeature(),
-                    ],
-                  }),
-                },
-              ],
-            },
+            ...ElementsFields(),
             ...ArmorFields(),
             ...MaskFields(),
             ...ExoFields(),
             ...ObjectsFields(),
+            ...PistolFields(),
           ],
         },
         {
           label: "Конфігурація",
-          fields: [
-            {
-              name: "slug_name",
-              label: "Назва сторінки(slug)",
-              type: "text",
-              required: true,
-            },
-            {
-              name: "slug",
-              type: "text",
-              required: true,
-              admin: {
-                hidden: true,
-              },
-            },
-            {
-              name: "parent",
-              label: "Батьківська сторінка",
-              type: "relationship",
-              relationTo: "sections",
-              hasMany: false,
-            },
-          ],
+          fields: [...PageConfigFields()],
         },
       ],
     },

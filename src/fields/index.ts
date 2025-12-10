@@ -1,4 +1,7 @@
+export { PageConfigFields } from "./PageConfigFields";
+export { ElementsFields } from "./ElementsFields";
 export { ObjectsFields } from "./ObjectsFields";
+export { PistolFields } from "./PistolFields";
 export { ArmorFields } from "./ArmorFields";
 export { MaskFields } from "./MaskFields";
 export { ExoFields } from "./ExoFields";

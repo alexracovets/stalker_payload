@@ -263,7 +263,7 @@ export interface SectionsIcon {
  */
 export interface ElementsPage {
   id: number;
-  type?: ('suits' | 'masks' | 'exosuits' | 'objects') | null;
+  type?: ('suits' | 'masks' | 'exosuits' | 'objects' | 'pistols') | null;
   image: number | Media;
   title: string;
   sub_title: string;
@@ -341,6 +341,26 @@ export interface ElementsPage {
       | {
           title: string;
           description: string;
+          id?: string | null;
+        }[]
+      | null;
+    details?:
+      | {
+          indicator: number | DetaileTable;
+          value: string;
+          effect: 'positive' | 'negative' | 'normal';
+          efect_power: 'low' | 'medium' | 'high' | 'normal';
+          id?: string | null;
+        }[]
+      | null;
+  };
+  pistol_group?: {
+    designer_name?: string | null;
+    designer_link?: string | null;
+    resistance?:
+      | {
+          indicator: number | ResistanceTable;
+          value: number;
           id?: string | null;
         }[]
       | null;
@@ -712,6 +732,28 @@ export interface ElementsPagesSelect<T extends boolean = true> {
           | {
               title?: T;
               description?: T;
+              id?: T;
+            };
+        details?:
+          | T
+          | {
+              indicator?: T;
+              value?: T;
+              effect?: T;
+              efect_power?: T;
+              id?: T;
+            };
+      };
+  pistol_group?:
+    | T
+    | {
+        designer_name?: T;
+        designer_link?: T;
+        resistance?:
+          | T
+          | {
+              indicator?: T;
+              value?: T;
               id?: T;
             };
         details?:

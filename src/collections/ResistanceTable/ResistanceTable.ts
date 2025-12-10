@@ -3,8 +3,8 @@ import { CollectionConfig } from "payload";
 export const ResistanceTable: CollectionConfig = {
   slug: "resistance_table",
   labels: {
-    singular: "Таблиця Опорів",
-    plural: "Таблиці Опорів",
+    singular: "Таблиця Параметрів",
+    plural: "Таблиці Параметрів",
   },
   admin: {
     useAsTitle: "title",
