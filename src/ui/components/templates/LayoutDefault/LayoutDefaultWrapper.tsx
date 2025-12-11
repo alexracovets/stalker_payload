@@ -15,7 +15,7 @@ interface LayoutDefaultWrapperProps {
 export const LayoutDefaultWrapper = async ({
   children,
 }: LayoutDefaultWrapperProps) => {
-  const navigationData = await getGlobal({ slug: "nav_home" });
+  const navigationData = await getGlobal({ slug: "nav_home", depth: 4 });
   const navigation =
     navigationData?.items?.map((item) => item.page as MainPage) || [];
 

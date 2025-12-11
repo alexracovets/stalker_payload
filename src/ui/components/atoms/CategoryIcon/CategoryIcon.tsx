@@ -8,12 +8,13 @@ import { cn } from "@utils";
 interface CategoryIconProps {
   icons: SectionsIcon;
   variant: AtomImageVariant;
+  wrapper: "category_icon_wrapper" | "aside_icon_wrapper";
   active: boolean;
 }
 
-export const CategoryIcon = ({ icons, variant, active }: CategoryIconProps) => {
+export const CategoryIcon = ({ icons, variant, active, wrapper = "category_icon_wrapper" }: CategoryIconProps) => {
   return (
-    <AtomWrapper variant="category_icon_wrapper">
+    <AtomWrapper variant={wrapper}>
       <AtomImage
         image={icons.icon as Media}
         variant={variant}
