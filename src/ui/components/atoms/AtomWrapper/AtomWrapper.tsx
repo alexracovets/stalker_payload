@@ -52,9 +52,7 @@ const variants = cva("", {
       content_wrapper: cn(
         "grid grid-cols-[auto_1fr] h-full w-full relative overflow-hidden pr-[0.9rem] pl-[0.9rem] pt-[1rem]"
       ),
-      aside_wrapper: cn(
-        "w-[52.2rem] max-w-[522px] h-full relative pr-[.8rem]"
-      ),
+      aside_wrapper: cn("w-[52.2rem] max-w-[522px] h-full relative pr-[.8rem]"),
       main_wrapper: cn("w-full h-full"),
       content: cn("w-full h-full p-[32px] flex flex-col gap-y-[48px]"),
       content_element: cn("w-full h-auto p-[32px] flex flex-col gap-y-[12px]"),
@@ -72,7 +70,9 @@ const variants = cva("", {
         "flex items-center justify-center rounded-[4px] overflow-hidden h-fit"
       ),
       category_icon_wrapper: cn("relative w-[56px] h-[56px]"),
-      aside_icon_wrapper: cn("relative flex justify-center items-center w-[85px] h-[50px] rounded-[4px] bg-switch-bg-active overflow-hidden"),
+      aside_icon_wrapper: cn(
+        "relative flex justify-center items-center w-[85px] h-[50px] rounded-[4px] bg-switch-bg-active overflow-hidden cursor-pointer"
+      ),
       list_grid_wrapper: cn("flex flex-col gap-x-[80px] gap-y-[48px]"),
       list_grid_item: cn("flex flex-col gap-y-[32px] w-full"),
       list_grid_item_showcase: cn("flex flex-wrap gap-x-[80px] gap-y-[32px]"),

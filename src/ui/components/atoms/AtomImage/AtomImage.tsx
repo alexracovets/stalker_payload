@@ -35,9 +35,11 @@ const variants = cva("", {
       main_right: cn("w-[.9rem] h-full"),
       main_top: cn("w-full h-[1rem]"),
       section_view: cn(
-        "w-[56px] h-[56px] opacity-0 transition-opacity ease-in-out duration-300"
+        "absolute left-0 top-0 w-[56px] h-[56px] opacity-0 transition-opacity ease-in-out duration-300"
       ),
-      aside_view: cn("w-[32px] h-[32px] opacity-0 transition-opacity ease-in-out duration-300"),
+      aside_view: cn(
+        "absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-[32px] h-[32px] opacity-0 transition-opacity ease-in-out duration-300"
+      ),
       grid_showcase: cn("w-[19.2rem] h-[19.2rem]"),
       element_suit: cn("w-[388px] h-[388px]"),
       element_object: cn("w-[388px] h-[256px]"),

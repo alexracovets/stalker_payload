@@ -4,6 +4,7 @@ import { Media, SectionsIcon } from "@payload-types";
 
 import { AtomImage, AtomImageVariant, AtomWrapper } from "@atoms";
 import { cn } from "@utils";
+import { useState } from "react";
 
 interface CategoryIconProps {
   icons: SectionsIcon;
@@ -12,18 +13,29 @@ interface CategoryIconProps {
   active: boolean;
 }
 
-export const CategoryIcon = ({ icons, variant, active, wrapper = "category_icon_wrapper" }: CategoryIconProps) => {
+export const CategoryIcon = ({
+  icons,
+  variant,
+  active,
+  wrapper = "category_icon_wrapper",
+}: CategoryIconProps) => {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
-    <AtomWrapper variant={wrapper}>
+    <AtomWrapper
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      variant={wrapper}
+    >
       <AtomImage
         image={icons.icon as Media}
         variant={variant}
-        className={cn("absolute top-0 left-0", !active && "opacity-100")}
+        className={cn(!active && !isHovered && "opacity-100")}
       />
       <AtomImage
         image={icons.icon_active as Media}
         variant={variant}
-        className={cn("absolute top-0 left-0", active && "opacity-100")}
+        className={cn((active || isHovered) && "opacity-100")}
       />
     </AtomWrapper>
   );

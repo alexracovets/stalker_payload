@@ -17,6 +17,7 @@ export const ListGridItem = ({ section }: ListGridItemProps) => {
           active={false}
           icons={section.icons as SectionsIcon}
           variant="section_view"
+          wrapper="category_icon_wrapper"
         />
         {section.title} :
       </AtomLink>
