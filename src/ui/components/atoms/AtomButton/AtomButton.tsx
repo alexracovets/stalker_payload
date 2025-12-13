@@ -9,7 +9,7 @@ const buttonVariants = cva("cursor-pointer", {
     variant: {
       default: "",
       destructive: cn(
-        "flex justify-center items-center w-[3.6rem] h-[3.6rem] text-[2.5rem] text-main-destructive font-rethink_sans font-extrabold",
+        "flex justify-center items-center w-[3.6rem] min-w-[3.6rem] h-[3.6rem] min-h-[3.6rem] text-[2.5rem] text-main-destructive font-rethink_sans font-extrabold",
         "border-[.1rem] border-main-black rounded-[.4rem] bg-main-destructive-bg bg-[url('/png/btn_destructive.png')] bg-contain sepia leading-[1]"
       ),
       destructive_with_label: cn(
@@ -25,7 +25,7 @@ const buttonVariants = cva("cursor-pointer", {
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
+  VariantProps<typeof buttonVariants> {
   asChild?: boolean;
 }
 
