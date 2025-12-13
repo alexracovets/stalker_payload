@@ -21,16 +21,17 @@ import sharp from "sharp";
 import path from "path";
 
 import {
-  Users,
-  Media,
-  MainPages,
-  Video,
-  Navigations,
-  Sections,
+  ResistanceTable,
   SectionsIcons,
   ElementsPages,
-  ResistanceTable,
   DetaileTable,
+  SystemFields,
+  Navigations,
+  MainPages,
+  Sections,
+  Users,
+  Media,
+  Video,
 } from "@collections";
 
 const filename = fileURLToPath(import.meta.url);
@@ -65,6 +66,7 @@ export default buildConfig({
     ElementsPages,
     ResistanceTable,
     DetaileTable,
+    SystemFields,
   ],
   globals: [Navigations],
   editor: lexicalEditor({

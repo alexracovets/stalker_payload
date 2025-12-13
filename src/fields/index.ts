@@ -1,3 +1,4 @@
+export { AsideSearchFields } from "./AsideSearchFields";
 export { PageConfigFields } from "./PageConfigFields";
 export { ElementsFields } from "./ElementsFields";
 export { ObjectsFields } from "./ObjectsFields";

@@ -76,6 +76,7 @@ export interface Config {
     elements_pages: ElementsPage;
     resistance_table: ResistanceTable;
     detaile_table: DetaileTable;
+    'system-fields': SystemField;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -91,6 +92,7 @@ export interface Config {
     elements_pages: ElementsPagesSelect<false> | ElementsPagesSelect<true>;
     resistance_table: ResistanceTableSelect<false> | ResistanceTableSelect<true>;
     detaile_table: DetaileTableSelect<false> | DetaileTableSelect<true>;
+    'system-fields': SystemFieldsSelect<false> | SystemFieldsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -441,6 +443,24 @@ export interface User {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "system-fields".
+ */
+export interface SystemField {
+  id: number;
+  type?: 'search_aside' | null;
+  title: string;
+  slug: string;
+  group_search_aside?: {
+    search_name: string;
+    search_image: number | Media;
+    filter_name: string;
+    filter_image: number | Media;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -481,6 +501,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'detaile_table';
         value: number | DetaileTable;
+      } | null)
+    | ({
+        relationTo: 'system-fields';
+        value: number | SystemField;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -798,6 +822,25 @@ export interface ResistanceTableSelect<T extends boolean = true> {
 export interface DetaileTableSelect<T extends boolean = true> {
   image?: T;
   title?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "system-fields_select".
+ */
+export interface SystemFieldsSelect<T extends boolean = true> {
+  type?: T;
+  title?: T;
+  slug?: T;
+  group_search_aside?:
+    | T
+    | {
+        search_name?: T;
+        search_image?: T;
+        filter_name?: T;
+        filter_image?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
 }

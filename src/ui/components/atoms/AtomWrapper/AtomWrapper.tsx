@@ -118,6 +118,8 @@ const variants = cva("", {
       image_author_wrapper: cn(
         "flex flex-col justify-start items-start w-full"
       ),
+      aside_search_wrapper: cn("flex justify-center w-full items-center px-[10px] py-[20px]"),
+      aside_search_inner: cn("flex justify-center items-center w-full relative"),
     },
   },
   defaultVariants: {

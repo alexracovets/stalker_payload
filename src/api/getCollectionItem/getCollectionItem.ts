@@ -2,38 +2,42 @@
 
 import {
   CollectionSlug,
-  Config,
   getPayload,
   SanitizedConfig,
   Where,
+  Config,
 } from "payload";
+import config from "@payload-config";
 
 interface getCollectionItemProps {
   collection: CollectionSlug;
   slug: string;
-  config: Config;
   depth: number;
   slug_name?: boolean;
+  type?: boolean;
 }
 
 export async function getCollectionItem({
   collection,
   slug,
-  config,
   depth,
   slug_name,
+  type,
 }: getCollectionItemProps) {
   try {
-    const payload = await getPayload({ config: config as SanitizedConfig });
+    const resolvedConfig = (await config) as Config;
+    const payload = await getPayload({ config: resolvedConfig as SanitizedConfig });
     const whereFind: Where = slug_name
       ? { slug_name: { equals: slug } }
+      : type
+      ? { type: { equals: slug } }
       : { slug: { equals: slug } };
     const item = await payload.find({
       collection: collection,
       where: whereFind,
       depth: depth,
     });
-    return item.docs[0];
+    return item.docs?.[0] ?? null;
   } catch (error) {
     console.error(
       `Помилка при отриманні елемента з slug "${slug}" з колекції "${collection}":`,

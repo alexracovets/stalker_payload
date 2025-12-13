@@ -1,10 +1,11 @@
+export { ResistanceTable } from "./ResistanceTable";
+export { SectionsIcons } from "./SectionsIcons";
+export { ElementsPages } from "./ElementsPages";
+export { SystemFields } from "./SystemFields";
+export { DetaileTable } from "./DetaileTable";
 export { Navigations } from "./Navigations";
 export { MainPages } from "./MainPages";
 export { Sections } from "./Sections";
 export { Users } from "./Users";
 export { Media } from "./Media";
 export { Video } from "./Video";
-export { SectionsIcons } from "./SectionsIcons";
-export { ElementsPages } from "./ElementsPages";
-export { ResistanceTable } from "./ResistanceTable";
-export { DetaileTable } from "./DetaileTable";

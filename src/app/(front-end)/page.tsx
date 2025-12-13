@@ -10,11 +10,9 @@ import { generateMeta } from "@utils";
 export const revalidate = 60;
 
 export async function generateMetadata(): Promise<Metadata> {
-  const resolvedConfig = (await config) as Config;
   const page = (await getCollectionItem({
     collection: "mainPages",
     slug: "/",
-    config: resolvedConfig,
     depth: 4,
   })) as MainPage;
 
@@ -28,11 +26,9 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Home() {
-  const resolvedConfig = (await config) as Config;
   const page = (await getCollectionItem({
     collection: "mainPages",
-    slug: "/",
-    config: resolvedConfig,
+    slug: "/", 
     depth: 4,
   })) as MainPage;
 

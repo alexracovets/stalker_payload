@@ -1,8 +1,6 @@
 import { Metadata } from "next";
-import { Config } from "payload";
 
 import { MainPage } from "@payload-types";
-import config from "@payload-config";
 
 import { getCollection, getCollectionItem } from "@api";
 import { TemplateMainPage } from "@templates";
@@ -20,11 +18,9 @@ export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const { main_pages } = await params;
-  const resolvedConfig = (await config) as Config;
   const page = (await getCollectionItem({
     collection: "mainPages",
     slug: main_pages,
-    config: resolvedConfig,
     depth: 4,
   })) as MainPage;
 
@@ -39,10 +35,8 @@ export async function generateMetadata({
 
 export async function generateStaticParams() {
   try {
-    const resolvedConfig = (await config) as Config;
     const results = (await getCollection({
       collection: "mainPages",
-      config: resolvedConfig,
     })) as MainPage[];
 
     return results.map((result) => ({
@@ -56,11 +50,9 @@ export async function generateStaticParams() {
 
 export default async function ResultPage({ params }: PageProps) {
   const { main_pages } = await params;
-  const resolvedConfig = (await config) as Config;
   const pageData = (await getCollectionItem({
     collection: "mainPages",
     slug: main_pages,
-    config: resolvedConfig,
     depth: 4,
   })) as MainPage;
 

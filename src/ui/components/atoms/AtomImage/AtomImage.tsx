@@ -44,6 +44,7 @@ const variants = cva("", {
       element_suit: cn("w-[388px] h-[388px]"),
       element_object: cn("w-[388px] h-[256px]"),
       table_icon: cn("w-[32px] min-w-[32px] h-[32px] min-h-[32px]"),
+      input_search: cn("absolute top-[50%] left-[12px] translate-y-[-50%] w-[32px] h-[32px]"),
       element_pistol: cn("w-[563px] h-[204px]"),
     },
   },

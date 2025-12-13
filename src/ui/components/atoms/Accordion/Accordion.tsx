@@ -15,6 +15,7 @@ function Accordion({
     <AccordionPrimitive.Root
       data-slot="accordion"
       className="w-full h-fit"
+      suppressHydrationWarning
       {...props}
     />
   );
@@ -85,13 +86,13 @@ function AccordionContent({
   ...props
 }: React.ComponentProps<typeof AccordionPrimitive.Content>) {
   return (
-    <AccordionPrimitive.Content data-slot="accordion-content" {...props}>
+    <AccordionPrimitive.Content data-slot="accordion-content" {...props} suppressHydrationWarning>
       <motion.div
-        initial={{ height: 0, opacity: 0, display: "flex" }}
-        animate={{ height: "auto", opacity: 1, display: "flex" }}
-        exit={{ height: 0, opacity: 0, display: "flex" }}
-        transition={{ duration: 0.2, ease: "easeInOut", delay: 0.1 }}
-        className={cn("pt-0", className)}
+        initial={false}
+        animate={{ height: "auto", opacity: 1 }}
+        exit={{ height: 0, opacity: 0 }}
+        transition={{ duration: 0.2, ease: "easeInOut" }}
+        className={cn("pt-0 flex", className)}
       >
         {children}
       </motion.div>
