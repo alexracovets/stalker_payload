@@ -122,6 +122,7 @@ const variants = cva("", {
       aside_search_inner: cn("flex justify-center items-center w-full relative"),
       aside_control_wrapper: cn("flex justify-center w-full items-center gap-x-[16px] w-full py-[14px] px-[12px] bg-aside-control-bg"),
       aside_control_inner: cn("flex justify-center items-center gap-x-[12px] w-full"),
+      aside_elements_control_wrapper: cn("py-[32px]"),
     },
   },
   defaultVariants: {
