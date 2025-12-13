@@ -3,7 +3,6 @@
 import { ElementsPage, Section } from "@payload-types";
 import { usePathname } from "next/navigation";
 
-
 import { useNavigationStore } from "@store";
 
 export const useNavigation = () => {
