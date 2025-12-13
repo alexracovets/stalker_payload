@@ -11,6 +11,7 @@ interface CategoryIconProps {
   variant: AtomImageVariant;
   wrapper: "category_icon_wrapper" | "aside_icon_wrapper";
   active: boolean;
+  onClick: () => void;
 }
 
 export const CategoryIcon = ({
@@ -18,6 +19,7 @@ export const CategoryIcon = ({
   variant,
   active,
   wrapper = "category_icon_wrapper",
+  onClick,
 }: CategoryIconProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -26,6 +28,7 @@ export const CategoryIcon = ({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       variant={wrapper}
+      onClick={onClick}
     >
       <AtomImage
         image={icons.icon as Media}

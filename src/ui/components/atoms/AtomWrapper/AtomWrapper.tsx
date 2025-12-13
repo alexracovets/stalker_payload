@@ -52,7 +52,9 @@ const variants = cva("", {
       content_wrapper: cn(
         "grid grid-cols-[auto_1fr] h-full w-full relative overflow-hidden pr-[0.9rem] pl-[0.9rem] pt-[1rem]"
       ),
-      aside_wrapper: cn("w-[52.2rem] max-w-[522px] h-full relative pr-[.8rem]"),
+      aside_wrapper: cn(
+        "w-[52.2rem] max-w-[522px] min-w-[505px] h-full relative pr-[.8rem]"
+      ),
       main_wrapper: cn("w-full h-full"),
       content: cn("w-full h-full p-[32px] flex flex-col gap-y-[48px]"),
       content_element: cn("w-full h-auto p-[32px] flex flex-col gap-y-[12px]"),
