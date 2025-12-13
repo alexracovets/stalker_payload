@@ -1,6 +1,6 @@
-import { useCallback, useEffect } from "react";
+import { MainPage } from "@payload-types";
+import { useCallback, useEffect, useState } from "react";
 
-import { useNavigationStore } from "@store";
 
 interface useNavigationDashProps {
   listRef: React.RefObject<HTMLUListElement | null>;
@@ -8,12 +8,7 @@ interface useNavigationDashProps {
   hoveredSpanRef: React.RefObject<HTMLSpanElement | null>;
   currentPageRef: React.RefObject<HTMLLIElement | null>;
   currentPageSpanRef: React.RefObject<HTMLSpanElement | null>;
-}
-
-interface GetValuesProps {
-  list: React.RefObject<HTMLElement | null>;
-  link: React.RefObject<HTMLElement | null>;
-  span: React.RefObject<HTMLElement | null>;
+  navigation: MainPage[];
 }
 
 export const useNavigationDash = ({
@@ -22,8 +17,11 @@ export const useNavigationDash = ({
   hoveredSpanRef,
   currentPageRef,
   currentPageSpanRef,
+  navigation,
 }: useNavigationDashProps) => {
-  const { setIsDash, setDashStyles } = useNavigationStore();
+  const [underline, setUnderline] = useState<React.CSSProperties | null>(null);
+  const [shortline, setShortline] = useState<React.CSSProperties | null>(null);
+  const [active, setActive] = useState<boolean>(false);
 
   const boundingClientRect = (element: React.RefObject<HTMLElement | null>) => {
     if (element.current) {
@@ -32,48 +30,48 @@ export const useNavigationDash = ({
     }
   };
 
-  const getValues = useCallback(
-    ({ list, link, span }: GetValuesProps) => {
-      const listRect = boundingClientRect(list);
-      const linkRect = boundingClientRect(link);
-      const spanRect = boundingClientRect(span);
-      if (linkRect?.left && listRect?.left && spanRect?.left) {
-        setDashStyles({
-          underline: {
-            left: `${linkRect?.left - listRect?.left}px`,
-            width: `${linkRect?.width}px`,
-          },
-          shortline: {
-            left: `${spanRect?.left - listRect?.left}px`,
-            width: `${spanRect?.width}px`,
-          },
-        });
-      }
-      setIsDash(true);
-    },
-    [setDashStyles, setIsDash]
+  const getValues = useCallback(() => {
+    const listRect = boundingClientRect(listRef);
+    const linkRectHovered = boundingClientRect(hoveredRef);
+    const spanRectHovered = boundingClientRect(hoveredSpanRef);
+    const linkRectCurrent = boundingClientRect(currentPageRef);
+    const spanRectCurrent = boundingClientRect(currentPageSpanRef);
+    if (linkRectHovered?.left && listRect?.left && spanRectHovered?.left) {
+      setUnderline({
+        left: `${linkRectHovered?.left - listRect?.left}px`,
+        width: `${linkRectHovered?.width}px`,
+      })
+      setShortline({
+        left: `${spanRectHovered?.left - listRect?.left}px`,
+        width: `${spanRectHovered?.width}px`,
+      })
+      setActive(true);
+    } else if (linkRectCurrent?.left && listRect?.left && spanRectCurrent?.left) {
+      setUnderline({
+        left: `${linkRectCurrent?.left - listRect?.left}px`,
+        width: `${linkRectCurrent?.width}px`,
+      })
+      setShortline({
+        left: `${spanRectCurrent?.left - listRect?.left}px`,
+        width: `${spanRectCurrent?.width}px`,
+      })
+      setActive(true);
+    }
+  },
+    [listRef, hoveredRef, hoveredSpanRef, currentPageRef, currentPageSpanRef]
   );
 
   useEffect(() => {
     if (listRef) {
-      if (hoveredRef.current && hoveredSpanRef.current) {
-        getValues({ list: listRef, link: hoveredRef, span: hoveredSpanRef });
-      } else if (currentPageRef.current && currentPageSpanRef.current) {
-        getValues({
-          list: listRef,
-          link: currentPageRef,
-          span: currentPageSpanRef,
-        });
-      }
+      requestAnimationFrame(() => {
+        getValues();
+      });
     }
-  }, [
-    listRef,
-    hoveredRef,
-    hoveredSpanRef,
-    currentPageRef,
-    currentPageSpanRef,
-    getValues,
-  ]);
+  }, [getValues, listRef, navigation, currentPageRef, currentPageSpanRef]);
 
-  return null;
+  return {
+    underline,
+    shortline,
+    active,
+  };
 };

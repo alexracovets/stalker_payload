@@ -1,34 +1,69 @@
 "use client";
 
-import { ElementsPage, Section } from "@payload-types";
+import { ElementsPage, MainPage, Section } from "@payload-types";
+import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 
 import { useNavigationStore } from "@store";
 
 export const useNavigation = () => {
-  const { navigation } = useNavigationStore();
+  const { navigation, switchedSectionAside, setSwitchedSectionAside } = useNavigationStore();
   const pathname = usePathname();
   const pathParts = pathname.split("/").filter(Boolean);
   const mainPagePath = pathParts[0];
   const sectionPagePath = pathParts[1];
   const elementPagePath = pathParts[2];
 
-  const currentMainPage = navigation.find((mainPage) => mainPage.slug === mainPagePath);
-  const checkMainPage = currentMainPage ? currentMainPage : navigation[0];
+  const [mainPage, setMainPage] = useState<MainPage | null>(null);
+  const [sections, setSections] = useState<Section[] | null>(null);
+  const [activeSection, setActiveSection] = useState<Section | null>(null);
+  const [elements, setElements] = useState<ElementsPage[] | null>(null);
+  const [activeElement, setActiveElement] = useState<ElementsPage | null>(null);
 
-  const allSections = checkMainPage?.sections;
-  const activeSection = (allSections as Section[])?.find((section) => (section as Section).slug_name === sectionPagePath);
+  const prevPathnameRef = useRef(pathname);
+  const switchedSectionAsideRef = useRef(switchedSectionAside);
 
-  const allElements = (activeSection as Section)?.elements as ElementsPage[];
-  const activeElement = (allElements as ElementsPage[])?.find((element) => element.slug_name === elementPagePath);
+  useEffect(() => {
+    const currentMainPage = navigation.find((mainPage) => mainPage.slug === mainPagePath);
+    const checkMainPage = currentMainPage ? currentMainPage : navigation[0];
+    setMainPage(checkMainPage);
+  }, [navigation, mainPagePath, pathname]);
 
+  useEffect(() => {
+    const allSections = mainPage?.sections;
+    const activeSection = (allSections as Section[])?.find((section) => (section as Section).slug_name === sectionPagePath);
+    const checkActiveSection = activeSection ? activeSection : allSections?.[0];
+    const checkSection = switchedSectionAside ? switchedSectionAside : checkActiveSection;
+    setSections(allSections as Section[]);
+    setActiveSection(checkSection as Section);
+  }, [mainPage, switchedSectionAside, sectionPagePath, pathname]);
+
+  useEffect(() => {
+    const allElements = (activeSection as Section)?.elements as ElementsPage[];
+    const activeElement = (allElements as ElementsPage[])?.find((element) => element.slug_name === elementPagePath);
+    setElements(allElements);
+    setActiveElement(activeElement as ElementsPage);
+  }, [activeSection, elementPagePath, pathname]);
+
+
+  useEffect(() => {
+    switchedSectionAsideRef.current = switchedSectionAside;
+  }, [switchedSectionAside]);
+
+  useEffect(() => {
+    if (prevPathnameRef.current !== pathname && switchedSectionAsideRef.current) {
+      setSwitchedSectionAside(null);
+    }
+    prevPathnameRef.current = pathname;
+  }, [pathname, setSwitchedSectionAside]);
 
   return {
     navigation,
     pathname,
-    sections: allSections,
+    mainPage,
+    sections,
     activeSection,
-    elements: allElements,
+    elements,
     activeElement,
   };
 };

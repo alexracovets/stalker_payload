@@ -2,19 +2,17 @@
 
 import { useState, RefObject, useRef, useCallback, useEffect } from "react";
 
-import { useCurrentMainPage, useNavigationDash } from "@hooks";
-
 import {
   NavigationPDADash,
   NavigationPDALink,
   NavigationPDA_BG,
 } from "@molecules";
 import { AtomWrapper, AtomButton, AtomLink } from "@atoms";
-import { useNavigationStore } from "@store";
+
+import { useNavigation } from "@hooks";
 
 export const NavigationPDA = () => {
-  const { navigation } = useNavigationStore();
-  const currentMainPage = useCurrentMainPage();
+  const { navigation, mainPage } = useNavigation();
   const listRef = useRef<HTMLUListElement>(null);
   const [hoveredRef, setHoveredRef] = useState<RefObject<HTMLLIElement | null>>(
     { current: null }
@@ -37,15 +35,8 @@ export const NavigationPDA = () => {
   useEffect(() => {
     setHoveredRef({ current: null });
     setHoveredSpanRef({ current: null });
-  }, [currentMainPage, navigation]);
+  }, [mainPage, navigation]);
 
-  useNavigationDash({
-    listRef,
-    hoveredRef,
-    hoveredSpanRef,
-    currentPageRef,
-    currentPageSpanRef,
-  });
 
   return (
     <AtomWrapper variant="pda_navigation_wrapper">
@@ -59,7 +50,7 @@ export const NavigationPDA = () => {
                   <NavigationPDALink
                     key={idx}
                     item={item}
-                    currentMainPage={currentMainPage}
+                    currentMainPage={mainPage}
                     setHoveredRef={setHoveredRef}
                     setHoveredSpanRef={setHoveredSpanRef}
                     setCurrentPageRef={setCurrentPageRef}
@@ -75,7 +66,13 @@ export const NavigationPDA = () => {
               )}
             </ul>
           </AtomWrapper>
-          <NavigationPDADash />
+          <NavigationPDADash
+            listRef={listRef}
+            hoveredRef={hoveredRef}
+            hoveredSpanRef={hoveredSpanRef}
+            currentPageRef={currentPageRef}
+            currentPageSpanRef={currentPageSpanRef}
+          />
         </nav>
       </AtomWrapper>
       <AtomButton variant="destructive">E</AtomButton>

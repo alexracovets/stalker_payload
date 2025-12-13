@@ -32,19 +32,15 @@ export const NavigationPDALink = ({
   }, [setHoveredRef, setHoveredSpanRef]);
 
   const handleClick = useCallback(() => {
-    if (currentMainPage?.slug === item.slug) {
+    if (currentMainPage === item) {
       setCurrentPageRef({ current: elementRef.current });
       setCurrentPageSpanRef({ current: spanRef.current });
     }
-  }, [setCurrentPageRef, setCurrentPageSpanRef, currentMainPage, item.slug]);
+  }, [setCurrentPageRef, setCurrentPageSpanRef, currentMainPage, item]);
 
   useEffect(() => {
     handleClick();
   }, [handleClick]);
-
-  useEffect(() => {
-    handleMouseEnter();
-  }, [handleMouseEnter]);
 
   return (
     <li ref={elementRef} onMouseEnter={handleMouseEnter} onClick={handleClick}>

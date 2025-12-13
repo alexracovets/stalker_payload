@@ -4,6 +4,7 @@ import { ElementsPage } from "@payload-types";
 
 import { AsideSectionsControl } from "./AsideSectionsControl";
 import { AsideSearch } from "./AsideSearch/AsideSearch";
+import { AtomHR } from "@atoms";
 
 import { useNavigation } from "@hooks";
 
@@ -14,6 +15,7 @@ export const AsideContext = () => {
     <div>
       <AsideSearch />
       <AsideSectionsControl />
+      <AtomHR variant="default" />
       <div>
         {elements?.map((element) => {
           const elementData = element as ElementsPage;
