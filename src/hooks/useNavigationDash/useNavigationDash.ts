@@ -1,7 +1,6 @@
 import { MainPage } from "@payload-types";
 import { useCallback, useEffect, useState } from "react";
 
-
 interface useNavigationDashProps {
   listRef: React.RefObject<HTMLUListElement | null>;
   hoveredRef: React.RefObject<HTMLLIElement | null>;
@@ -40,26 +39,28 @@ export const useNavigationDash = ({
       setUnderline({
         left: `${linkRectHovered?.left - listRect?.left}px`,
         width: `${linkRectHovered?.width}px`,
-      })
+      });
       setShortline({
         left: `${spanRectHovered?.left - listRect?.left}px`,
         width: `${spanRectHovered?.width}px`,
-      })
+      });
       setActive(true);
-    } else if (linkRectCurrent?.left && listRect?.left && spanRectCurrent?.left) {
+    } else if (
+      linkRectCurrent?.left &&
+      listRect?.left &&
+      spanRectCurrent?.left
+    ) {
       setUnderline({
         left: `${linkRectCurrent?.left - listRect?.left}px`,
         width: `${linkRectCurrent?.width}px`,
-      })
+      });
       setShortline({
         left: `${spanRectCurrent?.left - listRect?.left}px`,
         width: `${spanRectCurrent?.width}px`,
-      })
+      });
       setActive(true);
     }
-  },
-    [listRef, hoveredRef, hoveredSpanRef, currentPageRef, currentPageSpanRef]
-  );
+  }, [listRef, hoveredRef, hoveredSpanRef, currentPageRef, currentPageSpanRef]);
 
   useEffect(() => {
     if (listRef) {
@@ -68,6 +69,20 @@ export const useNavigationDash = ({
       });
     }
   }, [getValues, listRef, navigation, currentPageRef, currentPageSpanRef]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      requestAnimationFrame(() => {
+        getValues();
+      });
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [getValues]);
 
   return {
     underline,
