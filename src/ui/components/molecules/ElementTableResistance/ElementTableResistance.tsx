@@ -54,7 +54,7 @@ export const ElementTableResistance = ({
                   />
                   <AtomWrapper
                     variant="resistance_item_dashfields_dash_separator"
-                    style={{ left: `${79}%` }}
+                    style={{ left: `${79}%` }} 
                   />
                 </AtomWrapper>
               </AtomWrapper>
