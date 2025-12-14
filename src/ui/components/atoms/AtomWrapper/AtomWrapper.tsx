@@ -136,6 +136,9 @@ const variants = cva("", {
         "flex flex-col w-full py-[32px] gap-y-[8px]"
       ),
       loader_wrapper: cn("w-full h-full flex justify-center items-center"),
+      page_li_wrapper: cn(
+        "w-full h-full bg-page-li-bg nth-of-type-[2n]:bg-accordion-bg"
+      ),
     },
   },
   defaultVariants: {

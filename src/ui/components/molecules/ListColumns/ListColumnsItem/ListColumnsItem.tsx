@@ -3,7 +3,7 @@
 import { ElementsPage, Section, SectionsIcon } from "@payload-types";
 import { useState } from "react";
 
-import { AtomList, AtomListItem } from "@atoms";
+import { AtomList, AtomListItem, AtomWrapper } from "@atoms";
 
 import {
   CategoryIcon,
@@ -21,39 +21,21 @@ interface ListColumnsItemProps {
 
 export const ListColumnsItem = ({ section, idx }: ListColumnsItemProps) => {
   const [hovered, setHovered] = useState(false);
-  const [hoveredTrigger, setHoveredTrigger] = useState(false);
- 
-  const handleMouseEnter = () => {
-    setHoveredTrigger(true);
-  }
-  const handleMouseLeave = () => {
-    setHovered(false);
-    setHoveredTrigger(false);
-  }
+
   return (
     <AccordionItem value={`item-${idx}`}>
       <AccordionTrigger
         variant="section_view"
-        className={cn(
-          hoveredTrigger &&
-          "border-main-yellow-border",
-          hoveredTrigger && !hovered && "text-main-white bg-main-yellow-border"
-        )}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
+        className={cn(hovered && "border-main-yellow-border")}
       >
         <AtomLink
           href={section.slug}
           variant="categoryListTrigger"
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
-          className={cn(
-            hovered &&
-            "text-main-yellow transition-text ease-in-out duration-300"
-          )}
         >
           <CategoryIcon
-            active={hovered}
+            active={false}
             icons={section.icons as SectionsIcon}
             variant="section_view"
             wrapper="category_icon_wrapper"
@@ -67,11 +49,13 @@ export const ListColumnsItem = ({ section, idx }: ListColumnsItemProps) => {
             {section.elements.map(
               (element: number | ElementsPage, index: number) =>
                 typeof element === "object" && (
-                  <AtomListItem variant="column_section_view" key={index}>
-                    <AtomLink href={element.slug} variant="categoryList">
-                      {element.title}
-                    </AtomLink>
-                  </AtomListItem>
+                  <AtomWrapper variant="page_li_wrapper" key={index}>
+                    <AtomListItem variant="column_section_view">
+                      <AtomLink href={element.slug} variant="categoryList">
+                        {element.title}
+                      </AtomLink>
+                    </AtomListItem>
+                  </AtomWrapper>
                 )
             )}
           </AtomList>

@@ -3,7 +3,7 @@
 import * as React from "react";
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
 import { ChevronDownIcon } from "lucide-react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 import { cn } from "@utils";
 import { cva, VariantProps } from "class-variance-authority";
@@ -42,6 +42,7 @@ const triggerVariants = cva(
         default: "flex justify-between items-center w-full h-full",
         section_view: cn(
           "flex justify-between items-center gap-x-[16px] w-full h-full cursor-pointer border border-main-border rounded-[4px] bg-main-border pr-[16px]",
+          "data-[state=open]:rounded-b-[0px]",
           "transition-all ease-in-out duration-300"
         ),
       },
@@ -85,17 +86,58 @@ function AccordionContent({
   children,
   ...props
 }: React.ComponentProps<typeof AccordionPrimitive.Content>) {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const contentRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    const element = contentRef.current;
+    if (!element) return;
+
+    const observer = new MutationObserver(() => {
+      const state = element.getAttribute("data-state");
+      setIsOpen(state === "open");
+    });
+
+    observer.observe(element, {
+      attributes: true,
+      attributeFilter: ["data-state"],
+    });
+
+    const initialState = element.getAttribute("data-state");
+    setIsOpen(initialState === "open");
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <AccordionPrimitive.Content data-slot="accordion-content" {...props} suppressHydrationWarning>
-      <motion.div
-        initial={false}
-        animate={{ height: "auto", opacity: 1 }}
-        exit={{ height: 0, opacity: 0 }}
-        transition={{ duration: 0.2, ease: "easeInOut" }}
-        className={cn("pt-0 flex", className)}
-      >
-        {children}
-      </motion.div>
+    <AccordionPrimitive.Content
+      ref={contentRef}
+      data-slot="accordion-content"
+      forceMount
+      {...props}
+      suppressHydrationWarning
+    >
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.div
+            key="content"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{
+              height: "auto",
+              opacity: 1,
+              transition: { duration: 0.3, ease: "easeInOut" },
+            }}
+            exit={{
+              height: 0,
+              opacity: 0,
+              transition: { duration: 0.3, ease: "easeInOut" },
+            }}
+            className={cn("overflow-hidden pt-0 flex", className)}
+          >
+            {children}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </AccordionPrimitive.Content>
   );
 }

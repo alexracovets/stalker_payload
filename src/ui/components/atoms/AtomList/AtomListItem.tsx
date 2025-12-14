@@ -8,9 +8,10 @@ const variants = cva("w-full", {
     variant: {
       default: "",
       column_section_view: cn(
-        "relative nth-of-type-[2n]:bg-main-border hover:bg-[#EF8E020F]! relative transition-background ease-in-out duration-300",
-        "before:content-[''] before:absolute before:left-0 before:top-0 before:w-[8px] before:h-full before:bg-transparent hover:before:bg-main-yellow-border before:transition-background before:ease-in-out before:duration-300",
-        "after:content-[''] after:absolute after:right-0 after:top-0 after:w-[8px] after:h-full after:bg-transparent hover:after:bg-main-yellow-border after:transition-background after:ease-in-out after:duration-300"
+        "relative nth-of-type-[2n]:bg-main-border bg-aside-li-gradient relative",
+        "border-x-[8px] border-x-transparent",
+        "after:content-[''] after:absolute after:left-0 after:top-0 after:w-full after:h-[1px]",
+        "before:content-[''] before:absolute before:left-0 before:bottom-0 before:w-full before:h-[1px]"
       ),
     },
     defaultVariants: {

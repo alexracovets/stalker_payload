@@ -12,7 +12,7 @@ interface CategoryIconProps {
   wrapper: "category_icon_wrapper" | "aside_icon_wrapper";
   active: boolean;
   wrapper_active?: boolean;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 export const CategoryIcon = ({

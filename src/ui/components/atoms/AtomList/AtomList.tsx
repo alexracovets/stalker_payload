@@ -7,8 +7,7 @@ const variants = cva("outline-none border-[1px] border-main-border", {
   variants: {
     variant: {
       default: "flex flex-col gap-y-[16px]",
-      column_section_view:
-        "flex flex-col w-full border-transparent bg-accordion-bg",
+      column_section_view: "flex flex-col w-full border-none bg-accordion-bg",
     },
   },
   defaultVariants: {
@@ -22,10 +21,6 @@ interface AtomListProps {
   className?: string;
 }
 
-export const AtomList = ({
-  children,
-  variant,
-  className,
-}: AtomListProps) => {
+export const AtomList = ({ children, variant, className }: AtomListProps) => {
   return <ul className={cn(variants({ variant, className }))}>{children}</ul>;
 };
