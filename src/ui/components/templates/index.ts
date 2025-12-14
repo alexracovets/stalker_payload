@@ -1,5 +1,6 @@
 export { TemplateExosuitSuit } from "./TemplateExosuitSuit";
 export { TemplateSectionPage } from "./TemplateSectionPage";
+export { TemplateMachineGun } from "./TemplateMachineGun";
 export { TemplateAutomatic } from "./TemplateAutomatic";
 export { LayoutDefaultWrapper } from "./LayoutDefault";
 export { TemplateMainPage } from "./TemplateMainPage";

@@ -3,6 +3,7 @@ import { ElementsPage } from "@payload-types";
 
 import {
   TemplateExosuitSuit,
+  TemplateMachineGun,
   TemplateAutomatic,
   TemplateShotgun,
   TemplateObject,
@@ -92,6 +93,9 @@ export default async function ResultPage({ params }: PageProps) {
       )}
       {pageData.type === "shotgun" && (
         <TemplateShotgun data={pageData as ElementsPage} />
+      )}
+      {pageData.type === "machine_gun" && (
+        <TemplateMachineGun data={pageData as ElementsPage} />
       )}
     </>
   );

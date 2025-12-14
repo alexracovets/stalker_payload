@@ -265,7 +265,7 @@ export interface SectionsIcon {
  */
 export interface ElementsPage {
   id: number;
-  type?: ('suits' | 'masks' | 'exosuits' | 'objects' | 'pistols' | 'automatic' | 'shotgun') | null;
+  type?: ('suits' | 'masks' | 'exosuits' | 'objects' | 'pistols' | 'automatic' | 'shotgun' | 'machine_gun') | null;
   image: number | Media;
   title: string;
   sub_title: string;
@@ -399,6 +399,27 @@ export interface ElementsPage {
       | null;
   };
   shotgun_group?: {
+    author_image?: (number | null) | Media;
+    designer_name?: string | null;
+    designer_link?: string | null;
+    resistance?:
+      | {
+          indicator: number | ResistanceTable;
+          value: number;
+          id?: string | null;
+        }[]
+      | null;
+    details?:
+      | {
+          indicator: number | DetaileTable;
+          value: string;
+          effect: 'positive' | 'negative' | 'normal';
+          efect_power: 'low' | 'medium' | 'high' | 'normal';
+          id?: string | null;
+        }[]
+      | null;
+  };
+  machine_gun_group?: {
     author_image?: (number | null) | Media;
     designer_name?: string | null;
     designer_link?: string | null;
@@ -859,6 +880,29 @@ export interface ElementsPagesSelect<T extends boolean = true> {
             };
       };
   shotgun_group?:
+    | T
+    | {
+        author_image?: T;
+        designer_name?: T;
+        designer_link?: T;
+        resistance?:
+          | T
+          | {
+              indicator?: T;
+              value?: T;
+              id?: T;
+            };
+        details?:
+          | T
+          | {
+              indicator?: T;
+              value?: T;
+              effect?: T;
+              efect_power?: T;
+              id?: T;
+            };
+      };
+  machine_gun_group?:
     | T
     | {
         author_image?: T;

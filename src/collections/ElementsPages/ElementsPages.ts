@@ -2,6 +2,7 @@ import { ElementsPage } from "@/config/payload/payload-types";
 import type { CollectionConfig } from "payload";
 
 import {
+  MachineGunFields,
   PageConfigFields,
   AutomaticFields,
   ElementsFields,
@@ -97,6 +98,7 @@ export const ElementsPages: CollectionConfig = {
             ...PistolFields(),
             ...AutomaticFields(),
             ...ShotgunFields(),
+            ...MachineGunFields(),
           ],
         },
         {

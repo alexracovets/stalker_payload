@@ -1,5 +1,6 @@
 export { AsideSearchFields } from "./AsideSearchFields";
 export { PageConfigFields } from "./PageConfigFields";
+export { MachineGunFields } from "./MachineGunFields";
 export { AutomaticFields } from "./AutomaticFields";
 export { ElementsFields } from "./ElementsFields";
 export { ObjectsFields } from "./ObjectsFields";
@@ -7,6 +8,6 @@ export { ShotgunFields } from "./ShotgunFields";
 export { PistolFields } from "./PistolFields";
 export { ArmorFields } from "./ArmorFields";
 export { MaskFields } from "./MaskFields";
-export { ExoFields } from "./ExoFields";
 export { HomeVideo } from "./HomeVideo";
+export { ExoFields } from "./ExoFields";
 export { HomeLogo } from "./HomeLogo";
