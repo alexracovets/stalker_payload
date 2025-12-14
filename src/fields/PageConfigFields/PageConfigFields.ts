@@ -12,6 +12,7 @@ export const PageConfigFields = (): Field[] => {
       name: "slug",
       type: "text",
       required: true,
+      unique: true,
       admin: {
         hidden: true,
       },

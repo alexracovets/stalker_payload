@@ -59,6 +59,7 @@ interface AtomLinkProps {
   children?: React.ReactNode;
   href: string;
   style?: React.CSSProperties;
+  target?: string;
   onMouseEnter?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
   onMouseLeave?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
 }
@@ -71,6 +72,7 @@ export const AtomLink = ({
   style,
   onMouseEnter,
   onMouseLeave,
+  target,
   ...props
 }: AtomLinkProps) => {
   return (
@@ -80,6 +82,8 @@ export const AtomLink = ({
       style={style}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
+      target={target}
+      rel={target === "_blank" ? "noopener noreferrer" : undefined}
       {...props}
     >
       {children}

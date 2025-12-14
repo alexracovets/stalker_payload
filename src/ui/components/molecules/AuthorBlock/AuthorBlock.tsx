@@ -12,7 +12,7 @@ interface AuthorBlockProps {
 
 export const AuthorBlock = ({ image, name, link }: AuthorBlockProps) => {
   return (
-    <AtomLink variant="author_link" href={link}>
+    <AtomLink variant="author_link" href={link} target="_blank">
       <AtomImage image={image} variant="table_icon" />
       <AtomText variant="author">{name}</AtomText>
     </AtomLink>
