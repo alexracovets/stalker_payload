@@ -78,11 +78,7 @@ export const AtomImage = ({
       <Image
         src={resolvedSrc}
         alt={image?.alt || alt || "image"}
-        onLoad={() => {
-          setTimeout(() => {
-            setIsLoaded(true);
-          }, 300);
-        }}
+        onLoad={() => setIsLoaded(true)}
         priority={priority}
         sizes="100%"
         fill

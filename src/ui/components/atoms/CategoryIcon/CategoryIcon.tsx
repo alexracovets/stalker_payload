@@ -13,6 +13,7 @@ interface CategoryIconProps {
   active: boolean;
   wrapper_active?: boolean;
   onClick?: () => void;
+  noHover?: boolean;
 }
 
 export const CategoryIcon = ({
@@ -22,13 +23,14 @@ export const CategoryIcon = ({
   wrapper = "category_icon_wrapper",
   onClick,
   wrapper_active,
+  noHover = false,
 }: CategoryIconProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
     <AtomWrapper
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseEnter={() => !noHover && setIsHovered(true)}
+      onMouseLeave={() => !noHover && setIsHovered(false)}
       variant={wrapper}
       onClick={onClick}
       data-active={wrapper_active}

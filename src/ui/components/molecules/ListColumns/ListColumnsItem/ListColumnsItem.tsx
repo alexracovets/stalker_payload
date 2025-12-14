@@ -39,6 +39,7 @@ export const ListColumnsItem = ({ section, idx }: ListColumnsItemProps) => {
             icons={section.icons as SectionsIcon}
             variant="section_view"
             wrapper="category_icon_wrapper"
+            noHover
           />
           {section.title}
         </AtomLink>
