@@ -23,7 +23,11 @@ export const ListGridItemShowCaseLink = ({
       onMouseLeave={() => setIsHovered(false)}
     >
       {typeof element === "object" && element.image && (
-        <AtomImage image={element.image as Media} variant="grid_showcase" />
+        <AtomImage
+          image={element.image as Media}
+          variant="grid_showcase"
+          noCover
+        />
       )}
       <AtomText
         variant="showcase_title"

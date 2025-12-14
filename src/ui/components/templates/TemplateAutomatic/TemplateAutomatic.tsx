@@ -9,12 +9,12 @@ import {
   AuthorBlock,
 } from "@molecules";
 
-interface TemplatePistolProps {
+interface TemplateAutomaticProps {
   data: ElementsPage;
 }
 
-export const TemplatePistol = ({ data }: TemplatePistolProps) => {
-  const pistolData = data.pistol_group;
+export const TemplateAutomatic = ({ data }: TemplateAutomaticProps) => {
+  const automaticData = data.automatic_group;
 
   return (
     <AtomWrapper variant="content_element">
@@ -33,25 +33,28 @@ export const TemplatePistol = ({ data }: TemplatePistolProps) => {
           <AtomHR variant="default" />
           <AtomWrapper variant="image_author_wrapper">
             <AtomImage image={data.image as Media} variant="element_pistol" />
-            {pistolData?.author_image &&
-              pistolData.designer_name &&
-              pistolData.designer_link && (
+            {automaticData?.author_image &&
+              automaticData.designer_name &&
+              automaticData.designer_link && (
                 <AuthorBlock
-                  image={pistolData.author_image as Media}
-                  name={pistolData.designer_name}
-                  link={pistolData.designer_link}
+                  image={automaticData.author_image as Media}
+                  name={automaticData.designer_name}
+                  link={automaticData.designer_link}
                 />
               )}
           </AtomWrapper>
           <RichText text={data.description} />
-          {pistolData && (
-            <ElementTableResistance items={pistolData.resistance} />
+          {automaticData && (
+            <ElementTableResistance items={automaticData.resistance} />
           )}
         </AtomWrapper>
         <AtomWrapper variant="content_suits_wrapper_right">
           <WeaponAdditionBlock />
-          {pistolData?.details && (
-            <ElementTableDetails items={pistolData?.details} variant="pistol" />
+          {automaticData?.details && (
+            <ElementTableDetails
+              items={automaticData?.details}
+              variant="pistol"
+            />
           )}
         </AtomWrapper>
       </AtomWrapper>

@@ -1,5 +1,6 @@
 export { AsideSearchFields } from "./AsideSearchFields";
 export { PageConfigFields } from "./PageConfigFields";
+export { AutomaticFields } from "./AutomaticFields";
 export { ElementsFields } from "./ElementsFields";
 export { ObjectsFields } from "./ObjectsFields";
 export { PistolFields } from "./PistolFields";

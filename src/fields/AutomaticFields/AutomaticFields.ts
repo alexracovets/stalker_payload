@@ -1,14 +1,14 @@
 import { type Field, SanitizedConfig, getPayload } from "payload";
 import { config } from "node:process";
 
-export const PistolFields = (): Field[] => {
+export const AutomaticFields = (): Field[] => {
   return [
     {
       type: "group",
-      name: "pistol_group",
-      label: "Поля для пістолета",
+      name: "automatic_group",
+      label: "Поля для штурмових гвинтівок",
       admin: {
-        condition: (data) => data.type === "pistols",
+        condition: (data) => data.type === "automatic",
       },
       fields: [
         {
@@ -61,7 +61,7 @@ export const PistolFields = (): Field[] => {
         {
           name: "resistance",
           admin: {
-            condition: (data) => data.type === "pistols",
+            condition: (data) => data.type === "automatic",
           },
           type: "array",
           label: "Показники зброї",
@@ -123,14 +123,14 @@ export const PistolFields = (): Field[] => {
           name: "details",
           type: "array",
           admin: {
-            condition: (data) => data.type === "pistols",
+            condition: (data) => data.type === "automatic",
           },
           labels: {
             singular: "Показник",
             plural: "Покази",
           },
           defaultValue: async () => {
-            const preset = [16, 17, 18, 19, 20, 1, 3];
+            const preset = [21, 17, 18, 19, 20, 1, 3];
             const detaileTable = await getPayload({
               config: config as unknown as SanitizedConfig,
             });

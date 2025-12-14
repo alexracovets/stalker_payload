@@ -16,6 +16,7 @@ interface AtomImageProps {
   priority?: boolean;
   className?: string;
   noLoader?: boolean;
+  noCover?: boolean;
 }
 
 const variants = cva("", {
@@ -71,6 +72,7 @@ export const AtomImage = ({
   priority = false,
   className,
   noLoader = false,
+  noCover = false,
 }: AtomImageProps) => {
   const resolvedSrc = image?.url || src || "";
   const [isLoaded, setIsLoaded] = useState(false);
@@ -86,7 +88,7 @@ export const AtomImage = ({
         sizes="100%"
         fill
         className={cn(
-          "object-cover",
+          !noCover ? "object-cover" : "object-contain",
           "transition-opacity ease-in-out duration-300",
           !isLoaded && !noLoader && "opacity-0"
         )}

@@ -1,6 +1,6 @@
 "use client";
 
-import { ElementsPage, Media } from "@payload-types";
+import { DetaileTable, ElementsPage, Media } from "@payload-types";
 
 import { AtomImage, AtomWrapper, AtomText } from "@atoms";
 import { cn } from "@/utils/cn";
@@ -56,6 +56,12 @@ export const ElementTableDetails = ({
             power: item.efect_power,
             effect: item.effect,
           });
+          const reservId = [16, 21];
+
+          const isReserv = reservId.includes(
+            (item.indicator as DetaileTable)?.id
+          );
+
           return (
             <AtomWrapper
               variant={variant ? `details_item_${variant}` : `details_item`}
@@ -71,7 +77,7 @@ export const ElementTableDetails = ({
                         variant="table_icon"
                       />
                       <AtomText variant="table_title">
-                        {item.indicator.title}
+                        {isReserv ? "Тип" : item.indicator.title}
                       </AtomText>
                     </AtomWrapper>
                   )}

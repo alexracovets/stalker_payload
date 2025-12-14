@@ -3,6 +3,7 @@ import type { CollectionConfig } from "payload";
 
 import {
   PageConfigFields,
+  AutomaticFields,
   ElementsFields,
   ObjectsFields,
   PistolFields,
@@ -93,6 +94,7 @@ export const ElementsPages: CollectionConfig = {
             ...ExoFields(),
             ...ObjectsFields(),
             ...PistolFields(),
+            ...AutomaticFields(),
           ],
         },
         {

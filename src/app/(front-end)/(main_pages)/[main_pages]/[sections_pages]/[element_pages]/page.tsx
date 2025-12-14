@@ -2,11 +2,12 @@ import { Metadata } from "next";
 import { ElementsPage } from "@payload-types";
 
 import {
-  TemplateSuit,
-  TemplateMask,
   TemplateExosuitSuit,
+  TemplateAutomatic,
   TemplateObject,
   TemplatePistol,
+  TemplateSuit,
+  TemplateMask,
 } from "@templates";
 
 import { getCollection, getCollectionItem } from "@api";
@@ -67,7 +68,7 @@ export default async function ResultPage({ params }: PageProps) {
   if (!pageData) {
     return <div>Page not found</div>;
   }
-
+  
   return (
     <>
       {pageData.type === "suits" && (
@@ -84,6 +85,9 @@ export default async function ResultPage({ params }: PageProps) {
       )}
       {pageData.type === "pistols" && (
         <TemplatePistol data={pageData as ElementsPage} />
+      )}
+      {pageData.type === "automatic" && (
+        <TemplateAutomatic data={pageData as ElementsPage} />
       )}
     </>
   );
