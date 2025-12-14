@@ -6,6 +6,7 @@ import {
   AutomaticFields,
   ElementsFields,
   ObjectsFields,
+  ShotgunFields,
   PistolFields,
   ArmorFields,
   MaskFields,
@@ -95,6 +96,7 @@ export const ElementsPages: CollectionConfig = {
             ...ObjectsFields(),
             ...PistolFields(),
             ...AutomaticFields(),
+            ...ShotgunFields(),
           ],
         },
         {

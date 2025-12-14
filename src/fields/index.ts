@@ -3,6 +3,7 @@ export { PageConfigFields } from "./PageConfigFields";
 export { AutomaticFields } from "./AutomaticFields";
 export { ElementsFields } from "./ElementsFields";
 export { ObjectsFields } from "./ObjectsFields";
+export { ShotgunFields } from "./ShotgunFields";
 export { PistolFields } from "./PistolFields";
 export { ArmorFields } from "./ArmorFields";
 export { MaskFields } from "./MaskFields";

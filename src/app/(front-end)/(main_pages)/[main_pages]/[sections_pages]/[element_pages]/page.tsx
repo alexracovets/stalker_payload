@@ -4,6 +4,7 @@ import { ElementsPage } from "@payload-types";
 import {
   TemplateExosuitSuit,
   TemplateAutomatic,
+  TemplateShotgun,
   TemplateObject,
   TemplatePistol,
   TemplateSuit,
@@ -68,7 +69,7 @@ export default async function ResultPage({ params }: PageProps) {
   if (!pageData) {
     return <div>Page not found</div>;
   }
-  
+
   return (
     <>
       {pageData.type === "suits" && (
@@ -88,6 +89,9 @@ export default async function ResultPage({ params }: PageProps) {
       )}
       {pageData.type === "automatic" && (
         <TemplateAutomatic data={pageData as ElementsPage} />
+      )}
+      {pageData.type === "shotgun" && (
+        <TemplateShotgun data={pageData as ElementsPage} />
       )}
     </>
   );

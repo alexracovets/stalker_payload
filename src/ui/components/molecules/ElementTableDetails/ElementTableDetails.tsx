@@ -56,7 +56,7 @@ export const ElementTableDetails = ({
             power: item.efect_power,
             effect: item.effect,
           });
-          const reservId = [16, 21];
+          const reservId = [16, 21, 22];
 
           const isReserv = reservId.includes(
             (item.indicator as DetaileTable)?.id
