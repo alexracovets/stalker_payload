@@ -1,9 +1,12 @@
 "use client";
 
-import Image from "next/image";
-import { Media } from "@payload-types";
 import { cva, VariantProps } from "class-variance-authority";
+import { Media } from "@payload-types";
+import { useState } from "react";
+import Image from "next/image";
+
 import { cn } from "@utils";
+import { AtomLoader } from "@atoms";
 
 interface AtomImageProps {
   image?: Media;
@@ -12,6 +15,7 @@ interface AtomImageProps {
   variant: VariantProps<typeof variants>["variant"];
   priority?: boolean;
   className?: string;
+  noLoader?: boolean;
 }
 
 const variants = cva("", {
@@ -44,8 +48,11 @@ const variants = cva("", {
       element_suit: cn("w-[388px] h-[388px]"),
       element_object: cn("w-[388px] h-[256px]"),
       table_icon: cn("w-[32px] min-w-[32px] h-[32px] min-h-[32px]"),
-      input_search: cn("absolute top-[50%] left-[12px] translate-y-[-50%] w-[32px] h-[32px]"),
+      input_search: cn(
+        "absolute top-[50%] left-[12px] translate-y-[-50%] w-[32px] h-[32px]"
+      ),
       element_pistol: cn("w-[563px] h-[204px]"),
+      loader: cn("w-[32px] h-[32px]"),
     },
   },
   defaultVariants: {
@@ -60,18 +67,30 @@ export const AtomImage = ({
   variant,
   priority = false,
   className,
+  noLoader = false,
 }: AtomImageProps) => {
   const resolvedSrc = image?.url || src || "";
+  const [isLoaded, setIsLoaded] = useState(false);
 
   return (
     <div className={cn("relative", variants({ variant }), className)}>
+      {!isLoaded && !noLoader && <AtomLoader />}
       <Image
         src={resolvedSrc}
         alt={image?.alt || alt || "image"}
+        onLoad={() => {
+          setTimeout(() => {
+            setIsLoaded(true);
+          }, 300);
+        }}
         priority={priority}
         sizes="100%"
         fill
-        className={"object-cover"}
+        className={cn(
+          "object-cover",
+          "transition-opacity ease-in-out duration-300",
+          !isLoaded && !noLoader && "opacity-0"
+        )}
         unoptimized={true}
       />
     </div>

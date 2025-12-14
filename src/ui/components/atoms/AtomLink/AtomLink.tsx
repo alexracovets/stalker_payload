@@ -39,8 +39,12 @@ const variants = cva("outline-none!", {
         "flex flex-col gap-y-[8px] justify-center items-center w-[19.2rem]",
         "transition-text ease-in-out duration-300"
       ),
-      author_link: cn(
-        "flex justify-start items-center gap-x-[8px]"
+      author_link: cn("flex justify-start items-center gap-x-[8px]"),
+      aside_li: cn(
+        "flex justify-start items-center gap-x-[16px] w-full relative bg-aside-li-gradient cursor-pointer",
+        "border-x-[8px] border-x-transparent px-[16px] py-[14px]",
+        "after:content-[''] after:absolute after:left-0 after:top-0 after:w-full after:h-[1px]",
+        "before:content-[''] before:absolute before:left-0 before:bottom-0 before:w-full before:h-[1px]"
       ),
     },
   },

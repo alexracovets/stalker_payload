@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @theme {
   --breakpoint-xl: 1921px;
@@ -36,11 +36,11 @@
   --color-effect-worst: #e23027;
   --color-aside-control-bg: #131211;
 
-  --font-stalker: 'var(--font-stalker)';
-  --font-calibri: 'var(--font-calibri)';
-  --font-roboto_condensed: 'var(--font-roboto_condensed)';
-  --font-roboto: 'var(--font-roboto)';
-  --font-rethink_sans: 'var(--font-rethink_sans)';
+  --font-stalker: "var(--font-stalker)";
+  --font-calibri: "var(--font-calibri)";
+  --font-roboto_condensed: "var(--font-roboto_condensed)";
+  --font-roboto: "var(--font-roboto)";
+  --font-rethink_sans: "var(--font-rethink_sans)";
 }
 
 html {
@@ -65,6 +65,39 @@ html {
 
 .bg-custom-gradient_second {
   background: linear-gradient(to top, #837f7c, #c9c2b2, #c9c2b2, #837f7c);
+}
+
+.bg-aside-li-gradient {
+  background-color: transparent;
+  border-color: transparent;
+  transition:
+    background-color 0.3s ease-in-out,
+    border-color 0.3s ease-in-out;
+  will-change: background-color, border-color;
+
+  &::after,
+  &::before {
+    background: linear-gradient(
+      to right,
+      #6e450d 0%,
+      #2a2013 50%,
+      #58380e 100%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    will-change: opacity;
+  }
+
+  &[data-active="true"],
+  &:hover {
+    background-color: rgba(239, 142, 2, 0.06);
+    border-color: var(--color-main-yellow-border);
+
+    &::after,
+    &::before {
+      opacity: 1;
+    }
+  }
 }
 
 .clip_startBtn {

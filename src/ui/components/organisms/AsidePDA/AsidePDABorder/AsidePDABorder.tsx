@@ -9,6 +9,7 @@ export const AsidePDABorder = () => {
         src="/layoutPDA/vertical_center.png"
         variant="aside_right"
         alt="aside_right"
+        noLoader
       />
     </div>
   );

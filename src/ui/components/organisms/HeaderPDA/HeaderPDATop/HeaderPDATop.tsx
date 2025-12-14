@@ -12,6 +12,7 @@ export const HeaderPDATop = () => {
         alt="header_layout"
         variant="header_layout"
         priority
+        noLoader
       />
       <Timer />
     </div>

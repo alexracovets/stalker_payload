@@ -73,7 +73,9 @@ const variants = cva("", {
       ),
       category_icon_wrapper: cn("relative w-[56px] h-[56px]"),
       aside_icon_wrapper: cn(
-        "relative flex justify-center items-center w-[85px] h-[50px] rounded-[4px] bg-switch-bg-active overflow-hidden cursor-pointer"
+        "relative flex justify-center items-center w-[85px] h-[50px] rounded-[4px] bg-switch-bg-active overflow-hidden cursor-pointer",
+        "data-[active=true]:bg-main-destructive-bg hover:bg-main-destructive-bg",
+        "transition-all ease-in-out duration-300"
       ),
       list_grid_wrapper: cn("flex flex-col gap-x-[80px] gap-y-[48px]"),
       list_grid_item: cn("flex flex-col gap-y-[32px] w-full"),
@@ -118,11 +120,22 @@ const variants = cva("", {
       image_author_wrapper: cn(
         "flex flex-col justify-start items-start w-full"
       ),
-      aside_search_wrapper: cn("flex justify-center w-full items-center px-[10px] py-[20px] bg-aside-bg-top"),
-      aside_search_inner: cn("flex justify-center items-center w-full relative"),
-      aside_control_wrapper: cn("flex justify-center w-full items-center gap-x-[16px] w-full py-[14px] px-[12px] bg-aside-control-bg"),
-      aside_control_inner: cn("flex justify-center items-center gap-x-[12px] w-full"),
-      aside_elements_control_wrapper: cn("py-[32px]"),
+      aside_search_wrapper: cn(
+        "flex justify-center w-full items-center px-[10px] py-[20px] bg-aside-bg-top"
+      ),
+      aside_search_inner: cn(
+        "flex justify-center items-center w-full relative"
+      ),
+      aside_control_wrapper: cn(
+        "flex justify-center w-full items-center gap-x-[16px] w-full py-[14px] px-[12px] bg-aside-control-bg"
+      ),
+      aside_control_inner: cn(
+        "flex justify-center items-center gap-x-[12px] w-full"
+      ),
+      aside_elements_control_wrapper: cn(
+        "flex flex-col w-full py-[32px] gap-y-[8px]"
+      ),
+      loader_wrapper: cn("w-full h-full flex justify-center items-center"),
     },
   },
   defaultVariants: {

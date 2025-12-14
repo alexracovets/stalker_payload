@@ -17,3 +17,4 @@ export { CategoryIcon } from "./CategoryIcon";
 export { AtomList, AtomListItem } from "./AtomList";
 export { RichText } from "./RichText";
 export { AtomInput } from "./AtomInput";
+export { AtomLoader } from "./AtomLoader";

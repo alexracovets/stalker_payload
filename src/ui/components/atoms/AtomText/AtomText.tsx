@@ -38,10 +38,7 @@ const variants = cva("", {
         "text-[20px] font-medium font-roboto text-main-white-light leading-[1.45]",
         "border-b-[2px] border-main-white-light"
       ),
-      aside_li: cn(
-        "text-[26px] font-semibold text-[20px] font-roboto_condensed",
-        "border-x-[8px] border-x-main-yellow px-[16px] py-[14px]"
-      ),
+      aside_li: cn("text-[26px] font-semibold font-roboto_condensed"),
     },
   },
   defaultVariants: {
