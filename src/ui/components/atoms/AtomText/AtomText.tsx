@@ -39,6 +39,11 @@ const variants = cva("", {
         "border-b-[2px] border-main-white-light"
       ),
       aside_li: cn("text-[26px] font-semibold font-roboto_condensed"),
+      aside_search_button_text: cn(
+        "text-[26px] font-roboto_condensed font-regular text-main-destructive-bg leading-none whitespace-nowrap",
+        "data-[active=true]:text-main-yellow",
+        "transition-all ease-in-out duration-300"
+      ),
     },
   },
   defaultVariants: {

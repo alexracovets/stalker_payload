@@ -19,7 +19,7 @@ const variants = cva(
       variant: {
         default: cn(""),
         aside: cn(
-          "text-[26px] font-roboto font-medium text-main-destructive-bg leading-none py-[12px] pl-[72px]",
+          "text-[26px] font-roboto font-medium text-main-destructive-bg leading-none py-[12px] pl-[72px] pr-[16px]",
           "bg-accordion-bg border border-[1px] border-main-border rounded-[4px]"
         ),
       },

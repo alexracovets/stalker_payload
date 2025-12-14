@@ -16,6 +16,12 @@ const buttonVariants = cva("cursor-pointer", {
         "flex justify-center items-center gap-x-[1.6rem]"
       ),
       view_switch: cn("px-[12px] py-[8px]"),
+      aside_search_button: cn(
+        "flex justify-center items-center gap-x-[8px] px-[12px] py-[12px]",
+        "bg-accordion-bg border border-[1px] border-main-border rounded-[4px]",
+        "[min-height:-webkit-fill-available]",
+        "data-[active=true]:bg-pda-bg"
+      ),
     },
   },
   defaultVariants: {
@@ -25,7 +31,7 @@ const buttonVariants = cva("cursor-pointer", {
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-  VariantProps<typeof buttonVariants> {
+    VariantProps<typeof buttonVariants> {
   asChild?: boolean;
 }
 

@@ -455,6 +455,7 @@ export interface SystemField {
     search_image: number | Media;
     filter_name: string;
     filter_image: number | Media;
+    filter_image_active: number | Media;
   };
   updatedAt: string;
   createdAt: string;
@@ -840,6 +841,7 @@ export interface SystemFieldsSelect<T extends boolean = true> {
         search_image?: T;
         filter_name?: T;
         filter_image?: T;
+        filter_image_active?: T;
       };
   updatedAt?: T;
   createdAt?: T;

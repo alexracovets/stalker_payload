@@ -121,7 +121,7 @@ const variants = cva("", {
         "flex flex-col justify-start items-start w-full"
       ),
       aside_search_wrapper: cn(
-        "flex justify-center w-full items-center px-[10px] py-[20px] bg-aside-bg-top"
+        "flex justify-center w-full items-center px-[10px] py-[20px] bg-aside-bg-top gap-x-[16px]"
       ),
       aside_search_inner: cn(
         "flex justify-center items-center w-full relative"
@@ -139,6 +139,7 @@ const variants = cva("", {
       page_li_wrapper: cn(
         "w-full h-full bg-page-li-bg nth-of-type-[2n]:bg-accordion-bg"
       ),
+      input_search_button_wrapper: cn("relative w-[24px] h-[24px]"),
     },
   },
   defaultVariants: {

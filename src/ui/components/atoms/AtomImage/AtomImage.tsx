@@ -53,6 +53,9 @@ const variants = cva("", {
       ),
       element_pistol: cn("w-[563px] h-[204px]"),
       loader: cn("w-[32px] h-[32px]"),
+      input_search_button: cn(
+        "absolute left-0 top-0 w-[24px] h-[24px] opacity-0 transition-opacity ease-in-out duration-300"
+      ),
     },
   },
   defaultVariants: {
