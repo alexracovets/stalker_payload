@@ -11,15 +11,19 @@ import {
   AtomText,
   CategoryIcon,
 } from "@atoms";
+
+import { useNavigationStore } from "@store";
 import { getCollectionItem } from "@api";
-import { useNavigation } from "@hooks";
 
 export const AsideSearch = () => {
   const [data, setData] = useState<SystemField | null>(null);
-  const [searchInput, setSearchInput] = useState<string>("");
-  const [isFilterActive, setIsFilterActive] = useState<boolean>(false);
   const [filterHovered, setFilterHovered] = useState<boolean>(false);
+
+  const { searchInput, isFilterActive, setSearchInput, setIsFilterActive } =
+    useNavigationStore();
+
   const searchData = data?.group_search_aside;
+
   const fetchData = async () => {
     const payload = await getCollectionItem({
       collection: "system-fields",
@@ -32,10 +36,17 @@ export const AsideSearch = () => {
     }
   };
 
+  const handleClick = () => {
+    const status = useNavigationStore.getState().isFilterActive;
+    setIsFilterActive(!status);
+  };
+
   useEffect(() => {
     fetchData();
   }, []);
+
   if (!searchData) return null;
+
   return (
     <AtomWrapper variant="aside_search_wrapper">
       <AtomWrapper variant="aside_search_inner">
@@ -53,7 +64,7 @@ export const AsideSearch = () => {
       <AtomButton
         variant="aside_search_button"
         data-active={isFilterActive || filterHovered}
-        onClick={() => setIsFilterActive(!isFilterActive)}
+        onClick={handleClick}
         onMouseEnter={() => setFilterHovered(true)}
         onMouseLeave={() => setFilterHovered(false)}
       >
