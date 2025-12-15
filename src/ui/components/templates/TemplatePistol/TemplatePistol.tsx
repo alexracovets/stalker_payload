@@ -15,7 +15,7 @@ interface TemplatePistolProps {
 
 export const TemplatePistol = ({ data }: TemplatePistolProps) => {
   const pistolData = data.pistol_group;
-
+  const tacticalKits = data.pistol_group?.tactical_kits_api as ElementsPage[];
   return (
     <AtomWrapper variant="content_element">
       <AtomWrapper variant="content_header">
@@ -49,7 +49,7 @@ export const TemplatePistol = ({ data }: TemplatePistolProps) => {
           )}
         </AtomWrapper>
         <AtomWrapper variant="content_suits_wrapper_right">
-          <WeaponAdditionBlock />
+          <WeaponAdditionBlock tacticalKits={tacticalKits} />
           {pistolData?.details && (
             <ElementTableDetails items={pistolData?.details} variant="pistol" />
           )}

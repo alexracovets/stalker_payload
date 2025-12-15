@@ -1,3 +1,4 @@
+export { TacticalKitFields } from "./TacticalKitFields";
 export { AsideSearchFields } from "./AsideSearchFields";
 export { PageConfigFields } from "./PageConfigFields";
 export { MachineGunFields } from "./MachineGunFields";
@@ -13,4 +14,3 @@ export { MaskFields } from "./MaskFields";
 export { HomeVideo } from "./HomeVideo";
 export { ExoFields } from "./ExoFields";
 export { HomeLogo } from "./HomeLogo";
-  

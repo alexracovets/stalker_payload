@@ -49,7 +49,7 @@ export const TemplateSniper = ({ data }: TemplateSniperProps) => {
           )}
         </AtomWrapper>
         <AtomWrapper variant="content_suits_wrapper_right">
-          <WeaponAdditionBlock />
+          <WeaponAdditionBlock tacticalKits={[]} />
           {sniperData?.details && (
             <ElementTableDetails items={sniperData?.details} variant="pistol" />
           )}

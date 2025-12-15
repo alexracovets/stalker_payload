@@ -49,7 +49,7 @@ export const TemplateShotgun = ({ data }: TemplateShotgunProps) => {
           )}
         </AtomWrapper>
         <AtomWrapper variant="content_suits_wrapper_right">
-          <WeaponAdditionBlock />
+          <WeaponAdditionBlock tacticalKits={[]} />
           {shotgunData?.details && (
             <ElementTableDetails
               items={shotgunData?.details}

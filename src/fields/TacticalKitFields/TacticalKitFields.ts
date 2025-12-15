@@ -1,14 +1,14 @@
 import { type Field, SanitizedConfig, getPayload } from "payload";
 import { config } from "node:process";
 
-export const PistolFields = (): Field[] => {
+export const TacticalKitFields = (): Field[] => {
   return [
     {
       type: "group",
-      name: "pistol_group",
-      label: "Поля для пістолета",
+      name: "tactical_kit_group",
+      label: "Поля для тактичного обвісу",
       admin: {
-        condition: (data) => data.type === "pistols",
+        condition: (data) => data.type === "tactical_kit",
       },
       fields: [
         {
@@ -59,96 +59,34 @@ export const PistolFields = (): Field[] => {
           ],
         },
         {
-          name: "tactical_kits_relation",
-          type: "join",
-          collection: "elements_pages",
-          on: "tactical_kit_group.relation",
-          label: "Тактичні обвіси, де використовується цей елемент",
+          name: "relation",
+          type: "relationship",
+          relationTo: "elements_pages",
+          label: "Зв'язок з елементом",
           hasMany: true,
-          where: {
-            type: {
-              equals: "tactical_kit",
-            },
-          },
           admin: {
-            allowCreate: false,
-            disableListColumn: true,
             width: "100%",
           },
-        },
-        {
-          name: "resistance",
-          admin: {
-            condition: (data) => data.type === "pistols",
-          },
-          type: "array",
-          label: "Показники зброї",
-          labels: {
-            singular: "Показник",
-            plural: "Покази",
-          },
-          defaultValue: async () => {
-            const preset = [7, 8, 9, 10, 11];
-            const resistanceTable = await getPayload({
-              config: config as unknown as SanitizedConfig,
-            });
-            const resistanceTableData = await resistanceTable.find({
-              collection: "resistance_table",
-              where: {
-                id: {
-                  in: preset,
-                },
-              },
-            });
-            const resistances = resistanceTableData.docs;
-            return preset.map((id) => ({
-              indicator: resistances.find((resistance) => resistance.id === id),
-              value: "0",
-            }));
-          },
-          fields: [
-            {
-              type: "row",
-              fields: [
-                {
-                  name: "indicator",
-                  label: "Показник",
-                  type: "relationship",
-                  relationTo: "resistance_table",
-                  required: true,
-                  hasMany: false,
-                  admin: {
-                    width: "50%",
-                  },
-                },
-                {
-                  name: "value",
-                  label: "Значення",
-                  type: "number",
-                  min: 0,
-                  max: 5,
-                  required: true,
-                  admin: {
-                    width: "50%",
-                  },
-                },
-              ],
+          filterOptions: {
+            slug: {
+              like: "/weapons/%",
+              not_equals: "/weapons/tactical_kit",
             },
-          ],
+          },
         },
         {
           label: "Додаткова інформація",
           name: "details",
           type: "array",
           admin: {
-            condition: (data) => data.type === "pistols",
+            condition: (data) => data.type === "tactical_kit",
           },
           labels: {
             singular: "Показник",
             plural: "Покази",
           },
           defaultValue: async () => {
-            const preset = [16, 17, 18, 19, 20, 1, 3];
+            const preset = [26, 1, 3];
             const detaileTable = await getPayload({
               config: config as unknown as SanitizedConfig,
             });
@@ -240,15 +178,6 @@ export const PistolFields = (): Field[] => {
               ],
             },
           ],
-        },
-        {
-          name: "tactical_kits_api",
-          type: "json",
-          label: "Тактичні обвіси (API)",
-          admin: {
-            readOnly: true,
-            hidden: true,
-          },
         },
       ],
     },

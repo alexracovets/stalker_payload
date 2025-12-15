@@ -1,6 +1,4 @@
 import { MainPage } from "@payload-types";
-import config from "@payload-config";
-import { Config } from "payload";
 import { Metadata } from "next";
 
 import { TemplateHome } from "@templates";
@@ -28,7 +26,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function Home() {
   const page = (await getCollectionItem({
     collection: "mainPages",
-    slug: "/", 
+    slug: "/",
     depth: 4,
   })) as MainPage;
 

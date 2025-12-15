@@ -2,6 +2,7 @@ import { ElementsPage } from "@/config/payload/payload-types";
 import type { CollectionConfig } from "payload";
 
 import {
+  TacticalKitFields,
   MachineGunFields,
   PageConfigFields,
   AutomaticFields,
@@ -84,6 +85,56 @@ export const ElementsPages: CollectionConfig = {
         }
       },
     ],
+    afterRead: [
+      async ({ doc, req }) => {
+        // працюємо тільки для сторінок пістолетів
+        if (doc.type !== "pistols") return doc;
+
+        // важливо: вимикаємо внутрішні хуки, щоб уникнути рекурсії цього ж afterRead
+        const payloadWithInternal = req.payload as unknown as {
+          find: (args: {
+            collection: "elements_pages";
+            where: {
+              and: {
+                type?: { equals: string };
+                "tactical_kit_group.relation"?: { contains: number | string };
+              }[];
+            };
+            disableInternalHooks?: boolean;
+            depth?: number;
+          }) => Promise<{ docs: ElementsPage[] }>;
+        };
+
+        const result = await payloadWithInternal.find({
+          collection: "elements_pages",
+          where: {
+            and: [
+              { type: { equals: "tactical_kit" } },
+              { "tactical_kit_group.relation": { contains: doc.id } },
+            ],
+          },
+          disableInternalHooks: true,
+          depth: 0,
+        });
+
+        type PistolGroup = {
+          tactical_kits_api?: ElementsPage[];
+          [key: string]: unknown;
+        };
+
+        const typedDoc = doc as ElementsPage & {
+          pistol_group?: PistolGroup;
+        };
+
+        if (!typedDoc.pistol_group) {
+          typedDoc.pistol_group = {};
+        }
+
+        typedDoc.pistol_group.tactical_kits_api = result.docs as ElementsPage[];
+
+        return typedDoc;
+      },
+    ],
   },
   fields: [
     {
@@ -103,6 +154,7 @@ export const ElementsPages: CollectionConfig = {
             ...MachineGunFields(),
             ...GrenadeFields(),
             ...SniperFields(),
+            ...TacticalKitFields(),
           ],
         },
         {

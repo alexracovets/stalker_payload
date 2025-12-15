@@ -81,7 +81,11 @@ export interface Config {
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
-  collectionsJoins: {};
+  collectionsJoins: {
+    elements_pages: {
+      'pistol_group.tactical_kits_relation': 'elements_pages';
+    };
+  };
   collectionsSelect: {
     mainPages: MainPagesSelect<false> | MainPagesSelect<true>;
     sections: SectionsSelect<false> | SectionsSelect<true>;
@@ -277,6 +281,7 @@ export interface ElementsPage {
         | 'machine_gun'
         | 'grenade'
         | 'sniper'
+        | 'tactical_kit'
       )
     | null;
   aside_image: number | Media;
@@ -374,6 +379,11 @@ export interface ElementsPage {
     author_image?: (number | null) | Media;
     designer_name?: string | null;
     designer_link?: string | null;
+    tactical_kits_relation?: {
+      docs?: (number | ElementsPage)[];
+      hasNextPage?: boolean;
+      totalDocs?: number;
+    };
     resistance?:
       | {
           indicator: number | ResistanceTable;
@@ -389,6 +399,15 @@ export interface ElementsPage {
           efect_power: 'low' | 'medium' | 'high' | 'normal';
           id?: string | null;
         }[]
+      | null;
+    tactical_kits_api?:
+      | {
+          [k: string]: unknown;
+        }
+      | unknown[]
+      | string
+      | number
+      | boolean
       | null;
   };
   automatic_group?: {
@@ -479,6 +498,21 @@ export interface ElementsPage {
           id?: string | null;
         }[]
       | null;
+    details?:
+      | {
+          indicator: number | DetaileTable;
+          value: string;
+          effect: 'positive' | 'negative' | 'normal';
+          efect_power: 'low' | 'medium' | 'high' | 'normal';
+          id?: string | null;
+        }[]
+      | null;
+  };
+  tactical_kit_group?: {
+    author_image?: (number | null) | Media;
+    designer_name?: string | null;
+    designer_link?: string | null;
+    relation?: (number | ElementsPage)[] | null;
     details?:
       | {
           indicator: number | DetaileTable;
@@ -889,6 +923,7 @@ export interface ElementsPagesSelect<T extends boolean = true> {
         author_image?: T;
         designer_name?: T;
         designer_link?: T;
+        tactical_kits_relation?: T;
         resistance?:
           | T
           | {
@@ -905,6 +940,7 @@ export interface ElementsPagesSelect<T extends boolean = true> {
               efect_power?: T;
               id?: T;
             };
+        tactical_kits_api?: T;
       };
   automatic_group?:
     | T
@@ -1004,6 +1040,23 @@ export interface ElementsPagesSelect<T extends boolean = true> {
               value?: T;
               id?: T;
             };
+        details?:
+          | T
+          | {
+              indicator?: T;
+              value?: T;
+              effect?: T;
+              efect_power?: T;
+              id?: T;
+            };
+      };
+  tactical_kit_group?:
+    | T
+    | {
+        author_image?: T;
+        designer_name?: T;
+        designer_link?: T;
+        relation?: T;
         details?:
           | T
           | {

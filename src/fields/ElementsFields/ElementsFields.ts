@@ -26,6 +26,7 @@ export const ElementsFields = (): Field[] => {
             { label: "Кулемет", value: "machine_gun" },
             { label: "Граната", value: "grenade" },
             { label: "Снайперська зброя", value: "sniper" },
+            { label: "Тактичний обвіс", value: "tactical_kit" },
           ],
           defaultValue: "suits",
           admin: {

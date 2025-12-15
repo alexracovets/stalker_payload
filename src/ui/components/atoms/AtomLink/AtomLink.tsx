@@ -46,6 +46,9 @@ const variants = cva("outline-none!", {
         "after:content-[''] after:absolute after:left-0 after:top-0 after:w-full after:h-[1px]",
         "before:content-[''] before:absolute before:left-0 before:bottom-0 before:w-full before:h-[1px]"
       ),
+      weapon_addition: cn(
+        "flex justify-start items-center gap-x-[8px] w-full"
+      ),
     },
   },
   defaultVariants: {

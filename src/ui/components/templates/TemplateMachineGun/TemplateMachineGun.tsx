@@ -49,7 +49,7 @@ export const TemplateMachineGun = ({ data }: TemplateMachineGunProps) => {
           )}
         </AtomWrapper>
         <AtomWrapper variant="content_suits_wrapper_right">
-          <WeaponAdditionBlock />
+          <WeaponAdditionBlock tacticalKits={[]} />
           {machineGunData?.details && (
             <ElementTableDetails
               items={machineGunData?.details}

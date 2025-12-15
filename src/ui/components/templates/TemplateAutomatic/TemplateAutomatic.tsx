@@ -49,7 +49,7 @@ export const TemplateAutomatic = ({ data }: TemplateAutomaticProps) => {
           )}
         </AtomWrapper>
         <AtomWrapper variant="content_suits_wrapper_right">
-          <WeaponAdditionBlock />
+          <WeaponAdditionBlock tacticalKits={[]} />
           {automaticData?.details && (
             <ElementTableDetails
               items={automaticData?.details}

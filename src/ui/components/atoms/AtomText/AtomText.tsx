@@ -44,6 +44,12 @@ const variants = cva("", {
         "data-[active=true]:text-main-yellow",
         "transition-all ease-in-out duration-300"
       ),
+      weapon_addition_title: cn(
+        "text-[20px] font-roboto font-semibold text-main-white-light leading-[1.45]"
+      ),
+      weapon_addition: cn(
+        "text-[20px] font-roboto font-regular text-main-white-light leading-[1.45]"
+      ),
     },
   },
   defaultVariants: {
