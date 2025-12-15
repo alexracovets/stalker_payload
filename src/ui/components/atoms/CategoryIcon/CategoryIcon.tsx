@@ -13,7 +13,8 @@ interface CategoryIconProps {
   variant: AtomImageVariant;
   wrapper:
     | "category_icon_wrapper"
-    | "aside_icon_wrapper"
+    | "defense_aside_icon"
+    | "weapons_aside_icon"
     | "input_search_button_wrapper";
   active: boolean;
   wrapper_active?: boolean;

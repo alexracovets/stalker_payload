@@ -1,6 +1,6 @@
 "use client";
 
-import { Section, SectionsIcon } from "@payload-types";
+import { MainPage, Section, SectionsIcon } from "@payload-types";
 
 import { CategoryIcon, AtomButton, AtomWrapper } from "@atoms";
 
@@ -10,7 +10,10 @@ import { useNavigation } from "@hooks";
 export const AsideSectionsControl = () => {
   const { sections, activeSection } = useNavigation();
   const { setSwitchedSectionAside } = useNavigationStore();
-
+  const nameSection = (sections?.[0]?.parent as MainPage)?.slug as
+    | "defense"
+    | "weapons";
+  if (!nameSection) return null;
   return (
     <AtomWrapper variant="aside_control_wrapper">
       <AtomButton variant="destructive">A</AtomButton>
@@ -21,7 +24,7 @@ export const AsideSectionsControl = () => {
               key={section.id}
               icons={section.icons as SectionsIcon}
               variant="aside_view"
-              wrapper="aside_icon_wrapper"
+              wrapper={`${nameSection}_aside_icon`}
               active={section === activeSection}
               wrapper_active={section === activeSection}
               onClick={() => setSwitchedSectionAside(section)}

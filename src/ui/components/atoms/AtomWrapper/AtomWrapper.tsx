@@ -72,8 +72,13 @@ const variants = cva("", {
         "flex items-center justify-center rounded-[4px] overflow-hidden h-fit"
       ),
       category_icon_wrapper: cn("relative w-[56px] h-[56px]"),
-      aside_icon_wrapper: cn(
+      defense_aside_icon: cn(
         "relative flex justify-center items-center w-[85px] h-[50px] rounded-[4px] bg-switch-bg-active overflow-hidden cursor-pointer",
+        "data-[active=true]:bg-main-destructive-bg hover:bg-main-destructive-bg",
+        "transition-all ease-in-out duration-300"
+      ),
+      weapons_aside_icon: cn(
+        "relative flex justify-center items-center w-[50px] h-[50px] rounded-[4px] bg-switch-bg-active overflow-hidden cursor-pointer",
         "data-[active=true]:bg-main-destructive-bg hover:bg-main-destructive-bg",
         "transition-all ease-in-out duration-300"
       ),

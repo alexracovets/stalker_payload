@@ -1,6 +1,6 @@
 "use client";
 
-import { ElementsPage, Media, SectionsIcon } from "@payload-types";
+import { ElementsPage, Media } from "@payload-types";
 
 import { AtomText, AtomWrapper, AtomImage, AtomLink } from "@atoms";
 

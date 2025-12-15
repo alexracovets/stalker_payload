@@ -5,8 +5,9 @@ import {
   TemplateExosuitSuit,
   TemplateMachineGun,
   TemplateAutomatic,
-  TemplateShotgun,
+  TemplateShotgun, 
   TemplateGrenade,
+  TemplateSniper,
   TemplateObject,
   TemplatePistol,
   TemplateSuit,
@@ -100,6 +101,9 @@ export default async function ResultPage({ params }: PageProps) {
       )}
       {pageData.type === "grenade" && (
         <TemplateGrenade data={pageData as ElementsPage} />
+      )}
+      {pageData.type === "sniper" && (
+        <TemplateSniper data={pageData as ElementsPage} />
       )}
     </>
   );
