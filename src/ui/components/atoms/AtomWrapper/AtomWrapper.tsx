@@ -56,7 +56,9 @@ const variants = cva("", {
         "w-[52.2rem] max-w-[522px] min-w-[505px] h-full relative pr-[.8rem]"
       ),
       main_wrapper: cn("w-full h-full"),
-      content: cn("w-full h-full p-[32px] flex flex-col gap-y-[48px]"),
+      content: cn(
+        "w-full h-auto p-[32px] flex flex-col gap-y-[48px] min-w-fit"
+      ),
       content_element: cn("w-full h-auto p-[32px] flex flex-col gap-y-[12px]"),
       content_header: cn("grid grid-cols-[1fr_auto] w-full gap-x-[48px]"),
       content_suits_wrapper: cn(
