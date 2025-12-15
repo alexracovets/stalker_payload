@@ -24,10 +24,21 @@ export const ElementsFields = (): Field[] => {
             { label: "Штурмова гвинтівка", value: "automatic" },
             { label: "Дробовик", value: "shotgun" },
             { label: "Кулемет", value: "machine_gun" },
+            { label: "Граната", value: "grenade" },
           ],
           defaultValue: "suits",
           admin: {
-            width: "30%",
+            width: "40%",
+          },
+        },
+        {
+          name: "aside_image",
+          type: "relationship",
+          relationTo: "media",
+          label: "Зображення для Aside",
+          required: true,
+          admin: {
+            width: "60%",
           },
         },
       ],

@@ -7,12 +7,7 @@ import { AtomText, AtomWrapper, AtomImage, AtomLink } from "@atoms";
 import { useNavigation } from "@hooks";
 
 export const AsideElementsControl = () => {
-  const { elements, activeSection, activeElement } = useNavigation();
-  const sectionImage =
-    typeof activeSection?.icons === "object" && activeSection.icons !== null
-      ? ((activeSection.icons as SectionsIcon).icon as Media)
-      : undefined;
-
+  const { elements, activeElement } = useNavigation();
   return (
     <AtomWrapper variant="aside_elements_control_wrapper" asChild>
       <ul>
@@ -25,8 +20,11 @@ export const AsideElementsControl = () => {
                 data-active={elementData === activeElement}
                 variant="aside_li"
               >
-                {sectionImage && (
-                  <AtomImage image={sectionImage} variant="table_icon" />
+                {elementData.aside_image && (
+                  <AtomImage
+                    image={elementData.aside_image as Media}
+                    variant="table_icon"
+                  />
                 )}
                 <AtomText variant="aside_li">{elementData.title}</AtomText>
               </AtomLink>

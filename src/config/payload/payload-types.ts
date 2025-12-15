@@ -265,7 +265,10 @@ export interface SectionsIcon {
  */
 export interface ElementsPage {
   id: number;
-  type?: ('suits' | 'masks' | 'exosuits' | 'objects' | 'pistols' | 'automatic' | 'shotgun' | 'machine_gun') | null;
+  type?:
+    | ('suits' | 'masks' | 'exosuits' | 'objects' | 'pistols' | 'automatic' | 'shotgun' | 'machine_gun' | 'grenade')
+    | null;
+  aside_image: number | Media;
   image: number | Media;
   title: string;
   sub_title: string;
@@ -430,6 +433,20 @@ export interface ElementsPage {
           id?: string | null;
         }[]
       | null;
+    details?:
+      | {
+          indicator: number | DetaileTable;
+          value: string;
+          effect: 'positive' | 'negative' | 'normal';
+          efect_power: 'low' | 'medium' | 'high' | 'normal';
+          id?: string | null;
+        }[]
+      | null;
+  };
+  grenade_group?: {
+    author_image?: (number | null) | Media;
+    designer_name?: string | null;
+    designer_link?: string | null;
     details?:
       | {
           indicator: number | DetaileTable;
@@ -749,6 +766,7 @@ export interface SectionsIconsSelect<T extends boolean = true> {
  */
 export interface ElementsPagesSelect<T extends boolean = true> {
   type?: T;
+  aside_image?: T;
   image?: T;
   title?: T;
   sub_title?: T;
@@ -915,6 +933,22 @@ export interface ElementsPagesSelect<T extends boolean = true> {
               value?: T;
               id?: T;
             };
+        details?:
+          | T
+          | {
+              indicator?: T;
+              value?: T;
+              effect?: T;
+              efect_power?: T;
+              id?: T;
+            };
+      };
+  grenade_group?:
+    | T
+    | {
+        author_image?: T;
+        designer_name?: T;
+        designer_link?: T;
         details?:
           | T
           | {

@@ -5,6 +5,7 @@ export { TemplateAutomatic } from "./TemplateAutomatic";
 export { LayoutDefaultWrapper } from "./LayoutDefault";
 export { TemplateMainPage } from "./TemplateMainPage";
 export { TemplateShotgun } from "./TemplateShotgun";
+export { TemplateGrenade } from "./TemplateGrenade";
 export { TemplatePistol } from "./TemplatePistol";
 export { TemplateObject } from "./TemplateObject";
 export { TemplateSuit } from "./TemplateSuit";

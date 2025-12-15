@@ -7,7 +7,7 @@ import { cn } from "@/utils/cn";
 
 interface ElementTableDetailsProps {
   items: NonNullable<ElementsPage["armor_group"]>["details"];
-  variant?: "pistol";
+  variant?: "pistol" | "granade";
 }
 
 interface CheckColorProps {
@@ -56,7 +56,7 @@ export const ElementTableDetails = ({
             power: item.efect_power,
             effect: item.effect,
           });
-          const reservId = [16, 21, 22];
+          const reservId = [16, 21, 22, 23, 24];
 
           const isReserv = reservId.includes(
             (item.indicator as DetaileTable)?.id

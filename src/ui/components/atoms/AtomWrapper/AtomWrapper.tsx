@@ -109,6 +109,9 @@ const variants = cva("", {
       details_item_pistol: cn(
         "w-full grid grid-cols-[180px_1fr] border-collapse"
       ),
+      details_item_granade: cn(
+        "w-full grid grid-cols-[180px_1fr] border-collapse max-w-[388px]"
+      ),
       details_item_indicator: cn(
         "flex justify-start items-center gap-x-[8px] px-[12px] py-[6px] bg-accordion-bg border-[1px] border-main-border"
       ),
