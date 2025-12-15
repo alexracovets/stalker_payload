@@ -14,7 +14,6 @@ interface TemplateTacticalKitProps {
 
 export const TemplateTacticalKit = ({ data }: TemplateTacticalKitProps) => {
   const tacticalKitData = data.tactical_kit_group;
-  console.log(tacticalKitData);
   return (
     <AtomWrapper variant="content_element">
       <AtomWrapper variant="content_header">

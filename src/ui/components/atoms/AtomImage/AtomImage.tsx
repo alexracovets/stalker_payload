@@ -75,26 +75,28 @@ export const AtomImage = ({
   noLoader = false,
   noCover = false,
 }: AtomImageProps) => {
-  const resolvedSrc = image?.url || src || "";
+  const resolvedSrc = image?.url || src || null;
   const [isLoaded, setIsLoaded] = useState(false);
 
   return (
     <div className={cn("relative", variants({ variant }), className)}>
       {!isLoaded && !noLoader && <AtomLoader />}
-      <Image
-        src={resolvedSrc}
-        alt={image?.alt || alt || "image"}
-        onLoad={() => setIsLoaded(true)}
-        priority={priority}
-        sizes="100%"
-        fill
-        className={cn(
-          !noCover ? "object-cover" : "object-contain",
-          "transition-opacity ease-in-out duration-300",
-          !isLoaded && !noLoader && "opacity-0"
-        )}
-        unoptimized={true}
-      />
+      {resolvedSrc && (
+        <Image
+          src={resolvedSrc}
+          alt={image?.alt || alt || "image"}
+          onLoad={() => setIsLoaded(true)}
+          priority={priority}
+          sizes="100%"
+          fill
+          className={cn(
+            !noCover ? "object-cover" : "object-contain",
+            "transition-opacity ease-in-out duration-300",
+            !isLoaded && !noLoader && "opacity-0"
+          )}
+          unoptimized={true}
+        />
+      )}
     </div>
   );
 };

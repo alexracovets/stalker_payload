@@ -241,15 +241,6 @@ export const PistolFields = (): Field[] => {
             },
           ],
         },
-        {
-          name: "tactical_kits_api",
-          type: "json",
-          label: "Тактичні обвіси (API)",
-          admin: {
-            readOnly: true,
-            hidden: true,
-          },
-        },
       ],
     },
   ];

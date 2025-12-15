@@ -87,10 +87,8 @@ export const ElementsPages: CollectionConfig = {
     ],
     afterRead: [
       async ({ doc, req }) => {
-        // працюємо тільки для сторінок пістолетів
         if (doc.type !== "pistols") return doc;
 
-        // важливо: вимикаємо внутрішні хуки, щоб уникнути рекурсії цього ж afterRead
         const payloadWithInternal = req.payload as unknown as {
           find: (args: {
             collection: "elements_pages";

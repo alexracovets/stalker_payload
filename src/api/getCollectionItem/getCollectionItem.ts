@@ -11,10 +11,11 @@ import config from "@payload-config";
 
 interface getCollectionItemProps {
   collection: CollectionSlug;
-  slug: string;
+  slug?: string;
   depth: number;
   slug_name?: boolean;
   type?: boolean;
+  id?: number;
 }
 
 export async function getCollectionItem({
@@ -23,21 +24,34 @@ export async function getCollectionItem({
   depth,
   slug_name,
   type,
+  id,
 }: getCollectionItemProps) {
   try {
     const resolvedConfig = (await config) as Config;
-    const payload = await getPayload({ config: resolvedConfig as SanitizedConfig });
-    const whereFind: Where = slug_name
-      ? { slug_name: { equals: slug } }
-      : type
-      ? { type: { equals: slug } }
-      : { slug: { equals: slug } };
-    const item = await payload.find({
-      collection: collection,
-      where: whereFind,
-      depth: depth,
+    const payload = await getPayload({
+      config: resolvedConfig as SanitizedConfig,
     });
-    return item.docs?.[0] ?? null;
+    if (id) {
+      const item = await payload.find({
+        collection: collection,
+        where: { id: { equals: id } },
+        depth: depth,
+      });
+      return item.docs?.[0] ?? null;
+    }
+    if (slug) {
+      const whereFind: Where = slug_name
+        ? { slug_name: { equals: slug } }
+        : type
+          ? { type: { equals: slug } }
+          : { slug: { equals: slug } };
+      const item = await payload.find({
+        collection: collection,
+        where: whereFind,
+        depth: depth,
+      });
+      return item.docs?.[0] ?? null;
+    }
   } catch (error) {
     console.error(
       `Помилка при отриманні елемента з slug "${slug}" з колекції "${collection}":`,

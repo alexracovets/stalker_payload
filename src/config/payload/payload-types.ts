@@ -400,15 +400,6 @@ export interface ElementsPage {
           id?: string | null;
         }[]
       | null;
-    tactical_kits_api?:
-      | {
-          [k: string]: unknown;
-        }
-      | unknown[]
-      | string
-      | number
-      | boolean
-      | null;
   };
   automatic_group?: {
     author_image?: (number | null) | Media;
@@ -940,7 +931,6 @@ export interface ElementsPagesSelect<T extends boolean = true> {
               efect_power?: T;
               id?: T;
             };
-        tactical_kits_api?: T;
       };
   automatic_group?:
     | T
