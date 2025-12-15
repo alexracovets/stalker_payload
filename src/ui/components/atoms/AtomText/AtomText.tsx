@@ -48,7 +48,7 @@ const variants = cva("", {
         "text-[20px] font-roboto font-semibold text-main-white-light leading-[1.45]"
       ),
       weapon_addition: cn(
-        "text-[20px] font-roboto font-regular text-main-white-light leading-[1.45]"
+        "text-[20px] font-roboto font-regular text-main-white-light leading-[1.45] underline"
       ),
     },
   },
