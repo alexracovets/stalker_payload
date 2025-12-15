@@ -5,14 +5,18 @@ import { AtomText, AtomImage, AtomLink } from "@atoms";
 
 interface WeaponAdditionBlockProps {
   tacticalKits: ElementsPage[];
+  additional?: boolean;
 }
 
 export const WeaponAdditionBlock = ({
   tacticalKits,
+  additional,
 }: WeaponAdditionBlockProps) => {
   return (
     <div className="flex flex-col w-full gap-y-[4px]">
-      <AtomText variant="weapon_addition_title">Tактичний обвіс:</AtomText>
+      <AtomText variant="weapon_addition_title">
+        {additional ? "До Зброї:" : "Tактичний обвіс:"}
+      </AtomText>
       <div className="flex flex-col w-full gap-y-[12px]">
         {tacticalKits.map((item) => {
           return (

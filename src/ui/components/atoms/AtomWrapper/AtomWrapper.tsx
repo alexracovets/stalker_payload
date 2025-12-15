@@ -82,6 +82,11 @@ const variants = cva("", {
         "data-[active=true]:bg-main-destructive-bg hover:bg-main-destructive-bg",
         "transition-all ease-in-out duration-300"
       ),
+      zone_aside_icon: cn(
+        "relative flex justify-center items-center w-[62px] h-[50px] rounded-[4px] bg-switch-bg-active overflow-hidden cursor-pointer",
+        "data-[active=true]:bg-main-destructive-bg hover:bg-main-destructive-bg",
+        "transition-all ease-in-out duration-300"
+      ),
       list_grid_wrapper: cn("flex flex-col gap-x-[80px] gap-y-[48px]"),
       list_grid_item: cn("flex flex-col gap-y-[32px] w-full"),
       list_grid_item_showcase: cn("flex flex-wrap gap-x-[80px] gap-y-[32px]"),
@@ -137,8 +142,14 @@ const variants = cva("", {
       aside_control_wrapper: cn(
         "flex justify-center w-full items-center gap-x-[16px] w-full py-[14px] px-[12px] bg-aside-control-bg"
       ),
-      aside_control_inner: cn(
+      defense_aside_control_inner: cn(
         "flex justify-center items-center gap-x-[12px] w-full"
+      ),
+      weapons_aside_control_inner: cn(
+        "flex justify-center items-center gap-x-[15px] w-full"
+      ),
+      zone_aside_control_inner: cn(
+        "flex justify-center items-center gap-x-[16px] w-full"
       ),
       aside_elements_control_wrapper: cn(
         "flex flex-col w-full py-[32px] gap-y-[8px]"

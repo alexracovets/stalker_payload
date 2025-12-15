@@ -15,6 +15,7 @@ interface CategoryIconProps {
     | "category_icon_wrapper"
     | "defense_aside_icon"
     | "weapons_aside_icon"
+    | "zone_aside_icon"
     | "input_search_button_wrapper";
   active: boolean;
   wrapper_active?: boolean;

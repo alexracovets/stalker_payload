@@ -12,12 +12,13 @@ export const AsideSectionsControl = () => {
   const { setSwitchedSectionAside } = useNavigationStore();
   const nameSection = (sections?.[0]?.parent as MainPage)?.slug as
     | "defense"
-    | "weapons";
+    | "weapons"
+    | "zone";
   if (!nameSection) return null;
   return (
     <AtomWrapper variant="aside_control_wrapper">
       <AtomButton variant="destructive">A</AtomButton>
-      <AtomWrapper variant="aside_control_inner">
+      <AtomWrapper variant={`${nameSection}_aside_control_inner`}>
         {(sections as Section[])?.map((section: Section) => {
           return (
             <CategoryIcon

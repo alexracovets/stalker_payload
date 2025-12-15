@@ -2,10 +2,11 @@ import { Metadata } from "next";
 import { ElementsPage } from "@payload-types";
 
 import {
+  TemplateTacticalKit,
   TemplateExosuitSuit,
   TemplateMachineGun,
   TemplateAutomatic,
-  TemplateShotgun, 
+  TemplateShotgun,
   TemplateGrenade,
   TemplateSniper,
   TemplateObject,
@@ -104,6 +105,9 @@ export default async function ResultPage({ params }: PageProps) {
       )}
       {pageData.type === "sniper" && (
         <TemplateSniper data={pageData as ElementsPage} />
+      )}
+      {pageData.type === "tactical_kit" && (
+        <TemplateTacticalKit data={pageData as ElementsPage} />
       )}
     </>
   );

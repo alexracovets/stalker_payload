@@ -49,11 +49,11 @@ const variants = cva("", {
       element_suit: cn("w-[388px] h-[388px]"),
       element_object: cn("w-[388px] h-[256px]"),
       element_granade: cn("w-[222px] h-[222px]"),
+      element_pistol: cn("w-[563px] h-[204px]"),
       table_icon: cn("w-[32px] min-w-[32px] h-[32px] min-h-[32px]"),
       input_search: cn(
         "absolute top-[50%] left-[12px] translate-y-[-50%] w-[32px] h-[32px]"
       ),
-      element_pistol: cn("w-[563px] h-[204px]"),
       loader: cn("w-[32px] h-[32px]"),
       input_search_button: cn(
         "absolute left-0 top-0 w-[24px] h-[24px] opacity-0 transition-opacity ease-in-out duration-300"
