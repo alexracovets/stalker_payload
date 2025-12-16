@@ -84,6 +84,8 @@ export interface Config {
   collectionsJoins: {
     elements_pages: {
       'pistol_group.tactical_kits_relation': 'elements_pages';
+      'automatic_group.tactical_kits_relation': 'elements_pages';
+      'shotgun_group.tactical_kits_relation': 'elements_pages';
     };
   };
   collectionsSelect: {
@@ -400,11 +402,25 @@ export interface ElementsPage {
           id?: string | null;
         }[]
       | null;
+    tactical_kits_api?:
+      | {
+          [k: string]: unknown;
+        }
+      | unknown[]
+      | string
+      | number
+      | boolean
+      | null;
   };
   automatic_group?: {
     author_image?: (number | null) | Media;
     designer_name?: string | null;
     designer_link?: string | null;
+    tactical_kits_relation?: {
+      docs?: (number | ElementsPage)[];
+      hasNextPage?: boolean;
+      totalDocs?: number;
+    };
     resistance?:
       | {
           indicator: number | ResistanceTable;
@@ -420,12 +436,26 @@ export interface ElementsPage {
           efect_power: 'low' | 'medium' | 'high' | 'normal';
           id?: string | null;
         }[]
+      | null;
+    tactical_kits_api?:
+      | {
+          [k: string]: unknown;
+        }
+      | unknown[]
+      | string
+      | number
+      | boolean
       | null;
   };
   shotgun_group?: {
     author_image?: (number | null) | Media;
     designer_name?: string | null;
     designer_link?: string | null;
+    tactical_kits_relation?: {
+      docs?: (number | ElementsPage)[];
+      hasNextPage?: boolean;
+      totalDocs?: number;
+    };
     resistance?:
       | {
           indicator: number | ResistanceTable;
@@ -441,6 +471,15 @@ export interface ElementsPage {
           efect_power: 'low' | 'medium' | 'high' | 'normal';
           id?: string | null;
         }[]
+      | null;
+    tactical_kits_api?:
+      | {
+          [k: string]: unknown;
+        }
+      | unknown[]
+      | string
+      | number
+      | boolean
       | null;
   };
   machine_gun_group?: {
@@ -931,6 +970,7 @@ export interface ElementsPagesSelect<T extends boolean = true> {
               efect_power?: T;
               id?: T;
             };
+        tactical_kits_api?: T;
       };
   automatic_group?:
     | T
@@ -938,6 +978,7 @@ export interface ElementsPagesSelect<T extends boolean = true> {
         author_image?: T;
         designer_name?: T;
         designer_link?: T;
+        tactical_kits_relation?: T;
         resistance?:
           | T
           | {
@@ -954,6 +995,7 @@ export interface ElementsPagesSelect<T extends boolean = true> {
               efect_power?: T;
               id?: T;
             };
+        tactical_kits_api?: T;
       };
   shotgun_group?:
     | T
@@ -961,6 +1003,7 @@ export interface ElementsPagesSelect<T extends boolean = true> {
         author_image?: T;
         designer_name?: T;
         designer_link?: T;
+        tactical_kits_relation?: T;
         resistance?:
           | T
           | {
@@ -977,6 +1020,7 @@ export interface ElementsPagesSelect<T extends boolean = true> {
               efect_power?: T;
               id?: T;
             };
+        tactical_kits_api?: T;
       };
   machine_gun_group?:
     | T

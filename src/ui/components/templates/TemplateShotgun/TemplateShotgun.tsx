@@ -15,7 +15,7 @@ interface TemplateShotgunProps {
 
 export const TemplateShotgun = ({ data }: TemplateShotgunProps) => {
   const shotgunData = data.shotgun_group;
-
+  const tacticalKits = shotgunData?.tactical_kits_relation?.docs;
   return (
     <AtomWrapper variant="content_element">
       <AtomWrapper variant="content_header">
@@ -49,7 +49,7 @@ export const TemplateShotgun = ({ data }: TemplateShotgunProps) => {
           )}
         </AtomWrapper>
         <AtomWrapper variant="content_suits_wrapper_right">
-          <WeaponAdditionBlock tacticalKits={[]} />
+          <WeaponAdditionBlock tacticalKits={tacticalKits as ElementsPage[]} />
           {shotgunData?.details && (
             <ElementTableDetails
               items={shotgunData?.details}

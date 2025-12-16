@@ -15,7 +15,9 @@ interface TemplateAutomaticProps {
 
 export const TemplateAutomatic = ({ data }: TemplateAutomaticProps) => {
   const automaticData = data.automatic_group;
-
+  const tacticalKits = automaticData?.tactical_kits_relation?.docs;
+  console.log(data);
+  console.log(tacticalKits);
   return (
     <AtomWrapper variant="content_element">
       <AtomWrapper variant="content_header">
@@ -49,7 +51,7 @@ export const TemplateAutomatic = ({ data }: TemplateAutomaticProps) => {
           )}
         </AtomWrapper>
         <AtomWrapper variant="content_suits_wrapper_right">
-          <WeaponAdditionBlock tacticalKits={[]} />
+          <WeaponAdditionBlock tacticalKits={tacticalKits as ElementsPage[]} />
           {automaticData?.details && (
             <ElementTableDetails
               items={automaticData?.details}

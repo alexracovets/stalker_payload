@@ -59,6 +59,24 @@ export const ShotgunFields = (): Field[] => {
           ],
         },
         {
+          name: "tactical_kits_relation",
+          type: "join",
+          collection: "elements_pages",
+          on: "tactical_kit_group.relation",
+          label: "Тактичні обвіси, де використовується цей елемент",
+          hasMany: true,
+          where: {
+            type: {
+              equals: "tactical_kit",
+            },
+          },
+          admin: {
+            allowCreate: false,
+            disableListColumn: true,
+            width: "100%",
+          },
+        },
+        {
           name: "resistance",
           admin: {
             condition: (data) => data.type === "shotgun",
@@ -222,6 +240,15 @@ export const ShotgunFields = (): Field[] => {
               ],
             },
           ],
+        },
+        {
+          name: "tactical_kits_api",
+          type: "json",
+          label: "Тактичні обвіси (API)",
+          admin: {
+            readOnly: true,
+            hidden: true,
+          },
         },
       ],
     },
