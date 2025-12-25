@@ -14,4 +14,5 @@ export { TemplateSuit } from "./TemplateSuit";
 export { TemplateMask } from "./TemplateMask";
 export { TemplateHome } from "./TemplateHome";
 export { TemplateAmmo } from "./TemplateAmmo";
+export { TemplateMap } from "./TemplateMap";
 export { LayoutPDA } from "./LayoutPDA";
