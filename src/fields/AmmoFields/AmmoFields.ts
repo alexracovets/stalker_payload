@@ -1,14 +1,14 @@
 import { type Field, SanitizedConfig, getPayload } from "payload";
 import { config } from "node:process";
 
-export const TacticalKitFields = (): Field[] => {
+export const AmmoFields = (): Field[] => {
   return [
     {
       type: "group",
-      name: "tactical_kit_group",
-      label: "Поля для тактичного обвісу",
+      name: "ammo_group",
+      label: "Поля для боєприпасів",
       admin: {
-        condition: (data) => data.type === "tactical_kit",
+        condition: (data) => data.type === "ammo",
       },
       fields: [
         {
@@ -59,7 +59,7 @@ export const TacticalKitFields = (): Field[] => {
           ],
         },
         {
-          name: "relation",
+          name: "relation_ammo",
           type: "relationship",
           relationTo: "elements_pages",
           label: "Зв'язок з елементом",
@@ -79,14 +79,14 @@ export const TacticalKitFields = (): Field[] => {
           name: "details",
           type: "array",
           admin: {
-            condition: (data) => data.type === "tactical_kit",
+            condition: (data) => data.type === "ammo",
           },
           labels: {
             singular: "Показник",
             plural: "Покази",
           },
           defaultValue: async () => {
-            const preset = [27, 13, 3];
+            const preset = [28, 25, 1, 3];
             const detaileTable = await getPayload({
               config: config as unknown as SanitizedConfig,
             });

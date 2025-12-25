@@ -47,7 +47,7 @@ export const ElementTableDetails = ({
         break;
     }
   };
-
+console.log(items);
   return (
     <AtomWrapper variant="details_list" asChild>
       <ul>
@@ -56,7 +56,7 @@ export const ElementTableDetails = ({
             power: item.efect_power,
             effect: item.effect,
           });
-          const reservId = [16, 21, 22, 23, 24, 26, 27];
+          const reservId = [16, 21, 22, 23, 24, 26, 27, 28];
 
           const isReserv = reservId.includes(
             (item.indicator as DetaileTable)?.id

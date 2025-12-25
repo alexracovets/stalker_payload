@@ -14,6 +14,7 @@ import {
   PistolFields,
   ArmorFields,
   MaskFields,
+  AmmoFields,
   ExoFields,
 } from "@/fields";
 
@@ -105,6 +106,7 @@ export const ElementsPages: CollectionConfig = {
             ...GrenadeFields(),
             ...SniperFields(),
             ...TacticalKitFields(),
+            ...AmmoFields(),
           ],
         },
         {

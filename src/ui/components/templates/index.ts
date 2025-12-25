@@ -13,4 +13,5 @@ export { TemplateSniper } from "./TemplateSniper";
 export { TemplateSuit } from "./TemplateSuit";
 export { TemplateMask } from "./TemplateMask";
 export { TemplateHome } from "./TemplateHome";
-export { LayoutPDA } from "./LayoutPDA"; 
+export { TemplateAmmo } from "./TemplateAmmo";
+export { LayoutPDA } from "./LayoutPDA";

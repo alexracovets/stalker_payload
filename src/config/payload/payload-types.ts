@@ -284,6 +284,7 @@ export interface ElementsPage {
         | 'grenade'
         | 'sniper'
         | 'tactical_kit'
+        | 'ammo'
       )
     | null;
   aside_image: number | Media;
@@ -543,6 +544,21 @@ export interface ElementsPage {
     designer_name?: string | null;
     designer_link?: string | null;
     relation?: (number | ElementsPage)[] | null;
+    details?:
+      | {
+          indicator: number | DetaileTable;
+          value: string;
+          effect: 'positive' | 'negative' | 'normal';
+          efect_power: 'low' | 'medium' | 'high' | 'normal';
+          id?: string | null;
+        }[]
+      | null;
+  };
+  ammo_group?: {
+    author_image?: (number | null) | Media;
+    designer_name?: string | null;
+    designer_link?: string | null;
+    relation_ammo?: (number | ElementsPage)[] | null;
     details?:
       | {
           indicator: number | DetaileTable;
@@ -1091,6 +1107,23 @@ export interface ElementsPagesSelect<T extends boolean = true> {
         designer_name?: T;
         designer_link?: T;
         relation?: T;
+        details?:
+          | T
+          | {
+              indicator?: T;
+              value?: T;
+              effect?: T;
+              efect_power?: T;
+              id?: T;
+            };
+      };
+  ammo_group?:
+    | T
+    | {
+        author_image?: T;
+        designer_name?: T;
+        designer_link?: T;
+        relation_ammo?: T;
         details?:
           | T
           | {

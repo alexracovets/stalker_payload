@@ -27,6 +27,7 @@ export const ElementsFields = (): Field[] => {
             { label: "Граната", value: "grenade" },
             { label: "Снайперська зброя", value: "sniper" },
             { label: "Тактичний обвіс", value: "tactical_kit" },
+            { label: "Боєприпас", value: "ammo" },
           ],
           defaultValue: "suits",
           admin: {

@@ -11,6 +11,7 @@ export { PistolFields } from "./PistolFields";
 export { SniperFields } from "./SniperFields";
 export { ArmorFields } from "./ArmorFields";
 export { MaskFields } from "./MaskFields";
+export { AmmoFields } from "./AmmoFields";
 export { HomeVideo } from "./HomeVideo";
 export { ExoFields } from "./ExoFields";
 export { HomeLogo } from "./HomeLogo";

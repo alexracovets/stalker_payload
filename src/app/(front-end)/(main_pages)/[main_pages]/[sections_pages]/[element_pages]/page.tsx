@@ -13,6 +13,7 @@ import {
   TemplatePistol,
   TemplateSuit,
   TemplateMask,
+  TemplateAmmo,
 } from "@templates";
 
 import { getCollection, getCollectionItem } from "@api";
@@ -108,6 +109,9 @@ export default async function ResultPage({ params }: PageProps) {
       )}
       {pageData.type === "tactical_kit" && (
         <TemplateTacticalKit data={pageData as ElementsPage} />
+      )}
+      {pageData.type === "ammo" && (
+        <TemplateAmmo data={pageData as ElementsPage} />
       )}
     </>
   );
