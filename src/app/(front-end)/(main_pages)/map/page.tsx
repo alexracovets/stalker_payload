@@ -2,10 +2,6 @@
 
 import { TemplateMap } from "@/ui/components/templates";
 
-
-
-export const MapPage = () => {
-    return <TemplateMap />;
-};
-
-export default MapPage;
+export default function MapPage() {
+  return <TemplateMap />;
+}
