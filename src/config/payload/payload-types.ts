@@ -112,7 +112,7 @@ export interface Config {
   globalsSelect: {
     nav_home: NavHomeSelect<false> | NavHomeSelect<true>;
   };
-  locale: 'uk';
+  locale: 'uk' | 'en';
   user: User & {
     collection: 'users';
   };

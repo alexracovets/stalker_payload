@@ -26,7 +26,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function Home() {
   const page = (await getCollectionItem({
     collection: "mainPages",
-    slug: "/",
+    slug: "home",
     depth: 4,
   })) as MainPage;
 

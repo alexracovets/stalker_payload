@@ -45,8 +45,8 @@ export default buildConfig({
     supportedLanguages: { en, uk },
   },
   localization: {
-    locales: ["uk"],
-    defaultLocale: "uk",
+    locales: ["uk", "en"],
+    defaultLocale: process.env.DEFAULT_LOCALE as string,
   },
   admin: {
     user: Users.slug,
